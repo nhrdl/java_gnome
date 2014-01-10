@@ -1,9 +1,11 @@
 Java-gnome with WebkitGtk2
 =========================
 
-If your distribution has WebkitGtk2 installed at standard locations, you don't have to do anything else. On my distribution it was not.
+If your distribution has WebkitGtk2 installed at standard locations, you don't have to do anything else. Just run configure and proceed with make command. Your build will be ready.
 
-For compilation of java-gnome you will have to set following enviornment variable
+On my distribution (Ubuntu 12.04) I had installed in separate directory as it needs many other libraries which are not part of standard distribution.
+
+For compilation of java-gnome you will have to set following enviornment variable.
 PKG_CONFIG_PATH
 
 For running the application you will have to set following variables
