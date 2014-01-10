@@ -1,0 +1,232 @@
+(define-object DOMHTMLDocument
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMDocument")
+  (c-name "WebKitDOMHTMLDocument")
+)
+
+(define-method capture_events
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_capture_events")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method clear
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_clear")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method close
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_close")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_active_element
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_active_element")
+  (return-type "WebKitDOMElement*")
+  (parameters
+  )
+)
+
+(define-method get_alink_color
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_alink_color")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_bg_color
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_bg_color")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_compat_mode
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_compat_mode")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_design_mode
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_design_mode")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_dir
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_dir")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_embeds
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_embeds")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_fg_color
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_fg_color")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_height
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_height")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_link_color
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_link_color")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_plugins
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_plugins")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_scripts
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_scripts")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_vlink_color
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_vlink_color")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_get_width")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method has_focus
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_has_focus")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method open
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_open")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method release_events
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_release_events")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method set_alink_color
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_set_alink_color")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_bg_color
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_set_bg_color")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_design_mode
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_set_design_mode")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_dir
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_set_dir")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_fg_color
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_set_fg_color")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_link_color
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_set_link_color")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_vlink_color
+  (of-object "WebKitDOMHTMLDocument")
+  (c-name "webkit_dom_html_document_set_vlink_color")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

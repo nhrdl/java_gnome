@@ -1,0 +1,41 @@
+(define-object Socket
+  (in-module "Gtk")
+  (parent "GtkContainer")
+  (c-name "GtkSocket")
+  (gtype-id "GTK_TYPE_SOCKET")
+  (import-header "gtk/gtkx.h")
+)
+
+(define-function gtk_socket_new
+  (is-constructor-of "GtkSocket")
+  (c-name "gtk_socket_new")
+  (caller-owns-return #t)
+  (return-type "GtkWidget*")
+)
+
+;; That's an X Window* there. We have no binding of that.
+(define-method add_id
+  (of-object "GtkSocket")
+  (c-name "gtk_socket_add_id")
+  (return-type "none")
+  (parameters
+    '("Window" "window_id")
+  )
+)
+
+(define-method get_id
+  (of-object "GtkSocket")
+  (c-name "gtk_socket_get_id")
+  (return-type "Window")
+)
+
+(define-virtual plug_added
+  (of-object "GtkSocket")
+  (return-type "none")
+)
+
+(define-virtual plug_removed
+  (of-object "GtkSocket")
+  (return-type "gboolean")
+)
+

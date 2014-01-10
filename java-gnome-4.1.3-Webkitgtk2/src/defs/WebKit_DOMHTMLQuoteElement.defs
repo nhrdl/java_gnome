@@ -1,0 +1,26 @@
+(define-object DOMHTMLQuoteElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLQuoteElement")
+)
+
+(define-method get_cite
+  (of-object "WebKitDOMHTMLQuoteElement")
+  (c-name "webkit_dom_html_quote_element_get_cite")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_cite
+  (of-object "WebKitDOMHTMLQuoteElement")
+  (c-name "webkit_dom_html_quote_element_set_cite")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

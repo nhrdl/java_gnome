@@ -1,0 +1,2305 @@
+#!/usr/bin/perl -w
+#
+# java-gnome, a UI library for writing GTK and GNOME programs from Java!
+#
+# Copyright © 2005-2013 Operational Dynamics Consulting, Pty Ltd and Others
+# 
+# The code in this file, and the program it is a part of, is made available
+# to you by its authors as open source software: you can redistribute it
+# and/or modify it under the terms of the GNU General Public License version
+# 2 ("GPL") as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE. See the GPL for more details.
+#
+# You should have received a copy of the GPL along with this program. If not,
+# see http://www.gnu.org/licenses/. The authors of this program may be
+# contacted through http://java-gnome.sourceforge.net/.
+#
+
+#
+# configure
+# part of Equivalence, version 0.2.x
+#
+# THIS IS A PROTOTYPE. Although functional enough, this has grown to the point
+# of being a somewhat embarrassing and monolithic piece of code. Patches are
+# gladly accepted to this file to fix bugs and improve prerequisite detection,
+# but be aware that a new and refactored version is in progress.  With any
+# luck, it will be easier to extend and suitable for use by other projects. See
+# http://research.operationaldynamics.com/projects/equivalence/ In the mean
+# time, see README for instructions on how to use this one.
+#
+
+use strict;
+
+use File::Basename;
+use Cwd 'abs_path';
+
+#
+# Configure java-gnome for building. We:
+#
+# - determine the operating system
+#
+# - set known defaults that correspond to that OS
+#
+# - for items where we have multiple possibilities, work through the
+#   possibilities until we find one
+#
+# - for items where there are options to choose from (notably which java
+#   compiler and VM we're using), we select a sensible default unless
+#   instructed otherwise on the command line.
+#
+
+my $os;
+my $cpu_arch = ""; # set only when needed
+my $quiet;
+
+# There's nothing worse than having an old config file, getting half way
+# through this, having it break, and then being able to build, but getting
+# errors because configure really didn't finish. We do leave .config.tmp 
+# in place on error to facilitate troubleshooting.
+
+`rm -f .config`;
+`rm -f Hello.java Hello.class`;
+
+
+# --------------------------------------------------------------------
+# Utility and checking functions
+# --------------------------------------------------------------------
+
+#
+# Very simply: if the msg does not contain a newline, then it is assumed
+# to introduce a statement, so we print it and left pad it with spaces.
+# If the text does contain a newline, then probably it is concluding a 
+# statement (ok, failed, whatever) but not necessarily - just print the thing
+# without any padding.
+#
+sub output {
+	my $str = shift;
+	if ($str =~ /\n/) {
+		print $str unless $quiet;
+	} else {
+		printf "%-35s", $str unless $quiet;
+	}
+}
+
+sub which {
+	my $program = shift;
+	my $path = $ENV{'PATH'};
+	my @path_dirs = split /:+/, $path;
+	foreach my $dir (@path_dirs) {
+		if (-f "$dir/$program") {
+			return abs_path("$dir/$program");
+		}
+	}
+	return $program;
+}
+
+sub bail {
+	my $status = shift || "failed";
+	my $msg = shift || "";
+
+	# assuming that we're in an incomplete line 
+	output "$status\n\n";
+
+
+	print "$msg\n\n" if $msg;
+	print "Failed to complete configuration.\n";
+	exit(1);
+}
+
+# Check for all the required gnome development libraries. Distributions such as 
+# Ubuntu/Debian and Fedora don't always install the gnome development libs
+# (for whatever reason). If they aren't installed, we bomb here in configure
+# instead of dying unceremoniously while make'ing.
+
+sub check_system_library(\@$$@) {
+	my ($gnomedevref, $pkgconfig, $item, $package) = @_;
+	output " - ".$item;
+	
+	my $found;
+	my $str = "";
+	my $tries = "";
+
+	$found = system("pkg-config --exists '$pkgconfig'");
+
+	if ($found) {
+		my $msg;
+
+		$msg = `pkg-config --modversion --errors-to-stdout '$pkgconfig'`;
+		$str .= "$msg\n" if ($msg =~ /^Requested /);
+		$str .= "In order to build java-gnome, you will need the GNOME\n";
+		$str .= "development libraries. Depending on what you have installed,\n";
+		$str .= "this could be a considerable set of packages, but if you\n";
+		$str .= "want to be a GNOME hacker, that's the way it is.\n\n";
+
+		$str .= "On a ".ucfirst($os)." system, you should be able to satisfy this\n";
+		$str .= "requirement by doing:\n\n";
+		$str .= "     # ";
+
+		if ($os eq "gentoo") {
+			$str .= "emerge";
+		} elsif ($os eq "debian") {
+			$str .= "apt-get install";
+		} elsif ($os eq "fedora") {
+			$str .= "yum install";
+		} elsif ($os eq "suse") {
+			$str .= "zypper install";
+		} elsif ($os eq "arch") {
+			$str .= "pacman -S";
+		} elsif ($os eq "mandriva") {
+			$str .= "urpmi";
+		} elsif ($os eq "solaris") {
+			$str .= "pkgadd";
+		} elsif ($os eq "slackware") {
+			$str .= "slackpkg install";
+		} else {
+			$str .= "[FIXME fetch and install command for this OS]"; 
+		}
+		$str .= " $package";
+
+		bail "not found!", $str;
+	}
+	print "found\n";
+	
+	push(@$gnomedevref, $found);
+
+}
+# The files (jars) to check for should be listed in order of preference, as the
+# first one found will be the one selected.  For example, if you want version 3
+# but version 2 will do, list them in that order.  Typically, this means that
+# you list newer libraries first, on the presumption that you'd rather use the
+# newer one than the older one; when adding upgrades put them above the
+# already present entries.
+
+sub check_prereq (\@$$@) {
+	my ($jararrayref, $item, $package, @files) = @_;
+
+	output " - ".$item;
+
+	my $str;
+	my $tries = "";
+	my $found = "";
+
+	foreach my $file ( @files ) {
+		if ( -f "$file" ) {
+			$found = $file;
+			last;
+		}
+		$tries .= ($tries ? ", or" : "" ) . "\n\t".  basename($file) . "\t(looked in ".dirname($file).")";
+	}
+
+	if ( ! "$found" ) {
+		$str = "In order to build java-gnome, you need\n".$tries;
+		$str .= "\n\nwhich is part of the $item Java library.\n";
+		$str .= "On a ".ucfirst($os)." system, you should be able to get this requirement by doing:\n\n";
+		$str .= "     # ";
+
+		if ($os eq "gentoo") {
+			$str .= "emerge";
+		} elsif ($os eq "debian") {
+			$str .= "apt-get install";
+		} elsif ($os eq "fedora") {
+			$str .= "yum install";
+		} elsif ($os eq "suse") {
+			$str .= "zypper install";
+		} elsif ($os eq "arch") {
+			$str .= "pacman -S";
+		} elsif ($os eq "mandriva") {
+			$str .= "urpmi";
+		} elsif ($os eq "solaris") {
+			$str .= "pkgadd";
+		} elsif ($os eq "slackware") {
+			$str .= "slackpkg install";
+		} else {
+			$str .= "[FIXME fetch and install command for this OS]"; 
+		}
+		$str .= " $package";
+
+		bail "not found!", $str;
+	}
+	print "found\n";
+
+	push (@$jararrayref, $found);
+}
+
+# if we return without setting the variable pointed at by scalarref, its being
+# empty will be used later to indicate that this compiler wasn't present /
+# usable.
+#
+# The "not present" check is somewhat spurious given the input in many cases
+# is the result of a `which` call.
+
+sub check_compiler (\$$$$) {
+	my $scalarref = $_[0];
+	my $item = $_[1];
+	my $program = $_[2];
+	my $args = $_[3];
+
+	chomp $program;
+	if ( ! -f "$program") {
+		$$scalarref = "";
+		return;
+	}
+
+	# appealing to my sense of economy, we only print something out if 
+	# it's there - that way we can list lots of options to check without
+	# cluttering things endlessly.
+	output " - ".$item;
+
+	if ( ! -x "$program") {
+		output "found but not executable\n";
+		$$scalarref = "";
+		return;
+	}
+
+	# Ok, so inline code is lame, but it's so small, and only one,
+	# and, avoids having a file in tests/ that will be picked up later
+	# as neededing compiling.
+	if (! -f "Hello.java") {
+		open HELLO, ">Hello.java";
+		print HELLO <<HERE ;
+public class Hello {
+	public static void main(String[] args) {
+		System.out.println("Hello");
+	}
+}
+HERE
+		close HELLO;
+	}
+
+	`$program $args -sourcepath . Hello.java >/dev/null 2>&1`;
+	if ($? != 0) {
+		output "doesn't work\n";
+		$$scalarref = "";
+		return
+	}
+
+	output "works\n";
+	$$scalarref = "$program $args";
+}
+
+#
+# Check that a jar program somewhere works.
+#
+
+sub check_jar (\$$$$) {
+	my $scalarref = $_[0];
+	my $item = $_[1];
+	my $program = $_[2];
+	my $args = $_[3];
+
+	chomp $program;
+	if ( ! -f "$program") {
+		$$scalarref = "";
+		return;
+	}
+
+	# appealing to my sense of economy, we only print something out if 
+	# it's there - that way we can list lots of options to check without
+	# cluttering things endlessly.
+	output " - ".$item;
+
+	if ( ! -x "$program") {
+		output "found but not executable\n";
+		$$scalarref = "";
+		return;
+	}
+
+	`$program cf Hello.jar $args Hello.class >/dev/null 2>&1`;
+	if (($? != 0) || (! -f "Hello.jar")) {
+		output "doesn't work\n";
+		$$scalarref = "";
+		return
+	}
+
+	# TODO validate the result
+
+	output "works\n";
+	$$scalarref = "$program $args";
+}
+
+#
+# Check that a javadoc program somewhere works.
+#
+
+sub check_javadoc (\$$$$) {
+	my $scalarref = $_[0];
+	my $item = $_[1];
+	my $program = $_[2];
+	my $args = $_[3];
+
+	chomp $program;
+	if ( ! -f "$program") {
+		$$scalarref = "";
+		return;
+	}
+
+	# appealing to my sense of economy, we only print something out if 
+	# it's there - that way we can list lots of options to check without
+	# cluttering things endlessly.
+	output " - ".$item;
+
+	if ( ! -x "$program") {
+		output "found but not executable\n";
+		$$scalarref = "";
+		return;
+	}
+
+	# TODO validate the result
+
+	output "found\n";
+	$$scalarref = "$program $args";
+}
+
+
+sub check_runtime (\$$$$) {
+	my $scalarref = $_[0];
+	my $item = $_[1];
+	my $program = $_[2];
+	my $args = $_[3];
+
+	chomp $program;
+	if ( ! -f "$program") {
+		$$scalarref = "";
+		return;
+	}
+
+	output " - ".$item;
+
+	if ( ! -x "$program") {
+		output "found but not executable\n";
+		$$scalarref = "";
+		return;
+	}
+
+	my $output = `$program -version 2>&1 | grep 'version "'`;
+	$output =~ s/.*version \"(.*)\".*/$1/g;
+	my @version = split(/[\.\-\_]/, $output);
+	for (my $i = 0; $i < 3; $i++) {
+		chomp $version[$i];
+
+		if (!($version[$i] =~ /^\d+$/)) {
+			output "can't parse version\n";
+			$$scalarref = "";
+			return
+		}
+	}
+	if (
+		($version[0] < 1) ||
+		($version[0] == 1 && ($version[1] < 4))
+	) {
+		output "not >= 1.5.0\n";
+		$$scalarref = "";
+		return
+	}
+
+	$output = `$program $args Hello 2>/dev/null`;
+	chomp $output;
+
+	if (($? != 0) || ($output ne "Hello")) {
+		output "doesn't work\n";
+		$$scalarref = "";
+		return
+	}
+
+	output "works\n";
+	$$scalarref = "$program $args";
+}
+
+
+sub check_jni_header_generator(\$$$$) {
+	my $scalarref = $_[0];
+	my $item = $_[1];
+	my $program = $_[2];
+	my $args = $_[3];
+
+	chomp $program;
+	if ( ! -f "$program") {
+		$$scalarref = "";
+		return;
+	}
+
+	# appealing to my sense of economy, we only print something out if 
+	# it's there - that way we can list lots of options to check without
+	# cluttering things endlessly.
+	output " - ".$item;
+
+	if ( ! -x "$program") {
+		output "found but not executable\n";
+		$$scalarref = "";
+		return;
+	}
+
+	# FIXME do a test!
+
+	output "found\n";
+	$$scalarref = "$program $args";
+}
+
+
+# test for C compiler
+
+sub check_CC (\$$$$) {
+	my $scalarref = $_[0];
+	my $item = $_[1];
+	my $program = $_[2];
+	my $args = $_[3];
+
+	chomp $program;
+	if ( ! -f "$program") {
+		$$scalarref = "";
+		return;
+	}
+
+	# appealing to my sense of economy, we only print something out if 
+	# it's there - that way we can list lots of options to check without
+	# cluttering things endlessly.
+	output " - ".$item;
+
+	if ( ! -x "$program") {
+		output "found but not executable\n";
+		$$scalarref = "";
+		return;
+	}
+
+	# Hello.java should already available.
+
+		open HELLO, ">Hello.c";
+		print HELLO <<HERE ;
+#include <stdio.h>
+int main(int argc, char **argv) {
+	printf("Hello");
+	return 0;
+}
+HERE
+		close HELLO;
+
+	# compile
+	`$program $args -o Hello.o -c Hello.c >/dev/null 2>&1`;
+	if ($? != 0) {
+		output "compiling doesn't work\n";
+		$$scalarref = "";
+		return
+	}
+
+	if ( ! -f "Hello.o") {
+		bail "internal error","why isn't Hello.o present?";
+	}
+
+	# link
+	`$program $args -o Hello Hello.o >/dev/null 2>&1`;
+	if ($? != 0) {
+		output "linking doesn't work\n";
+		$$scalarref = "";
+		return
+	}
+
+	# run
+	my $output = `./Hello 2>/dev/null`;
+	chomp $output;
+
+	if (($? != 0) || ($output ne "Hello")) {
+		output "executable doesn't work\n";
+		$$scalarref = "";
+		return
+	}
+
+	output "works\n";
+	$$scalarref = "$program $args";
+}
+
+# --------------------------------------------------------------------
+# Process command line arguments for overrides
+# --------------------------------------------------------------------
+
+my $prefix;
+my $libdir;
+my $jardir;
+my $compiler;
+my $runtime;
+my $jdk_home;
+my $gcj_home;
+my $jamvm_bin;
+my $cacao_bin;
+my $strict = "";
+
+foreach my $arg (@ARGV) {
+	my ($key, $value) = split /=/, "$arg";
+
+	if ($key eq "quiet") {
+		$quiet = 1;
+	} elsif (($key =~ /^-\?$/) ||
+		 ($key =~ /^-h$/) ||
+		 ($key =~ /^--help$/) ||
+		 ($key =~ /^-help$/) ||
+		 ($key =~ /^help$/)) {
+		print <<HERE ;
+
+This is Equivalence, a simple build system suited to the
+unique needs of configuring and compiling Java programs on
+Linux and Unix.
+
+Look at the README file in this directory for information
+about this project and instructions on how to adjust the
+./configure script's behaviour.
+
+HERE
+		exit 4;
+	} elsif (($key =~ /^--prefix$/) ||
+		 ($key =~ /^prefix$/)) {
+		$prefix="$value";
+	} elsif (($key =~ /^--libdir$/) ||
+		 ($key =~ /^libdir$/)) {
+		$libdir="$value";
+	} elsif (($key =~ /^--jardir$/) ||
+		 ($key =~ /^jardir$/)) {
+		$jardir="$value";
+	} elsif ($key =~ /^runtime/) {
+		$runtime="$value";
+	} elsif ($key =~ /^compiler/) {
+		$compiler="$value";
+	} elsif ($key =~ /^jdk/) {
+		$jdk_home="$value";
+	} elsif ($key =~ /^gcj/) {
+		$gcj_home="$value";
+	} elsif ($key =~ /^cacao/) {
+		$cacao_bin="$value";
+	} elsif ($key =~ /^jamvm/) {
+		$jamvm_bin="$value";
+	} elsif ($key =~ /^strict/) {
+		$strict="yes";
+	}
+}
+
+
+# check jdk_home and gcj_home overrides. compiler and runtime are checked 
+# later (at the end) against choices that have been validated.
+
+if ($jdk_home) {
+	$jdk_home =~ s/\/$//;
+	if (! -x "$jdk_home/bin/javac") {
+		bail "bad override", "jdk_home specified doesn't seem to be a Java Development Kit home directory!";
+	}
+}
+
+if ($gcj_home) {
+	$gcj_home =~ s/\/$//;
+	if (! -x "$gcj_home/bin/gcj") {
+		bail "bad override", "gcj_home specified doesn't seem to be a GCJ install!";
+	}
+}
+
+
+# --------------------------------------------------------------------
+# Determine Operating System
+# --------------------------------------------------------------------
+
+output "\n";
+
+open CONFIG, ">.config.tmp";
+print CONFIG <<HERE ;
+# This is an automatically generated Makefile fragment which is used
+# to configure java-gnome for building. Do not edit (your changes will
+# be overwritten next time ./configure is run), do not commit to
+# repository. Anyone packaging java-gnome on any operating system:
+# please do not override this file by patching it! Figure out what the
+# problem is, and let us know so we can improve the ./configure perl
+# script which generates it.
+
+HERE
+
+output "equivalence, v0.2\n";
+output "...configuring Java projects to build and run on Linux & Unix\n";
+output "\n";
+
+output "Identify operating system:";
+
+if (( -f "/etc/gentoo-release" ) || ( -f "/etc/make.conf" )) {
+	output "Gentoo\n";
+	$os = "gentoo";
+} elsif ( -f "/etc/debian_version") {
+	output "Debian\n";
+	# and Ubuntu
+	$os = "debian";
+} elsif ( -f "/etc/fedora-release" ) {
+	output "Fedora";
+	$os = "fedora";
+} elsif ( -f "/etc/SuSE-release" ) {
+	output "Open SuSE";
+	$os = "suse";
+} elsif ( -f "/etc/arch-release" ) {
+	output "Arch";
+	$os = "arch";
+} elsif ( -f "/etc/mandriva-release" ) {
+	output "Mandriva";
+	$os = "mandriva";
+	# Mandriva Linux has different package names
+	# for 64-bit CPU architectures
+	if (-x "/bin/arch") {
+	    my $arch = `/bin/arch`;
+	    if ($arch =~ m/_64/) { # 64-bit OS
+		$cpu_arch = "64";
+	    }
+	}
+} elsif ( -f "/etc/release" ) {
+	if (`grep Solaris /etc/release`) {
+		output "Solaris";
+		$os = "solaris";
+	}
+} elsif ( -f "/etc/slackware-version" ) {
+	output "Slackware";
+	$os = "slackware";
+} elsif ( -f "/usr/bin/cygwin1.dll" ) {
+	output "Cygwin";
+	$os = "cygwin";
+} elsif ( -f "/etc/centos-release" ) {
+	output "CentOS";
+	$os = "fedora";
+} elsif ( -f "/etc/redhat-release" ) {
+	output "RedHat";
+	$os = "fedora";
+} elsif ( -f "/etc/java/jpackage-release" ) {
+	output "JPackage";
+	$os = "fedora";
+}
+
+if ($os) {
+	print CONFIG "OS=$os\n\n";
+} else {
+	bail "unknown!", <<HERE ;
+What we really need you to do is to look into this configure program,
+and tell us what to add. Based on the examples of what is specified
+for other distributions, you can probably quickly figure out what the
+appropriate settings are for your platform. 
+
+Letting us know what changes you had to make here (ie, whatever
+actions resulted in a .config that allows you to build and test
+java-gnome, and run the java-gnome demo) we can help others with your
+operating system take advantage of this program.
+
+HERE
+}
+
+output "\n";
+
+# --------------------------------------------------------------------
+# Specify locations of dependencies, by operating system, and 
+# verify pre-requisites are present.
+# --------------------------------------------------------------------
+
+my @junit_jars;
+my $jni_path;
+
+output "Check for required jar files:\n";
+
+
+# ADVICE TO PEOPLE EXTENDING THIS SECTION FOR THEIR OWN OPERATING SYSTEM:
+# You might as well list things in such an order that you tell the builder
+# the package whose dependencies will bring the rest of the pre-requisites 
+# in along the way...
+
+if ($os eq "gentoo") {
+
+	check_prereq(@junit_jars,
+		"JUnit test framework",
+		"junit",
+		"/usr/share/junit/lib/junit.jar");
+
+
+} elsif ($os eq "debian") {
+
+	# check_prereq(@junit_jars,
+	# 	"JUnit test framework",
+	# 	"junit",
+	# 	"/usr/share/java/junit.jar");
+
+	
+} elsif ($os eq "fedora") {
+
+	check_prereq(@junit_jars,
+		"JUnit test framework",
+		"junit",
+		"/usr/share/java/junit.jar");
+
+} elsif ($os eq "arch") {
+
+	check_prereq(@junit_jars,
+		"JUnit test framework",
+		"junit",
+		"/usr/share/java/junit.jar");
+
+} elsif ($os eq "mandriva") {
+
+	check_prereq(@junit_jars,
+		"JUnit test framework",
+		"junit",
+		"/usr/share/java/junit.jar");
+
+} elsif ($os eq "suse") {
+
+	check_prereq(@junit_jars,
+		"JUnit test framework",
+		"junit",
+		"/usr/share/java/junit.jar");
+
+
+} elsif ($os eq "solaris") {
+
+	check_prereq(@junit_jars,
+		"JUnit test framework",
+		"junit",
+		"/usr/share/lib/java/junit.jar");
+
+} elsif ($os eq "slackware") {
+
+	check_prereq(@junit_jars,
+		"JUnit test framework",
+		"junit",
+		"/usr/share/java/junit.jar");
+
+} elsif ($os eq "cygwin") {
+
+	check_prereq(@junit_jars,
+		"JUnit test framework",
+		"junit",
+		"/usr/share/java/junit.jar");
+	
+	
+} else {
+	bail "failed!", "This OS not configured with defaults!\nTHIS IS AN INTERNAL ERROR, PLEASE FILE A BUG.";
+}
+
+
+# This section checks for all the GNOME pre requisites.
+# Paths mentioned here, are relative to the prefix.
+
+my @gnomedev_libs;
+
+output "\nCheck for required system libraries:\n";
+
+if ($os eq "gentoo") {
+	check_system_library(@gnomedev_libs,
+			"glib-2.0 >= 2.28 
+					gtk+-3.0 >= 3.0.0
+					pango >= 1.28 
+					librsvg-2.0 
+					atk 
+					gdk-3.0 
+					gtk+-unix-print-3.0 
+					cairo-svg >= 1.10.0 
+					gtksourceview-3.0",
+			"GNOME",
+			"gnome");
+
+	check_system_library(@gnomedev_libs,
+			"enchant",
+			"Enchant",
+			"app-text/enchant");
+
+#	check_system_library(@gnomedev_libs,
+#			"gtkspell-3.0",
+#			"GtkSpell",
+#			"gtkspell");
+
+
+} elsif ($os eq "slackware") {
+	# on slackware gdk-2.0 and gtk+-unix-print-2.0 are part of gtk+-2.0
+	# use http://packages.slackware.it/ for more details. 
+	check_system_library(@gnomedev_libs,
+			"glib-2.0 >= 2.28",
+			"GLib",
+			"FIXME");
+
+	check_system_library(@gnomedev_libs,
+			"gtk+-3.0 >= 3.0.0",
+			"GTK+",
+			"gtk+2");
+
+	check_system_library(@gnomedev_libs,
+			"pango >= 1.28",
+			"Pango",
+			"pango");
+
+	check_system_library(@gnomedev_libs,
+			"librsvg-2.0",
+			"RSVG",
+			"FIXME");
+
+	check_system_library(@gnomedev_libs,
+			"atk",
+			"ATK",
+			"atk");
+
+	check_system_library(@gnomedev_libs,
+			"gtksourceview-3.0",
+			"GtkSourceView",
+			"FIXME");
+
+
+#	check_system_library(@gnomedev_libs,
+#			"gtkspell-3.0",
+#			"GtkSpell",
+#			"FIXME");
+
+	check_system_library(@gnomedev_libs,
+			"enchant",
+			"Enchant",
+			"FIXME");
+
+
+} elsif ($os eq "debian") {
+	check_system_library(@gnomedev_libs,
+			"cairo-svg >= 1.10",
+			"Cairo",
+			"libcairo2-dev");
+
+	check_system_library(@gnomedev_libs,
+			"glib-2.0 >= 2.28",
+			"GLib",
+			"libglib2.0-dev");
+
+	check_system_library(@gnomedev_libs,
+			"gtk+-3.0 >= 3.0 
+					gdk-3.0 
+					gtk+-unix-print-3.0",
+			"GTK+",
+			"libgtk3.0-dev");
+
+	check_system_library(@gnomedev_libs,
+			"pango >= 1.28",
+			"Pango",
+			"libpango1.0-dev");
+
+	check_system_library(@gnomedev_libs,
+			"librsvg-2.0",
+			"RSVG",
+			"librsvg2-dev");
+
+	check_system_library(@gnomedev_libs,
+			"atk",
+			"ATK",
+			"libatk1.0-dev");
+
+	check_system_library(@gnomedev_libs,
+			"gtksourceview-3.0",
+			"GtkSourceView",
+			"libgtksourceview-3.0-dev");
+
+	check_system_library(@gnomedev_libs,
+			"enchant",
+			"Enchant",
+			"libenchant-dev");
+
+#	check_system_library(@gnomedev_libs,
+#			"gtkspell-3.0",
+#			"GtkSpell",
+#			"libgtkspell-dev");
+
+
+} elsif ($os eq "arch") {
+	check_system_library(@gnomedev_libs,
+			"cairo-svg >= 1.10",
+			"Cairo",
+			"cairo");
+
+	check_system_library(@gnomedev_libs,
+			"glib-2.0 >= 2.28",
+			"GLib",
+			"glib2");
+
+	check_system_library(@gnomedev_libs,
+			"gtk+-3.0 >= 3.0 
+					gdk-3.0 
+					gtk+-unix-print-3.0",
+			"GTK+",
+			"gtk3");
+
+	check_system_library(@gnomedev_libs,
+			"pango >= 1.28",
+			"Pango",
+			"pango");
+
+	check_system_library(@gnomedev_libs,
+			"librsvg-2.0",
+			"RSVG",
+			"librsvg");
+
+	check_system_library(@gnomedev_libs,
+			"atk",
+			"ATK",
+			"atk");
+
+	check_system_library(@gnomedev_libs,
+			"gtksourceview-3.0",
+			"GtkSourceView",
+			"gtksourceview3");
+
+	check_system_library(@gnomedev_libs,
+			"enchant",
+			"Enchant",
+			"enchant");
+
+	check_system_library(@gnomedev_libs,
+			"gtkspell3-3.0",
+			"GtkSpell",
+			"gtkspell3");
+
+
+} elsif ($os eq "suse") {
+	check_system_library(@gnomedev_libs,
+			"cairo-svg >= 1.10",
+			"Cairo",
+			"libcairo2-dev");
+
+	check_system_library(@gnomedev_libs,
+			"glib-2.0 >= 2.28 
+					gtk+-3.0 >= 3.0.0
+					pango >= 1.22 
+					atk 
+					gdk-3.0 
+					gtk+-unix-print-3.0",
+			"GNOME development libraries",
+			"libgnome-devel");
+
+	check_system_library(@gnomedev_libs,
+			"librsvg-2.0",
+			"RSVG",
+			"librsvg-devel");
+
+	check_system_library(@gnomedev_libs,
+			"gtksourceview-3.0",
+			"GtkSourceView",
+			"FIXME");
+
+
+#	check_system_library(@gnomedev_libs,
+#			"gtkspell-3.0",
+#			"GtkSpell",
+#			"FIXME");
+
+	check_system_library(@gnomedev_libs,
+			"enchant",
+			"Enchant",
+			"FIXME");
+
+} elsif ($os eq "mandriva") {
+	check_system_library(@gnomedev_libs,
+			"cairo-svg >= 1.10",
+			"Cairo",
+			"lib{$cpu_arch}cairo-devel");
+		    # lib64cairo-devel-1.10.2-2-mdv2011.0.x86_64
+
+	check_system_library(@gnomedev_libs,
+			"glib-2.0 >= 2.28 
+					gtk+-3.0
+					pango >= 1.22 
+					atk 
+					gdk-3.0 
+					gtk+-unix-print-3.0",
+			"GTK development libraries",
+			"lib${cpu_arch}gtk+3.0-devel");
+
+	check_system_library(@gnomedev_libs,
+			"librsvg-2.0",
+			"RSVG",
+			"lib${cpu_arch}rsvg2-devel");
+
+	check_system_library(@gnomedev_libs,
+			"gtksourceview-3.0",
+			"GtkSourceView",
+			"lib${cpu_arch}gtksourceview-3.0-devel");
+
+
+#	check_system_library(@gnomedev_libs,
+#			"gtkspell-3.0",
+#			"GtkSpell",
+#			"lib${cpu_arch}gtkspell-devel");
+
+	check_system_library(@gnomedev_libs,
+			"enchant",
+			"Enchant",
+			"lib${cpu_arch}enchant-devel");
+
+} elsif ($os eq "fedora") {
+	check_system_library(@gnomedev_libs,
+			"cairo-svg >= 1.10",
+			"Cairo",
+			"FIXME");
+
+	check_system_library(@gnomedev_libs,
+			"glib-2.0 >= 2.28",
+			"GLib",
+			"FIXME");
+
+	check_system_library(@gnomedev_libs,
+			"gtk+-3.0 >= 3.0
+					gdk-3.0 
+					gtk+-unix-print-3.0",
+			"GTK+",
+			"FIXME");
+
+	check_system_library(@gnomedev_libs,
+			"pango >= 1.28",
+			"Pango",
+			"FIXME");
+
+	check_system_library(@gnomedev_libs,
+			"librsvg-2.0",
+			"RSVG",
+			"FIXME");
+
+	check_system_library(@gnomedev_libs,
+			"atk",
+			"ATK",
+			"FIXME");
+
+	check_system_library(@gnomedev_libs,
+			"gtksourceview-3.0",
+			"GtkSourceView",
+			"FIXME");
+
+
+	check_system_library(@gnomedev_libs,
+			"enchant",
+			"Enchant",
+			"FIXME");
+
+#	check_system_library(@gnomedev_libs,
+#			"gtkspell-3.0",
+#			"GtkSpell",
+#			"FIXME");
+
+}
+
+
+
+# --------------------------------------------------------------------
+# Record jar locations
+# --------------------------------------------------------------------
+
+print CONFIG <<HERE ;
+
+# The lists of jars are colon separated, suitable for being
+# concatenated into a CLASSPATH
+
+HERE
+
+print CONFIG "JUNIT_JARS=".join(":",@junit_jars)."\n";
+
+output "\n";
+
+# --------------------------------------------------------------------
+# Check compilers: locations, necessary arguments, and that they work
+# --------------------------------------------------------------------
+
+output "Check Java compilers:\n";
+
+# compilers we will check for:
+my $javac;
+my $ecj;
+my $gcjC;	# The moniker $gcjC refers to `gcj -C`
+my $kaffec;
+
+# tools we check at same time (not switchable)
+my $javah;
+my $jar;
+my $javadoc;
+
+if ($os eq "gentoo") {
+
+	if ( ! -x "/usr/bin/java-config") {
+		bail "", "INTERNAL ERROR couldn't find java-config";
+	}
+	# this is getting ridiculous
+	my $java_home;
+	if ($jdk_home) {
+		$java_home = "$jdk_home";
+	} else {
+		$java_home = `java-config -O`;
+		chomp $java_home;
+	}
+
+	# check ecj, the standalone Eclipse compiler.
+	check_compiler($ecj, "Eclipse ecj", "/usr/bin/ecj-3.4", "-g -preserveAllLocals -nowarn -source 1.6 -target 1.6");
+	check_compiler($ecj, "Eclipse ecj", "/usr/bin/ecj-3.3", "-g -preserveAllLocals -nowarn -source 1.6 -target 1.6") unless $ecj;
+	
+	# check javac (the one specified by Gentoo's java-config tool)
+	# The $vendor business is just some precision prettiness for the
+	# display.
+	my $javac_candidate;
+	my $javah_candidate;
+	my $jar_candidate;
+	my $javadoc_candidate;
+	my $vendor;
+
+	if ($jdk_home) {
+		$javac_candidate = "$jdk_home/bin/javac";
+		$javah_candidate = "$jdk_home/bin/javah";
+		$jar_candidate = "$jdk_home/bin/jar";
+		$javadoc_candidate = "$jdk_home/bin/javadoc";
+		$vendor = "Specified";
+	} else {
+		$javac_candidate = `java-config --javac`;
+
+		$javah_candidate = `java-config -O`;
+		chomp $javah_candidate;
+		$javadoc_candidate = $javah_candidate;
+
+		$javah_candidate .= "/bin/javah";
+		$javadoc_candidate .= "/bin/javadoc";
+
+		$jar_candidate = `java-config --jar`;
+		$vendor = "System";
+	}
+
+	if ($javac_candidate =~ /sun/i) {
+		$vendor = "Sun";
+	} elsif ($javac_candidate =~ /blackdown/i) {
+		$vendor = "Blackdown";
+	} elsif ($javac_candidate =~ /ibm/i) {
+		$vendor = "IBM";
+	}
+	check_compiler($javac, "$vendor javac", $javac_candidate, "-g -source 1.6 -target 1.6");
+
+	# check gcj. -C means generate .class files, not .o files (which are
+	# for linking into native executables.
+
+	my $gcj_candidate;
+
+	if ($gcj_home) {
+		$gcj_candidate = "$gcj_home/bin/gcj";
+	} else {
+		$gcj_candidate = which("gcj");
+	}
+	check_compiler($gcjC, "GNU gcj -C (bytecode mode)", $gcj_candidate, "-C");
+
+	# check tools
+	check_jni_header_generator($javah, "$vendor javah", $javah_candidate, "-jni");
+	check_jar($jar, "$vendor jar", $jar_candidate, "");
+	check_javadoc($javadoc, "$vendor javadoc", $javadoc_candidate, "");
+
+} elsif ($os eq "debian") {
+	# we can do much better than this, especially for java/javac.
+	# Do we access the alternatives system, or just go with known
+	# paths, or...? `which` is lame
+
+	# check ecj, the standalone Eclipse compiler.
+	check_compiler($ecj, "Eclipse ecj", which("ecj"), "-g -preserveAllLocals -nowarn -source 1.6 -target 1.6");
+
+	# check for a proper "real" JDK's javac as installed (and maybe
+	# selected in the alternatives system) by the user. In other words,
+	# javac -> /opt/sun-jdk-1.4.2.02/bin/javac, not javac -> kaffec.
+	my $javac_candidate;
+	my $javah_candidate;
+	my $jar_candidate;
+	my $javadoc_candidate;
+	my $vendor;
+
+	if ($jdk_home) {
+		$javac_candidate = "$jdk_home/bin/javac";
+		$javah_candidate = "$jdk_home/bin/javah";
+		$jar_candidate = "$jdk_home/bin/jar";
+		$javadoc_candidate = "$jdk_home/bin/javadoc";
+		$vendor = "Specified";
+	} else {
+		$javac_candidate = which("javac");
+		$javah_candidate = "";
+		$jar_candidate = "";
+		$javadoc_candidate = "";
+		$vendor = "System";
+	}
+	if ($javac_candidate =~ /sun/i) {
+		$vendor = "Sun";
+	} elsif ($javac_candidate =~ /blackdown/i) {
+		$vendor = "Blackdown";
+	} elsif ($javac_candidate =~ /ibm/i) {
+		$vendor = "IBM";
+	}
+	check_compiler($javac, "$vendor javac", $javac_candidate, "-g -source 1.6 -target 1.6");
+
+	# check gcj. The moniker $gcjC refers to `gcj -C`. See HACKING.
+	my $gcj_candidate;
+	if ($gcj_home) {
+		$gcj_candidate = "$gcj_home/bin/gcj";
+	} else {
+		$gcj_candidate = which("gcj");
+	}
+	check_compiler($gcjC, "GNU gcj -C (bytecode mode)", $gcj_candidate, "-C -g");
+
+	# check for kaffe's compiler
+	check_compiler($kaffec, "Kaffe javac", "/usr/lib/kaffe/bin/javac", "");
+
+	# check for JDK tools. To suit Debian prejudices, use GNU tools if found.
+	check_jni_header_generator($javah, "$vendor javah", $javah_candidate, "-jni");
+	check_jni_header_generator($javah, "GNU gcjh", which("gcjh"), "-jni") unless $javah;
+	check_jni_header_generator($javah, "System javah", which("javah"), "-jni") unless $javah;
+
+	check_jar($jar, "$vendor jar", $jar_candidate, "");
+	check_jar($jar, "GNU fastjar", which("fastjar"), "") unless $jar;
+	check_jar($jar, "System jar", which("jar"), "") unless $jar;
+
+	check_javadoc($javadoc, "$vendor javadoc", $javadoc_candidate, "");
+	check_javadoc($javadoc, "GNU gjdoc", which("gjdoc"), "");
+	check_javadoc($javadoc, "System javadoc", which("javadoc"), "") unless $javadoc;
+
+} elsif ($os eq "fedora") {
+	# we can do much better than this, especially for java/javac.
+	# Should we just go with known paths, or...? `which` is so lame
+
+	# check ecj, the standalone Eclipse compiler.
+	check_compiler($ecj, "Eclipse ecj", which("ecj"), "-g -preserveAllLocals -nowarn -source 1.6 -target 1.6");
+
+	my $javac_candidate;
+	my $javah_candidate;
+	my $jar_candidate;
+	my $javadoc_candidate;
+	my $vendor;
+	if ($jdk_home) {
+		$javac_candidate = "$jdk_home/bin/javac";
+		$javah_candidate = "$jdk_home/bin/javah";
+		$jar_candidate = "$jdk_home/bin/jar";
+		$javadoc_candidate = "$jdk_home/bin/javadoc";
+		$vendor = "Specified";
+	} else {
+		$javac_candidate = "/usr/bin/javac";
+		$javah_candidate = "/usr/bin/javah";
+		$jar_candidate = "/usr/bin/jar";
+		$javadoc_candidate = "/usr/bin/javadoc";
+		$vendor = "System Default";
+	}
+	check_compiler($javac, "$vendor javac", $javac_candidate, "-g -source 1.6 -target 1.6");
+
+	# check for gcj
+	my $gcj_candidate;
+	if ($gcj_home) {
+		$gcj_candidate = "$gcj_home/bin/gcj";
+	} else {
+		$gcj_candidate = which("gcj");
+	}
+	check_compiler($gcjC, "GNU gcj -C (bytecode mode)", $gcj_candidate, "-C");
+
+	# check for kaffe's compiler
+	check_compiler($kaffec, "Kaffe javac", which("kaffec"), "");
+
+	check_jni_header_generator($javah, "$vendor javah", $javah_candidate, "-jni");
+	check_jar($jar, "$vendor jar", $jar_candidate, "");
+	check_javadoc($javadoc, "$vendor javadoc", $javadoc_candidate, "");
+
+} elsif ($os eq "suse") {
+	# check ecj, the standalone Eclipse compiler.
+	check_compiler($ecj, "Eclipse ecj", which("ecj"), "-g -preserveAllLocals -nowarn -source 1.6 -target 1.6");
+
+	my $javac_candidate;
+	my $javah_candidate;
+	my $jar_candidate;
+	my $javadoc_candidate;
+	my $vendor;
+	if ($jdk_home) {
+		$javac_candidate = "$jdk_home/bin/javac";
+		$javah_candidate = "$jdk_home/bin/javah";
+		$jar_candidate = "$jdk_home/bin/jar";
+		$javadoc_candidate = "$jdk_home/bin/javadoc";
+		$vendor = "Specified";
+	} else {
+		$javac_candidate = "/usr/lib/jvm/java/bin/javac";
+		$javah_candidate = "/usr/lib/jvm/java/bin/javah";
+		$jar_candidate = "/usr/lib/jvm/java/bin/jar";
+		$javadoc_candidate = "/usr/lib/jvm/java/bin/javadoc";
+		$vendor = "Sun";
+	}
+	check_compiler($javac, "$vendor javac", $javac_candidate, "-g -source 1.6 -target 1.6");
+
+	# check for gcj
+	my $gcj_candidate;
+	if ($gcj_home) {
+		$gcj_candidate = "$gcj_home/bin/gcj";
+	} else {
+		$gcj_candidate = which("gcj");
+	}
+	check_compiler($gcjC, "GNU gcj -C (bytecode mode)", $gcj_candidate, "-C");
+
+	# check for kaffe's compiler
+	check_compiler($kaffec, "Kaffe javac", which("kaffec"), "");
+
+	check_jni_header_generator($javah, "$vendor javah", $javah_candidate, "-jni");
+	check_jar($jar, "$vendor jar", $jar_candidate, "");
+	check_javadoc($javadoc, "$vendor javadoc", $javadoc_candidate, "");
+
+
+} elsif ($os eq "arch") {
+	# we can do much better than this, especially for java/javac.
+	# Should we just go with known paths, or...? `which` is so lame
+
+	my $javac_candidate;
+	my $javah_candidate;
+	my $jar_candidate;
+	my $javadoc_candidate;
+	my $vendor;
+	if ($jdk_home) {
+		$vendor = "Specified";
+	} else {
+		$vendor = "System";
+		$jdk_home = $ENV{"JAVA_HOME"};
+	}
+
+	$javac_candidate = "$jdk_home/bin/javac";
+	$javah_candidate = "$jdk_home/bin/javah";
+	$jar_candidate = "$jdk_home/bin/jar";
+	$javadoc_candidate = "$jdk_home/bin/javadoc";
+
+	check_compiler($javac, "$vendor javac", $javac_candidate, "-g");
+
+	check_jni_header_generator($javah, "$vendor javah", $javah_candidate, "-jni");
+	check_jar($jar, "$vendor jar", $jar_candidate, "");
+	check_javadoc($javadoc, "$vendor javadoc", $javadoc_candidate, "");
+
+} elsif ($os eq "mandriva") {
+	# check ecj, the standalone Eclipse compiler.
+	check_compiler($ecj, "Eclipse ecj", which("ecj"), "-g -preserveAllLocals -nowarn -source 1.6 -target 1.6");
+
+	my $javac_candidate;
+	my $javah_candidate;
+	my $jar_candidate;
+	my $javadoc_candidate;
+	my $vendor;
+
+	if ($jdk_home) {
+		$javac_candidate = "$jdk_home/bin/javac";
+		$javah_candidate = "$jdk_home/bin/javah";
+		$jar_candidate = "$jdk_home/bin/jar";
+		$javadoc_candidate = "$jdk_home/bin/javadoc";
+		$vendor = "Specified";
+	} else {
+		$javac_candidate = which("javac");
+		$javah_candidate = which("javah");
+		$jar_candidate = which("jar");
+		$javadoc_candidate = which("javadoc");
+		$vendor = "System";
+	}
+
+	check_compiler($javac, "$vendor javac", $javac_candidate, "-g -source 1.6 -target 1.6");
+
+	check_jni_header_generator($javah, "$vendor javah", $javah_candidate, "-jni");
+	check_jar($jar, "$vendor jar", $jar_candidate, "");
+	check_javadoc($javadoc, "$vendor javadoc", $javadoc_candidate, "");
+
+} elsif ($os eq "solaris") {
+	check_compiler($ecj, "Eclipse ecj", which("ecj"), "-g -preserveAllLocals -nowarn -source 1.6 -target 1.6");
+
+	my $javac_candidate;
+	my $javah_candidate;
+	my $jar_candidate;
+	my $javadoc_candidate;
+	my $vendor;
+	if ($jdk_home) {
+		$javac_candidate = "$jdk_home/bin/javac";
+		$javah_candidate = "$jdk_home/bin/javah";
+		$jar_candidate = "$jdk_home/bin/jar";
+		$javadoc_candidate = "$jdk_home/bin/javadoc";
+		$vendor = "Specified";
+	} else {
+		$javac_candidate = "/usr/java/bin/javac";
+		$javah_candidate = "/usr/java/bin/javah";
+		$jar_candidate = "/usr/java/bin/jar";
+		$javadoc_candidate = "/usr/java/bin/javadoc";
+		$vendor = "Sun";
+	}
+	check_compiler($javac, "$vendor javac", $javac_candidate, "-g -source 1.6 -target 1.6");
+
+	# check for gcj
+	my $gcj_candidate;
+	if ($gcj_home) {
+		$gcj_candidate = "$gcj_home/bin/gcj";
+	} else {
+		$gcj_candidate = which("gcj");
+	}
+	check_compiler($gcjC, "GNU gcj -C (bytecode mode)", $gcj_candidate, "-C -g");
+
+	# check for kaffe's compiler
+	check_compiler($kaffec, "Kaffe javac", which("kaffec"), "");
+
+	check_jni_header_generator($javah, "$vendor javah", $javah_candidate, "-jni");
+	check_jar($jar, "$vendor jar", $jar_candidate, "");
+	check_javadoc($javadoc, "$vendor javadoc", $javadoc_candidate, "");
+
+} elsif ($os eq "slackware") {
+	# we can do much better than this, especially for java/javac.
+	# Should we just go with known paths, or...? `which` is so lame
+
+	# check ecj, the standalone Eclipse compiler.
+	check_compiler($ecj, "Eclipse ecj", which("ecj"), "-g -preserveAllLocals -nowarn -source 1.6 -target 1.6");
+
+	my $javac_candidate;
+	my $javah_candidate;
+	my $jar_candidate;
+	my $javadoc_candidate;
+	my $vendor;
+	if ($jdk_home) {
+		$javac_candidate = "$jdk_home/bin/javac";
+		$javah_candidate = "$jdk_home/bin/javah";
+		$jar_candidate = "$jdk_home/bin/jar";
+		$javadoc_candidate = "$jdk_home/bin/javadoc";
+		$vendor = "Specified";
+	} else {
+		$javac_candidate = "/usr/lib/java/bin/javac";
+		$javah_candidate = "/usr/lib/java/bin/javah";
+		$jar_candidate = "/usr/lib/java/bin/jar";
+		$javadoc_candidate = "/usr/lib/java/bin/javadoc";
+		$vendor = "Sun";
+	}
+	check_compiler($javac, "$vendor javac", $javac_candidate, "-g -source 1.6 -target 1.6");
+
+	# check for gcj
+	my $gcj_candidate;
+	if ($gcj_home) {
+		$gcj_candidate = "$gcj_home/bin/gcj";
+	} else {
+		$gcj_candidate = which("gcj");
+	}
+	check_compiler($gcjC, "GNU gcj -C (bytecode mode)", $gcj_candidate, "-C");
+
+	# check for kaffe's compiler
+	check_compiler($kaffec, "Kaffe javac", which("kaffec"), "");
+
+	check_jni_header_generator($javah, "$vendor javah", $javah_candidate, "-jni");
+	check_jar($jar, "$vendor jar", $jar_candidate, "");
+	check_javadoc($javadoc, "$vendor javadoc", $javadoc_candidate, "");
+
+} elsif ($os eq "cygwin") {
+	# check ecj, the standalone Eclipse compiler.
+	check_compiler($ecj, "Eclipse ecj", which("ecj"), "-g -preserveAllLocals -nowarn -source 1.6 -target 1.6");
+
+	my $javac_candidate;
+	my $javah_candidate;
+	my $jar_candidate;
+	my $javadoc_candidate;
+	my $vendor;
+	if ($jdk_home) {
+		$javac_candidate = "$jdk_home/bin/javac";
+		$javah_candidate = "$jdk_home/bin/javah";
+		$jar_candidate = "$jdk_home/bin/jar";
+		$javadoc_candidate = "$jdk_home/bin/javadoc";
+		$vendor = "Specified";
+	} else {
+		$javac_candidate = "/usr/bin/javac";
+		$javah_candidate = "/usr/bin/javah";
+		$jar_candidate = "/usr/bin/jar";
+		$javadoc_candidate = "/usr/bin/javadoc";
+		$vendor = "GNU Classpath";
+	}
+	check_compiler($javac, "$vendor javac", $javac_candidate, "-g -source 1.6 -target 1.6");
+
+	# check for gcj
+	my $gcj_candidate;
+	if ($gcj_home) {
+		$gcj_candidate = "$gcj_home/bin/gcj";
+	} else {
+		$gcj_candidate = which("gcj");
+	}
+	check_compiler($gcjC, "GNU gcj -C (bytecode mode)", $gcj_candidate, "-C");
+
+	# check for kaffe's compiler
+	check_compiler($kaffec, "Kaffe javac", which("kaffec"), "");
+
+	check_jni_header_generator($javah, "$vendor javah", $javah_candidate, "-jni");
+	check_jar($jar, "$vendor jar", $jar_candidate, "");
+	check_javadoc($javadoc, "$vendor javadoc", $javadoc_candidate, "");
+
+} else {
+	bail "failed!", "This OS not configured with a workable Java compiler checks!\nTHIS IS AN INTERNAL ERROR, PLEASE FILE A BUG.";
+}
+
+output "\n";
+
+# --------------------------------------------------------------------
+# Check runtimes
+# --------------------------------------------------------------------
+
+output "Check Java virtual machines:\n";
+
+# runtimes we will check for:
+my $java;
+my $gij;
+my $kaffe;
+my $cacao;
+my $jamvm;
+
+if ($os eq "gentoo") {
+	# check java (the one specified by Gentoo's java-config tool)
+	# Is there any actual scenario where the javac would be from one 
+	# vendor's JDK and the java from anther's JRE? I can't imagine, but
+	# do the $vendor check again. It's only cosmetic in any event.
+	my $java_candidate;
+	my $vendor;
+
+	if ($jdk_home) {
+		$java_candidate = "$jdk_home/bin/java";
+	} else {
+		$java_candidate = `java-config --java`;
+	}
+
+	if ($java_candidate =~ /sun/i) {
+		$vendor = "Sun";
+	} elsif ($java_candidate =~ /blackdown/i) {
+		$vendor = "Blackdown";
+	} elsif ($java_candidate =~ /ibm/i) {
+		$vendor = "IBM";
+	} else {
+		$vendor = "System";
+	}
+	check_runtime($java, "$vendor java VM", $java_candidate, "-client -ea");
+
+	# check gij (the bytecode interpreter from the GCJ project)
+	my $gij_candidate;
+
+	if ($gcj_home) {
+		$gij_candidate = "$gcj_home/bin/gij";
+	} else {
+		$gij_candidate = which("gij");
+	}
+	check_runtime($gij, "GNU gij", $gij_candidate, "");
+
+	# check kaffe
+	check_runtime($kaffe, "kaffe VM", which("kaffe"), "");
+
+	# check jamvm (an elegant bytecode interpreter used by many in the
+	# CLASSPATH project to test new releases)
+	my $jamvm_candidate;
+	if ($jamvm_bin) {
+		$jamvm_candidate = "$jamvm_bin";
+	} else {
+		$jamvm_candidate = "/usr/bin/jamvm";
+	}
+	check_runtime($jamvm, "JamVM VM", $jamvm_candidate, "");
+
+	my $cacao_candidate;
+	if ($cacao_bin) {
+		$cacao_candidate = "$cacao_bin";
+	} else {
+		$cacao_candidate = "/usr/bin/cacao";
+	}
+	check_runtime($cacao, "CACAO VM", $cacao_candidate, "");
+
+} elsif ($os eq "debian") {
+	# check for a proper JDK/JRE java Virtual Machine (presumably either
+	# blackdown, or the real thing from Sun or IBM, as installed by the
+	# user).  NOTE that this does *NOT* mean Sable VM or kaffe (so, if the
+	# Debian alternatives system can say that's what's providing
+	# java-runtime, then we need to take advantage of that. This is for a
+	# real JRE only, ie java -> /opt/sun-jdk-1.4.2.02/bin/java, not for
+	# java -> kaffe.
+	my $java_candidate;
+	my $vendor;
+
+	if ($jdk_home) {
+		$java_candidate = "$jdk_home/bin/java";
+		$vendor = "Specified";
+	} else {
+		$java_candidate = which("java");
+		$vendor = "System";
+	}
+	check_runtime($java, "$vendor java VM", $java_candidate, "-client -ea");
+
+	# check gij (the bytecode interpreter from the GCJ project). In Debian
+	# and Ubuntu the default version is provided by package gij.
+	my $gij_candidate;
+	if ($gcj_home) {
+		$gij_candidate = "$gcj_home/bin/gij";
+	} else {
+		$gij_candidate = which("gij");
+	}
+	check_runtime($gij, "GNU gij", $gij_candidate, "");
+
+	# check kaffe. Don't take it personally, but kaffe is not meant as a
+	# robust production ready VM.  It's a research tool (so described on
+	# their home page) but given the progress in GNU classpath lately it
+	# *may* work, so we do check for it  - we just don't pick it by
+	# preference.
+	check_runtime($kaffe, "Kaffe VM", "/usr/lib/kaffe/bin/java", "");
+
+	# check jamvm (an elegant bytecode interpreter used by many in the
+	# CLASSPATH project to test new releases)
+	my $jamvm_candidate;
+	if ($jamvm_bin) {
+		$jamvm_candidate = "$jamvm_bin";
+	} else {
+		$jamvm_candidate = "/usr/bin/jamvm";
+	}
+	check_runtime($jamvm, "JamVM VM", $jamvm_candidate, "");
+
+	my $cacao_candidate;
+	if ($cacao_bin) {
+		$cacao_candidate = "$cacao_bin";
+	} else {
+		$cacao_candidate = "/usr/bin/cacao";
+	}
+	check_runtime($cacao, "CACAO VM", $cacao_candidate, "");
+
+} elsif ($os eq "fedora") {
+	# check for a proper JDK/JRE java Virtual Machine. Red Hat is using
+	# the alternatives system symlinks to select JVMs, and then *again*
+	# to select versions. All the symlinks end up back in /usr/lib/jvm with
+	# predictable names, which makes this workable.
+	my $java_candidate;
+	my $vendor;
+	if ($jdk_home) {
+		$java_candidate = "$jdk_home/bin/java";
+		$vendor = "Specified";
+	} else {
+		$java_candidate = "/usr/bin/java";
+		$vendor = "System Default";
+	}
+	check_runtime($java, "$vendor java VM", $java_candidate, "-client -ea");
+
+	# check gij (the bytecode interpreter from the GCJ project)
+	my $gij_candidate;
+	if ($gcj_home) {
+		$gij_candidate = "$gcj_home/bin/gij";
+	} else {
+		$gij_candidate = which("gij");
+	}
+	check_runtime($gij, "GNU gij", $gij_candidate, "");
+
+	# check kaffe. See the comment about Kaffe above in the Debian block.
+	check_runtime($kaffe, "Kaffe VM", which("kaffe"), "");
+
+	# check jamvm (an elegant bytecode interpreter used by many in the
+	# CLASSPATH project to test new releases)
+	my $jamvm_candidate;
+	if ($jamvm_bin) {
+		$jamvm_candidate = "$jamvm_bin";
+	} else {
+		$jamvm_candidate = "/usr/bin/jamvm";
+	}
+	check_runtime($jamvm, "JamVM VM", $jamvm_candidate, "");
+
+	my $cacao_candidate;
+	if ($cacao_bin) {
+		$cacao_candidate = "$cacao_bin";
+	} else {
+		$cacao_candidate = "/usr/bin/cacao";
+	}
+	check_runtime($cacao, "CACAO VM", $cacao_candidate, "");
+
+} elsif ($os eq "suse") {
+	# check for a proper JDK/JRE java Virtual Machine. 
+	my $java_candidate;
+	my $vendor;
+	if ($jdk_home) {
+		$java_candidate = "$jdk_home/bin/java";
+		$vendor = "Specified";
+	} else {
+		$java_candidate = "/usr/lib/jvm/java/bin/java";
+		$vendor = "Sun";
+	}
+	check_runtime($java, "$vendor java VM", $java_candidate, "-client -ea");
+
+	# check gij (the bytecode interpreter from the GCJ project)
+	my $gij_candidate;
+	if ($gcj_home) {
+		$gij_candidate = "$gcj_home/bin/gij";
+	} else {
+		$gij_candidate = which("gij");
+	}
+	check_runtime($gij, "GNU gij", $gij_candidate, "");
+
+	# check kaffe. See the comment about Kaffe above in the Debian block.
+	check_runtime($kaffe, "Kaffe VM", which("kaffe"), "");
+
+	# check jamvm (an elegant bytecode interpreter used by many in the
+	# CLASSPATH project to test new releases)
+	my $jamvm_candidate;
+	if ($jamvm_bin) {
+		$jamvm_candidate = "$jamvm_bin";
+	} else {
+		$jamvm_candidate = "/usr/bin/jamvm";
+	}
+	check_runtime($jamvm, "JamVM VM", $jamvm_candidate, "");
+
+	my $cacao_candidate;
+	if ($cacao_bin) {
+		$cacao_candidate = "$cacao_bin";
+	} else {
+		$cacao_candidate = "/usr/bin/cacao";
+	}
+	check_runtime($cacao, "CACAO VM", $cacao_candidate, "");
+
+} elsif ($os eq "arch") {
+	# check for a proper JDK/JRE java Virtual Machine. Red Hat is using
+	# the alternatives system symlinks to select JVMs, and then *again*
+	# to select versions. All the symlinks end up back in /usr/lib/jvm with
+	# predictable names, which makes this workable.
+	my $java_candidate;
+	my $vendor;
+	if ($jdk_home) {
+		$java_candidate = "$jdk_home/bin/java";
+		$vendor = "Specified";
+	} else {
+		$java_candidate = "/opt/java/bin/java";
+		$vendor = "IBM";
+	}
+	check_runtime($java, "$vendor java VM", $java_candidate, "-client -ea");
+
+	# check gij (the bytecode interpreter from the GCJ project)
+	my $gij_candidate;
+	if ($gcj_home) {
+		$gij_candidate = "$gcj_home/bin/gij";
+	} else {
+		$gij_candidate = which("gij");
+	}
+	check_runtime($gij, "GNU gij", $gij_candidate, "");
+
+	# check kaffe. See the comment about Kaffe above in the Debian block.
+	check_runtime($kaffe, "Kaffe VM", which("kaffe"), "");
+
+	# check jamvm (an elegant bytecode interpreter used by many in the
+	# CLASSPATH project to test new releases)
+	my $jamvm_candidate;
+	if ($jamvm_bin) {
+		$jamvm_candidate = "$jamvm_bin";
+	} else {
+		$jamvm_candidate = "/usr/bin/jamvm";
+	}
+	check_runtime($jamvm, "JamVM VM", $jamvm_candidate, "");
+
+	my $cacao_candidate;
+	if ($cacao_bin) {
+		$cacao_candidate = "$cacao_bin";
+	} else {
+		$cacao_candidate = "/usr/bin/cacao";
+	}
+	check_runtime($cacao, "CACAO VM", $cacao_candidate, "");
+
+} elsif ($os eq "mandriva") {
+	# check for a proper JDK/JRE java Virtual Machine.
+	my $java_candidate;
+	my $vendor;
+
+	if ($jdk_home) {
+		$java_candidate = "$jdk_home/bin/java";
+		$vendor = "Specified";
+	} else {
+		$java_candidate = which("java");
+		$vendor = "System";
+	}
+
+	check_runtime($java, "$vendor java VM", $java_candidate, "-client -ea");
+
+	# check jamvm (an elegant bytecode interpreter used by many in the
+	# CLASSPATH project to test new releases)
+	my $jamvm_candidate;
+	if ($jamvm_bin) {
+		$jamvm_candidate = "$jamvm_bin";
+	} else {
+		$jamvm_candidate = "/usr/bin/jamvm";
+	}
+	check_runtime($jamvm, "JamVM VM", $jamvm_candidate, "");
+
+	my $cacao_candidate;
+	if ($cacao_bin) {
+		$cacao_candidate = "$cacao_bin";
+	} else {
+		$cacao_candidate = "/usr/bin/cacao";
+	}
+	check_runtime($cacao, "CACAO VM", $cacao_candidate, "");
+
+} elsif ($os eq "solaris") {
+	# check for a JDK/JRE java Virtual Machine, allowing an alternate to be set
+	# (no reason to disable that)
+	my $java_candidate;
+	if ($jdk_home) {
+		$java_candidate = "$jdk_home/bin/java";
+	} else {
+		$java_candidate = "/usr/java/bin/java";
+	}
+
+	check_runtime($java, "Sun java VM", $java_candidate, "-client -ea");
+
+	# check gij (the bytecode interpreter from the GCJ project)
+	my $gij_candidate;
+
+	if ($gcj_home) {
+		$gij_candidate = "$gcj_home/bin/gij";
+	} else {
+		$gij_candidate = which("gij");
+	}
+	check_runtime($gij, "GNU gij", $gij_candidate, "");
+
+	# check kaffe
+	check_runtime($kaffe, "kaffe VM", which("kaffe"), "");
+
+	# check jamvm (an elegant bytecode interpreter used by many in the
+	# CLASSPATH project to test new releases)
+	my $jamvm_candidate;
+	if ($jamvm_bin) {
+		$jamvm_candidate = "$jamvm_bin";
+	} else {
+		$jamvm_candidate = "/usr/bin/jamvm";
+	}
+	check_runtime($jamvm, "JamVM VM", $jamvm_candidate, "");
+
+	my $cacao_candidate;
+	if ($cacao_bin) {
+		$cacao_candidate = "$cacao_bin";
+	} else {
+		$cacao_candidate = "/usr/bin/cacao";
+	}
+	check_runtime($cacao, "CACAO VM", $cacao_candidate, "");
+
+} elsif ($os eq "slackware") {
+	# check for a proper JDK/JRE java Virtual Machine. 
+	my $java_candidate;
+	my $vendor;
+	if ($jdk_home) {
+		$java_candidate = "$jdk_home/bin/java";
+		$vendor = "Specified";
+	} else {
+		$java_candidate = "/usr/lib/java/bin/java";
+		$vendor = "Sun";
+	}
+	check_runtime($java, "$vendor java VM", $java_candidate, "-client -ea");
+
+	# check gij (the bytecode interpreter from the GCJ project)
+	my $gij_candidate;
+	if ($gcj_home) {
+		$gij_candidate = "$gcj_home/bin/gij";
+	} else {
+		$gij_candidate = which("gij");
+	}
+	check_runtime($gij, "GNU gij", $gij_candidate, "");
+
+	# check kaffe. See the comment about Kaffe above in the Debian block.
+	check_runtime($kaffe, "Kaffe VM", which("kaffe"), "");
+
+	# check jamvm (an elegant bytecode interpreter used by many in the
+	# CLASSPATH project to test new releases)
+	my $jamvm_candidate;
+	if ($jamvm_bin) {
+		$jamvm_candidate = "$jamvm_bin";
+	} else {
+		$jamvm_candidate = "/usr/bin/jamvm";
+	}
+	check_runtime($jamvm, "JamVM VM", $jamvm_candidate, "");
+
+	my $cacao_candidate;
+	if ($cacao_bin) {
+		$cacao_candidate = "$cacao_bin";
+	} else {
+		$cacao_candidate = "/usr/bin/cacao";
+	}
+	check_runtime($cacao, "CACAO VM", $cacao_candidate, "");
+
+} elsif ($os eq "cygwin") {
+	# check for a proper JDK/JRE java Virtual Machine. 
+	my $java_candidate;
+	my $vendor;
+	if ($jdk_home) {
+		$java_candidate = "$jdk_home/bin/java";
+		$vendor = "Specified";
+	} else {
+		$java_candidate = "/usr/bin/java";
+		$vendor = "Sun";
+	}
+	check_runtime($java, "$vendor java VM", $java_candidate, "-client -ea");
+
+	# check gij (the bytecode interpreter from the GCJ project)
+	my $gij_candidate;
+	if ($gcj_home) {
+		$gij_candidate = "$gcj_home/bin/gij";
+	} else {
+		$gij_candidate = which("gij");
+	}
+	check_runtime($gij, "GNU gij", $gij_candidate, "");
+
+	# check kaffe. See the comment about Kaffe above in the Debian block.
+	check_runtime($kaffe, "Kaffe VM", which("kaffe"), "");
+
+	# check jamvm (an elegant bytecode interpreter used by many in the
+	# CLASSPATH project to test new releases)
+	my $jamvm_candidate;
+	if ($jamvm_bin) {
+		$jamvm_candidate = "$jamvm_bin";
+	} else {
+		$jamvm_candidate = "/usr/bin/jamvm";
+	}
+	check_runtime($jamvm, "JamVM VM", $jamvm_candidate, "");
+
+	my $cacao_candidate;
+	if ($cacao_bin) {
+		$cacao_candidate = "$cacao_bin";
+	} else {
+		$cacao_candidate = "/usr/bin/cacao";
+	}
+	check_runtime($cacao, "CACAO VM", $cacao_candidate, "");
+
+} else {
+	bail "failed!", "This OS not configured with appropriate Java VM checks!\nTHIS IS AN INTERNAL ERROR, PLEASE FILE A BUG.";
+}
+
+output "\n";
+
+
+# --------------------------------------------------------------------
+# Check for GCJ native Java compiler and for a C compiler
+# --------------------------------------------------------------------
+
+output "Check native compiler:\n";
+
+# these are initialized as, unlike javac which is populated with *something*,
+# even if gcj is not found we still need a variable for it.
+my $gcc;
+my $cc;
+
+if ($os eq "solaris") {
+	# this should result in something with gcc in its name
+	check_CC($gcc, "GNU gcc", abs_path("/usr/gnu/bin/cc"), "");
+
+	# otherwise, we use Sun's compiler and linker
+	check_CC($cc, "Sun cc", abs_path("/usr/bin/cc"), "") unless $gcc;
+
+	# and if things are completely out to lunch,
+	check_CC($cc, "Path cc", which("cc"), "") unless $cc;
+
+} elsif ($os) {
+	my $gcc_candidate;
+
+	if (($gcj_home) && ($gcjC)) {
+		$gcc_candidate = "$gcj_home/bin/gcc";
+	} else {
+		$gcc_candidate = which("gcc");
+
+		# Workaround ccache needing to be symlinked as gcc 
+		# to perform _as_ gcc. Gentoo bug #180353
+		if (basename($gcc_candidate) eq "ccache") {
+			$gcc_candidate = `which gcc`;
+		}
+	}
+
+	check_CC($gcc, "GNU gcc", $gcc_candidate, "");
+}
+
+output "\n";
+
+# --------------------------------------------------------------------
+# Choose between java compilers and VMs, reviewing overrides
+# --------------------------------------------------------------------
+
+# if gij isn't sufficient version, then knock out gcj
+if (!$gij) {
+	if ($gcjC) {
+		output "Can't use GCJ, insufficiently recent version\n\n";
+	}
+	undef $gcjC;
+	undef $gij;
+}
+
+print CONFIG <<HERE ;
+
+# the JAVAC variable contains the path to the java source compiler,
+# the JAVA variable contains the path to the java runtime virtual
+# machine. In both cases, the _CMD variable is for the terse output
+# when make commands are running.
+
+HERE
+
+output "Select compiler:";
+
+if ($compiler) {
+	# if overridden, check override...
+	if ($compiler eq "javac") {
+		bail "bad override", "javac specified but not detected as a workable compiler." unless $javac;
+	} elsif ($compiler eq "ecj") {
+		bail "bad override", "ecj specified but not detected as a workable compiler." unless $ecj;
+	} elsif ($compiler eq "gcj") {
+		bail "bad override", "gcj (-C) specified but gcj not detected as a workable compiler." unless $gcjC;
+	} else {
+		bail "bad override", <<HERE ;
+You specified compiler=$compiler on the command line, but that's not an option.
+Valid choices are ecj, javac, or gcj - but of course that compiler must be
+installed (and detected!) in order to be able to specify it.
+HERE
+	}
+
+} else {
+	# otherwise, pick a compiler.
+	if ($ecj) {
+		$compiler = "ecj";
+	} elsif ($javac) {
+		$compiler = "javac";
+	} elsif ($gcjC) {
+		$compiler = "gcj";
+	} else {
+		bail "failed", "No java compiler was detected.";
+	}
+}
+
+if ($compiler eq "javac") {
+	print CONFIG "JAVAC=$javac\n";
+	print CONFIG "JAVAC_CMD=JAVAC    \n";
+} elsif ($compiler eq "ecj") {
+	print CONFIG "JAVAC=$ecj\n";
+	print CONFIG "JAVAC_CMD=ECJ      \n";
+} elsif ($compiler eq "gcj") {
+	print CONFIG "JAVAC=$gcjC\n";
+	print CONFIG "JAVAC_CMD=GCJ [-C] \n";
+} else {
+	bail "failed", "INTERNAL ERROR no compiler selected.";
+}
+
+
+print CONFIG <<HERE ;
+
+# the JAVAH, JAR, and JAVADOC variables simply contains a usable jar
+# and javah executable, respectively, while the JAVAH_CMD, JAR_CMD,
+# and JAVADOC_CMD variables is for display purposes, matching the
+# pattern above.
+
+HERE
+
+
+if ($javah) {
+	print CONFIG "JAVAH=$javah\n";
+	print CONFIG "JAVAH_CMD=JAVAH    \n";
+} else {
+	bail "failed", "No JNI header generator detected.";
+}
+
+if ($jar) {
+	print CONFIG "JAR=$jar\n";
+	print CONFIG "JAR_CMD=JAR      \n";
+} else {
+	bail "failed", "No Java archive tool detected.";
+}
+if ($javadoc) {
+	print CONFIG "JAVADOC=$javadoc\n";
+	print CONFIG "JAVADOC_CMD=JAVADOC  \n";
+} else {
+	bail "failed", "No JavaDoc tool detected.";
+}
+
+output "$compiler\n";
+
+
+output "Select runtime:";
+
+# Note that java is favoured over gij only because the error messages
+# are better! (Ok, and, frankly, the compliance is obviously better
+# if its a real Java VM). The Free ones are getting there...
+
+if ($runtime) {
+	# if overridden, check override...
+	if ($runtime eq "java")  {
+		bail "bad override", "java specified but not detected." unless $java;
+	} elsif ($runtime eq "gij") {
+		bail "bad override", "gij specified but not detected." unless $gij;
+	} elsif ($runtime eq "kaffe") {
+		bail "bad override", "kaffe specified but not detected." unless $kaffe;
+	} elsif ($runtime eq "cacao") {
+		bail "bad override", "cacao specified but not detected." unless $cacao;
+	} elsif ($runtime eq "jamvm") {
+		bail "bad override", "jamvm specified but not detected." unless $jamvm;
+	} else {
+		bail "bad override", <<HERE ;
+You specified runtime=$runtime on the command line, but that's not an option.
+Valid choices are java, gij, or kaffe - but of course that virtual machine
+must be installed (and detected!) before you can specify it.
+HERE
+	}
+
+} else {
+	if ($java) {
+		$runtime = "java";
+	} elsif ($cacao) {
+		$runtime = "cacao";
+	} elsif ($jamvm) {
+		$runtime = "jamvm";
+	} elsif ($gij) {
+		$runtime = "gij";
+	} elsif ($kaffe) {
+		$runtime = "kaffe";
+	} else {
+		bail "failed", "No usable Java runtime environment was detected.";
+	}
+}
+
+$java="$java -Djava.awt.headless=true";
+
+if ($runtime eq "java") {
+	print CONFIG "JAVA=$java\n";
+	print CONFIG "JAVA_CMD=JAVA     \n";
+} elsif ($runtime eq "gij") {
+	print CONFIG "JAVA=$gij\n";
+	print CONFIG "JAVA_CMD=GIJ      \n";
+} elsif ($runtime eq "kaffe") {
+	print CONFIG "JAVA=$kaffe\n";
+	print CONFIG "JAVA_CMD=KAFFE    \n";
+} elsif ($runtime eq "cacao") {
+	print CONFIG "JAVA=$cacao\n";
+	print CONFIG "JAVA_CMD=CACAO    \n";
+} elsif ($runtime eq "jamvm") {
+	print CONFIG "JAVA=$jamvm\n";
+	print CONFIG "JAVA_CMD=JAMVM    \n";
+} else {
+	bail "failed", "INTERNAL ERROR no virtual machine selected";
+}
+output "$runtime\n";
+
+# --------------------------------------------------------------------
+# Output native build information
+# --------------------------------------------------------------------
+
+print CONFIG <<HERE ;
+
+# the path to the C compiler
+
+HERE
+
+if ($gcc) {
+	use File::Basename;
+
+	my $jni_include = "";
+	my $java_home = dirname($java);
+	$java_home =~ s/\/bin$//;
+	if ($os eq "fedora" && $java_home eq "/usr") {
+	    $java_home = "/usr/lib/jvm/java";
+	}
+
+	if (!-d "$java_home"."/include") {
+		$java_home =~ s/\/jre//;
+	}
+
+	if (-f "$java_home"."/include/jni.h") {
+		if ($os eq "solaris") {
+			$jni_include = "-I$java_home/include -I$java_home/include/solaris";
+		} else {
+			$jni_include = "-I$java_home/include -I$java_home/include/linux";
+		}
+	} elsif (-f "/usr/include/jni.h") {
+		# good, but that's default search path - no -I required.
+	} else {
+		bail "failed", "Can't locate the JNI header file";
+	}
+
+	my $ccache = which("ccache");
+	if ( -x $ccache) {
+		print CONFIG "CCACHE=$ccache\n";
+	}
+
+	my $deprecations;
+	if ( "$strict" ) {
+		$deprecations = "-DGTK_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DG_DISABLE_DEPRECATED -DGSEAL_ENABLE";
+	} else {
+		$deprecations = "";
+	}
+
+	my $pic_flag;
+	if ($os eq "cygwin") {
+		$pic_flag = "-DPIC";
+	} else {
+		$pic_flag = "-fPIC";
+	}
+
+	print CONFIG "CC=$gcc -g -Wall $pic_flag $jni_include -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast $deprecations -Werror-implicit-function-declaration -Wfatal-errors\n";
+	print CONFIG "CC_CMD=GCC      \n";
+	print CONFIG "LINK=$gcc -g -shared -Wall $pic_flag\n";
+	print CONFIG "LINK_CMD=LINK     \n";
+} elsif (($cc) && ($os eq "solaris")) {
+	print CONFIG "CC=$cc -Kpic -I/usr/java/include -I/usr/java/include/solaris\n";
+	print CONFIG "CC_CMD=CC       \n";
+	print CONFIG "LINK=$cc -G -zdefs -Kpic -lc\n";
+	print CONFIG "LINK_CMD=LINK     \n";
+} else {
+	bail "failed", "C compiler not detected";
+}
+
+`rm -f Hello.java Hello.class Hello.o Hello Hello.c Hello.jar`;
+
+print CONFIG <<HERE ;
+
+# the install prefix. This *only* affects the location that installed
+# files are sent to during the `make install` step. You can, as it
+# happens, override it on the make command line the same way you
+# specify DESTDIR, ie by doing `make PREFIX=/blah install`.
+
+HERE
+
+if (!$prefix) {
+	$prefix = "/usr/local";
+}
+print CONFIG "PREFIX=$prefix\n";
+if (!$libdir) {
+	$libdir = "$prefix/lib";
+}
+print CONFIG "LIBDIR=$libdir\n";
+if (!$jardir) {
+	$jardir = "$prefix/share/java";
+}
+print CONFIG "JARDIR=$jardir\n";
+
+# --------------------------------------------------------------------
+# Get version constant
+# --------------------------------------------------------------------
+
+my $apiversion;
+my $version;
+
+open SOURCE, "src/bindings/org/freedesktop/bindings/Version.java";
+while (<SOURCE>) {
+	chomp;
+	if (/.* APIVERSION = \"([\d\.]+)\";/) {
+		$apiversion = $1;
+	}
+	if (/.* VERSION = \"([\d\.\-rcdev]+)\";/) {
+		$version = $1;
+	}
+}
+close SOURCE;
+
+if (!$apiversion) {
+	bail("","Couldn't find the API version");
+}
+if (!$version) {
+	bail("","Couldn't find the release version");
+}
+
+print CONFIG <<HERE ;
+
+# finally, we extract the version strings from the source code, for
+# use in naming the target library files.
+
+HERE
+
+print CONFIG "APIVERSION=$apiversion\n";
+print CONFIG "VERSION=$version\n";
+
+# --------------------------------------------------------------------
+# Done! Create .config file
+# --------------------------------------------------------------------
+
+output "\n";
+output "Output:\n";
+output " - configuration data";
+close CONFIG;
+system "mv .config.tmp .config";
+
+output "ok\n";
+
+
+# --------------------------------------------------------------------
+# Output text file with library location
+# --------------------------------------------------------------------
+
+output " - native library location";
+
+open LIBRARY, ">.libdir";
+
+print LIBRARY <<HERE ;
+$libdir
+HERE
+
+close LIBRARY;
+
+output "ok\n";
+output "\n";

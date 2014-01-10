@@ -1,0 +1,12 @@
+(define-enum PolicyError
+  (in-module "WebKit")
+  (c-name "WebKitPolicyError")
+  (values
+    '("failed" "WEBKIT_POLICY_ERROR_FAILED")
+    '("cannot_show_mime_type" "WEBKIT_POLICY_ERROR_CANNOT_SHOW_MIME_TYPE")
+    '("cannot_show_url" "WEBKIT_POLICY_ERROR_CANNOT_SHOW_URL")
+    '("frame_load_interrupted_by_policy_change" "WEBKIT_POLICY_ERROR_FRAME_LOAD_INTERRUPTED_BY_POLICY_CHANGE")
+    '("cannot_use_restricted_port" "WEBKIT_POLICY_ERROR_CANNOT_USE_RESTRICTED_PORT")
+  )
+)
+

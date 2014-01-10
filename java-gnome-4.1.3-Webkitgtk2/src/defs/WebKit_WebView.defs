@@ -1,0 +1,164 @@
+(define-object WebView
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (parent "Container")
+  (c-name "WebKitWebView")
+)
+
+(define-function WebView_new
+  (is-constructor-of "WebKitWebView")
+  (c-name "webkit_web_view_new")
+  (return-type "GtkWidget*")
+  (parameters
+  )
+)
+
+
+(define-method can_show_mime_type
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_can_show_mime_type")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "mime_type")
+  )
+)
+
+
+(define-method get_copy_target_list
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_get_copy_target_list")
+  (return-type "GtkTargetList*")
+  (parameters
+  )
+)
+
+(define-method get_inspector
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_get_inspector")
+  (return-type "WebKitWebInspector*")
+  (parameters
+  )
+)
+
+(define-method get_paste_target_list
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_get_paste_target_list")
+  (return-type "GtkTargetList*")
+  (parameters
+  )
+)
+
+(define-method get_title
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_get_title")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_uri
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_get_uri")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+
+
+(define-method get_zoom_level
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_get_zoom_level")
+  (return-type "gfloat")
+  (parameters
+  )
+)
+
+(define-method go_back
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_go_back")
+  (return-type "none")
+  (parameters
+  )
+)
+
+
+
+(define-method go_forward
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_go_forward")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method load_uri
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_load_uri")
+  (return-type "none")
+  (parameters
+    '("gchar*" "uri")
+  )
+)
+
+(define-method load_html
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_load_html")
+  (return-type "none")
+  (parameters
+    '("gchar*" "content")
+    '("gchar*" "baseUri" (null-ok))
+  )
+)
+
+(define-method reload
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_reload")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method reload_bypass_cache
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_reload_bypass_cache")
+  (return-type "none")
+  (parameters
+  )
+)
+
+
+(define-method set_zoom_level
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_set_zoom_level")
+  (return-type "none")
+  (parameters
+    '("gfloat" "zoom_level")
+  )
+)
+
+
+(define-method stop_loading
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_stop_loading")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_settings
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_get_settings")
+  (return-type "WebKitSettings*")
+  (parameters
+  )
+)
+
+(define-method get_context
+  (of-object "WebKitWebView")
+  (c-name "webkit_web_view_get_context")
+  (return-type "WebKitWebContext*")
+  (parameters
+  )
+)
+

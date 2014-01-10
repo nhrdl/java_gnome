@@ -1,0 +1,93 @@
+(define-object DOMUIEvent
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMEvent")
+  (c-name "WebKitDOMUIEvent")
+)
+
+(define-method get_char_code
+  (of-object "WebKitDOMUIEvent")
+  (c-name "webkit_dom_ui_event_get_char_code")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_detail
+  (of-object "WebKitDOMUIEvent")
+  (c-name "webkit_dom_ui_event_get_detail")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_key_code
+  (of-object "WebKitDOMUIEvent")
+  (c-name "webkit_dom_ui_event_get_key_code")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_layer_x
+  (of-object "WebKitDOMUIEvent")
+  (c-name "webkit_dom_ui_event_get_layer_x")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_layer_y
+  (of-object "WebKitDOMUIEvent")
+  (c-name "webkit_dom_ui_event_get_layer_y")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_page_x
+  (of-object "WebKitDOMUIEvent")
+  (c-name "webkit_dom_ui_event_get_page_x")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_page_y
+  (of-object "WebKitDOMUIEvent")
+  (c-name "webkit_dom_ui_event_get_page_y")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_view
+  (of-object "WebKitDOMUIEvent")
+  (c-name "webkit_dom_ui_event_get_view")
+  (return-type "WebKitDOMDOMWindow*")
+  (parameters
+  )
+)
+
+(define-method get_which
+  (of-object "WebKitDOMUIEvent")
+  (c-name "webkit_dom_ui_event_get_which")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method init_ui_event
+  (of-object "WebKitDOMUIEvent")
+  (c-name "webkit_dom_ui_event_init_ui_event")
+  (return-type "none")
+  (parameters
+    '("gchar*" "type")
+    '("gboolean" "can_bubble")
+    '("gboolean" "cancelable")
+    '("WebKitDOMDOMWindow*" "view")
+    '("glong" "detail")
+  )
+)
+

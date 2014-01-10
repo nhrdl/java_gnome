@@ -1,0 +1,58 @@
+(define-object DOMAttr
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMNode")
+  (c-name "WebKitDOMAttr")
+)
+
+(define-method get_is_id
+  (of-object "WebKitDOMAttr")
+  (c-name "webkit_dom_attr_get_is_id")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMAttr")
+  (c-name "webkit_dom_attr_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_owner_element
+  (of-object "WebKitDOMAttr")
+  (c-name "webkit_dom_attr_get_owner_element")
+  (return-type "WebKitDOMElement*")
+  (parameters
+  )
+)
+
+(define-method get_specified
+  (of-object "WebKitDOMAttr")
+  (c-name "webkit_dom_attr_get_specified")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_value
+  (of-object "WebKitDOMAttr")
+  (c-name "webkit_dom_attr_get_value")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_value
+  (of-object "WebKitDOMAttr")
+  (c-name "webkit_dom_attr_set_value")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+

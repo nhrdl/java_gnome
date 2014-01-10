@@ -1,0 +1,60 @@
+(define-object DOMHTMLFontElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLFontElement")
+)
+
+(define-method get_color
+  (of-object "WebKitDOMHTMLFontElement")
+  (c-name "webkit_dom_html_font_element_get_color")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_face
+  (of-object "WebKitDOMHTMLFontElement")
+  (c-name "webkit_dom_html_font_element_get_face")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_size
+  (of-object "WebKitDOMHTMLFontElement")
+  (c-name "webkit_dom_html_font_element_get_size")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_color
+  (of-object "WebKitDOMHTMLFontElement")
+  (c-name "webkit_dom_html_font_element_set_color")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_face
+  (of-object "WebKitDOMHTMLFontElement")
+  (c-name "webkit_dom_html_font_element_set_face")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_size
+  (of-object "WebKitDOMHTMLFontElement")
+  (c-name "webkit_dom_html_font_element_set_size")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

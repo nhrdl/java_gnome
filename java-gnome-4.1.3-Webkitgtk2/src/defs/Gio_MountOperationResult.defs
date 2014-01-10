@@ -1,0 +1,10 @@
+(define-enum MountOperationResult
+  (in-module "Gio")
+  (c-name "GMountOperationResult")
+  (values
+    '("handled" "G_MOUNT_OPERATION_HANDLED")
+    '("aborted" "G_MOUNT_OPERATION_ABORTED")
+    '("unhandled" "G_MOUNT_OPERATION_UNHANDLED")
+  )
+)
+

@@ -1,0 +1,26 @@
+(define-object DOMHTMLOptionsCollection
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLCollection")
+  (c-name "WebKitDOMHTMLOptionsCollection")
+)
+
+(define-method get_selected_index
+  (of-object "WebKitDOMHTMLOptionsCollection")
+  (c-name "webkit_dom_html_options_collection_get_selected_index")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method set_selected_index
+  (of-object "WebKitDOMHTMLOptionsCollection")
+  (c-name "webkit_dom_html_options_collection_set_selected_index")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+

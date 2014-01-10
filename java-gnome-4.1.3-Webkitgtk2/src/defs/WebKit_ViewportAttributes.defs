@@ -1,0 +1,8 @@
+(define-object ViewportAttributes
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (parent "GObject.Object")
+  (c-name "WebKitViewportAttributes")
+)
+
+

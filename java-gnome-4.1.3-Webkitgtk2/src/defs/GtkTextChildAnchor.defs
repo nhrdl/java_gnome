@@ -1,0 +1,27 @@
+(define-object TextChildAnchor
+  (in-module "Gtk")
+  (parent "GObject")
+  (c-name "GtkTextChildAnchor")
+  (gtype-id "GTK_TYPE_TEXT_CHILD_ANCHOR")
+)
+
+(define-function gtk_text_child_anchor_new
+  (is-constructor-of "GtkTextChildAnchor")
+  (c-name "gtk_text_child_anchor_new")
+  (caller-owns-return #t)
+  (return-type "GtkTextChildAnchor*")
+)
+
+(define-method get_widgets
+  (of-object "GtkTextChildAnchor")
+  (c-name "gtk_text_child_anchor_get_widgets")
+  (caller-owns-return #l)
+  (return-type "GList-GtkWidget*")
+)
+
+(define-method get_deleted
+  (of-object "GtkTextChildAnchor")
+  (c-name "gtk_text_child_anchor_get_deleted")
+  (return-type "gboolean")
+)
+

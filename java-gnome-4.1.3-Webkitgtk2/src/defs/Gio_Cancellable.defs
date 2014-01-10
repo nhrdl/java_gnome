@@ -1,0 +1,127 @@
+(define-object Cancellable
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GCancellable")
+)
+
+(define-function Cancellable_new
+  (is-constructor-of "GCancellable")
+  (c-name "g_cancellable_new")
+  (return-type "GCancellable*")
+  (parameters
+  )
+)
+
+(define-method cancel
+  (of-object "GCancellable")
+  (c-name "g_cancellable_cancel")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method connect
+  (of-object "GCancellable")
+  (c-name "g_cancellable_connect")
+  (return-type "gulong")
+  (parameters
+    '("GCallback" "pcallback")
+    '("gpointer" "pdata")
+    '("GDestroyNotify" "pdata_destroy_func")
+  )
+)
+
+(define-method disconnect
+  (of-object "GCancellable")
+  (c-name "g_cancellable_disconnect")
+  (return-type "none")
+  (parameters
+    '("gulong" "phandler_id")
+  )
+)
+
+(define-method get_fd
+  (of-object "GCancellable")
+  (c-name "g_cancellable_get_fd")
+  (return-type "int")
+  (parameters
+  )
+)
+
+(define-method is_cancelled
+  (of-object "GCancellable")
+  (c-name "g_cancellable_is_cancelled")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method make_pollfd
+  (of-object "GCancellable")
+  (c-name "g_cancellable_make_pollfd")
+  (return-type "gboolean")
+  (parameters
+    '("GPollFD*" "ppollfd")
+  )
+)
+
+(define-method pop_current
+  (of-object "GCancellable")
+  (c-name "g_cancellable_pop_current")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method push_current
+  (of-object "GCancellable")
+  (c-name "g_cancellable_push_current")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method release_fd
+  (of-object "GCancellable")
+  (c-name "g_cancellable_release_fd")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method reset
+  (of-object "GCancellable")
+  (c-name "g_cancellable_reset")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method set_error_if_cancelled
+  (of-object "GCancellable")
+  (c-name "g_cancellable_set_error_if_cancelled")
+  (return-type "gboolean")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method source_new
+  (of-object "GCancellable")
+  (c-name "g_cancellable_source_new")
+  (return-type "GSource*")
+  (parameters
+  )
+)
+

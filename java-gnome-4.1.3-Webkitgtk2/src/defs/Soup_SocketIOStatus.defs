@@ -1,0 +1,11 @@
+(define-enum SocketIOStatus
+  (in-module "Soup")
+  (c-name "SoupSocketIOStatus")
+  (values
+    '("ok" "SOUP_SOCKET_OK")
+    '("would_block" "SOUP_SOCKET_WOULD_BLOCK")
+    '("eof" "SOUP_SOCKET_EOF")
+    '("error" "SOUP_SOCKET_ERROR")
+  )
+)
+

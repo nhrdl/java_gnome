@@ -1,0 +1,26 @@
+(define-object SocketAddress
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GSocketAddress")
+)
+
+(define-function SocketAddress_new_from_native
+  (is-constructor-of "GSocketAddress")
+  (c-name "g_socket_address_new_from_native")
+  (return-type "GSocketAddress*")
+  (parameters
+    '("gpointer" "pnative")
+    '("gsize" "plen")
+  )
+)

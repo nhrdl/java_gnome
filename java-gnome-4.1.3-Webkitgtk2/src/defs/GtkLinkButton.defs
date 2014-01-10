@@ -1,0 +1,66 @@
+(define-object LinkButton
+  (in-module "Gtk")
+  (parent "GtkButton")
+  (c-name "GtkLinkButton")
+  (gtype-id "GTK_TYPE_LINK_BUTTON")
+)
+
+(define-function gtk_link_button_new
+  (is-constructor-of "GtkLinkButton")
+  (c-name "gtk_link_button_new")
+  (caller-owns-return #t)
+  (return-type "GtkWidget*")
+  (parameters
+    '("const-gchar*" "uri")
+  )
+)
+
+(define-function link_button_new_with_label
+  (is-constructor-of "GtkLinkButton")
+  (c-name "gtk_link_button_new_with_label")
+  (caller-owns-return #t)
+  (return-type "GtkWidget*")
+  (parameters
+    '("const-gchar*" "uri")
+    '("const-gchar*" "label")
+  )
+)
+
+(define-method get_uri
+  (of-object "GtkLinkButton")
+  (c-name "gtk_link_button_get_uri")
+  (return-type "const-gchar*")
+)
+
+(define-method set_uri
+  (of-object "GtkLinkButton")
+  (c-name "gtk_link_button_set_uri")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "uri")
+  )
+)
+
+(define-method get_visited
+  (of-object "GtkLinkButton")
+  (c-name "gtk_link_button_get_visited")
+  (return-type "gboolean")
+)
+
+(define-method set_visited
+  (of-object "GtkLinkButton")
+  (c-name "gtk_link_button_set_visited")
+  (return-type "none")
+  (parameters
+    '("gboolean" "visited")
+  )
+)
+
+(define-virtual uri_clicked
+  (of-object "GtkLinkButton")
+  (return-type "none")
+  (parameters
+    '("gchar*" "link")
+  )
+)
+

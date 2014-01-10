@@ -1,0 +1,35 @@
+(define-object Fixed
+  (in-module "Gtk")
+  (parent "GtkContainer")
+  (c-name "GtkFixed")
+  (gtype-id "GTK_TYPE_FIXED")
+)
+
+(define-function gtk_fixed_new
+  (is-constructor-of "GtkFixed")
+  (c-name "gtk_fixed_new")
+  (caller-owns-return #t)
+  (return-type "GtkWidget*")
+)
+
+(define-method put
+  (of-object "GtkFixed")
+  (c-name "gtk_fixed_put")
+  (return-type "none")
+  (parameters
+    '("GtkWidget*" "widget")
+    '("gint" "x")
+    '("gint" "y")
+  )
+)
+
+(define-method move
+  (of-object "GtkFixed")
+  (c-name "gtk_fixed_move")
+  (return-type "none")
+  (parameters
+    '("GtkWidget*" "widget")
+    '("gint" "x")
+    '("gint" "y")
+  )
+)

@@ -1,0 +1,15 @@
+(define-object WebSettings
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (parent "GObject.Object")
+  (c-name "WebKitSettings")
+)
+
+(define-method set_auto_load_images
+  (of-object "WebKitSettings")
+  (c-name "webkit_settings_set_auto_load_images")
+  (return-type "none")
+  (parameters
+    '("gboolean" "enabled")
+  )
+)

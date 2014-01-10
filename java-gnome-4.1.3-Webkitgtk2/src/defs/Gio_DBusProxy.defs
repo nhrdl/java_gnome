@@ -1,0 +1,281 @@
+(define-object DBusProxy
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GDBusProxy")
+)
+
+(define-function DBusProxy_new_finish
+  (is-constructor-of "GDBusProxy")
+  (c-name "g_dbus_proxy_new_finish")
+  (return-type "GDBusProxy*")
+  (parameters
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-function DBusProxy_new_for_bus_finish
+  (is-constructor-of "GDBusProxy")
+  (c-name "g_dbus_proxy_new_for_bus_finish")
+  (return-type "GDBusProxy*")
+  (parameters
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-function DBusProxy_new_for_bus_sync
+  (is-constructor-of "GDBusProxy")
+  (c-name "g_dbus_proxy_new_for_bus_sync")
+  (return-type "GDBusProxy*")
+  (parameters
+    '("GBusType" "pbus_type")
+    '("GDBusProxyFlags" "pflags")
+    '("GDBusInterfaceInfo*" "pinfo")
+    '("gchar*" "pname")
+    '("gchar*" "pobject_path")
+    '("gchar*" "pinterface_name")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-function DBusProxy_new_sync
+  (is-constructor-of "GDBusProxy")
+  (c-name "g_dbus_proxy_new_sync")
+  (return-type "GDBusProxy*")
+  (parameters
+    '("GDBusConnection*" "pconnection")
+    '("GDBusProxyFlags" "pflags")
+    '("GDBusInterfaceInfo*" "pinfo")
+    '("gchar*" "pname")
+    '("gchar*" "pobject_path")
+    '("gchar*" "pinterface_name")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method g_properties_changed
+  (of-object "GDBusProxy")
+  (c-name "g_properties_changed")
+  (return-type "none")
+  (parameters
+    '("GVariant*" "pchanged_properties")
+    '("gchar**" "pinvalidated_properties")
+  )
+)
+
+(define-method g_signal
+  (of-object "GDBusProxy")
+  (c-name "g_signal")
+  (return-type "none")
+  (parameters
+    '("gchar*" "psender_name")
+    '("gchar*" "psignal_name")
+    '("GVariant*" "pparameters")
+  )
+)
+
+(define-method call
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_call")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pmethod_name")
+    '("GVariant*" "pparameters")
+    '("GDBusCallFlags" "pflags")
+    '("gint" "ptimeout_msec")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method call_finish
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_call_finish")
+  (return-type "GVariant*")
+  (parameters
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-method call_sync
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_call_sync")
+  (return-type "GVariant*")
+  (parameters
+    '("gchar*" "pmethod_name")
+    '("GVariant*" "pparameters")
+    '("GDBusCallFlags" "pflags")
+    '("gint" "ptimeout_msec")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method call_with_unix_fd_list
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_call_with_unix_fd_list")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pmethod_name")
+    '("GVariant*" "pparameters")
+    '("GDBusCallFlags" "pflags")
+    '("gint" "ptimeout_msec")
+    '("GUnixFDList*" "pfd_list")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method call_with_unix_fd_list_finish
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_call_with_unix_fd_list_finish")
+  (return-type "GVariant*")
+  (parameters
+    '("GUnixFDList**" "pout_fd_list")
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-method call_with_unix_fd_list_sync
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_call_with_unix_fd_list_sync")
+  (return-type "GVariant*")
+  (parameters
+    '("gchar*" "pmethod_name")
+    '("GVariant*" "pparameters")
+    '("GDBusCallFlags" "pflags")
+    '("gint" "ptimeout_msec")
+    '("GUnixFDList*" "pfd_list")
+    '("GUnixFDList**" "pout_fd_list")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_cached_property
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_get_cached_property")
+  (return-type "GVariant*")
+  (parameters
+    '("gchar*" "pproperty_name")
+  )
+)
+
+(define-method get_cached_property_names
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_get_cached_property_names")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_connection
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_get_connection")
+  (return-type "GDBusConnection*")
+  (parameters
+  )
+)
+
+(define-method get_default_timeout
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_get_default_timeout")
+  (return-type "gint")
+  (parameters
+  )
+)
+
+(define-method get_flags
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_get_flags")
+  (return-type "GDBusProxyFlags")
+  (parameters
+  )
+)
+
+(define-method get_interface_info
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_get_interface_info")
+  (return-type "GDBusInterfaceInfo*")
+  (parameters
+  )
+)
+
+(define-method get_interface_name
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_get_interface_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_name_owner
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_get_name_owner")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_object_path
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_get_object_path")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_cached_property
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_set_cached_property")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pproperty_name")
+    '("GVariant*" "pvalue")
+  )
+)
+
+(define-method set_default_timeout
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_set_default_timeout")
+  (return-type "none")
+  (parameters
+    '("gint" "ptimeout_msec")
+  )
+)
+
+(define-method set_interface_info
+  (of-object "GDBusProxy")
+  (c-name "g_dbus_proxy_set_interface_info")
+  (return-type "none")
+  (parameters
+    '("GDBusInterfaceInfo*" "pinfo")
+  )
+)
+

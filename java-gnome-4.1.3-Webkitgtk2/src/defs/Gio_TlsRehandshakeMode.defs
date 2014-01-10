@@ -1,0 +1,10 @@
+(define-enum TlsRehandshakeMode
+  (in-module "Gio")
+  (c-name "GTlsRehandshakeMode")
+  (values
+    '("never" "G_TLS_REHANDSHAKE_NEVER")
+    '("safely" "G_TLS_REHANDSHAKE_SAFELY")
+    '("unsafely" "G_TLS_REHANDSHAKE_UNSAFELY")
+  )
+)
+

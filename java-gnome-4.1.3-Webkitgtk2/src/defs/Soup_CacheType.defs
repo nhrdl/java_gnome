@@ -1,0 +1,9 @@
+(define-enum CacheType
+  (in-module "Soup")
+  (c-name "SoupCacheType")
+  (values
+    '("single_user" "SOUP_CACHE_SINGLE_USER")
+    '("shared" "SOUP_CACHE_SHARED")
+  )
+)
+

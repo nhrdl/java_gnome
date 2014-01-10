@@ -1,0 +1,226 @@
+(define-object DOMDOMSelection
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMDOMSelection")
+)
+
+(define-method add_range
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_add_range")
+  (return-type "none")
+  (parameters
+    '("WebKitDOMRange*" "range")
+  )
+)
+
+(define-method collapse
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_collapse")
+  (return-type "none")
+  (parameters
+    '("WebKitDOMNode*" "node")
+    '("glong" "index")
+    '("GError**" "error")
+  )
+)
+
+(define-method collapse_to_end
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_collapse_to_end")
+  (return-type "none")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method collapse_to_start
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_collapse_to_start")
+  (return-type "none")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method contains_node
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_contains_node")
+  (return-type "gboolean")
+  (parameters
+    '("WebKitDOMNode*" "node")
+    '("gboolean" "allow_partial")
+  )
+)
+
+(define-method delete_from_document
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_delete_from_document")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method empty
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_empty")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method extend
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_extend")
+  (return-type "none")
+  (parameters
+    '("WebKitDOMNode*" "node")
+    '("glong" "offset")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_anchor_node
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_get_anchor_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_anchor_offset
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_get_anchor_offset")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_base_node
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_get_base_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_base_offset
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_get_base_offset")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_extent_node
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_get_extent_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_extent_offset
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_get_extent_offset")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_focus_node
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_get_focus_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_focus_offset
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_get_focus_offset")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_is_collapsed
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_get_is_collapsed")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_range_at
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_get_range_at")
+  (return-type "WebKitDOMRange*")
+  (parameters
+    '("glong" "index")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_range_count
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_get_range_count")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method modify
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_modify")
+  (return-type "none")
+  (parameters
+    '("gchar*" "alter")
+    '("gchar*" "direction")
+    '("gchar*" "granularity")
+  )
+)
+
+(define-method remove_all_ranges
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_remove_all_ranges")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method select_all_children
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_select_all_children")
+  (return-type "none")
+  (parameters
+    '("WebKitDOMNode*" "node")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_base_and_extent
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_set_base_and_extent")
+  (return-type "none")
+  (parameters
+    '("WebKitDOMNode*" "base_node")
+    '("glong" "base_offset")
+    '("WebKitDOMNode*" "extent_node")
+    '("glong" "extent_offset")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_position
+  (of-object "WebKitDOMDOMSelection")
+  (c-name "webkit_dom_dom_selection_set_position")
+  (return-type "none")
+  (parameters
+    '("WebKitDOMNode*" "node")
+    '("glong" "offset")
+    '("GError**" "error")
+  )
+)
+

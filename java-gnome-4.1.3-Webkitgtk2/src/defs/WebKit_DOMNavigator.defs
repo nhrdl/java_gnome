@@ -1,0 +1,144 @@
+(define-object DOMNavigator
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMNavigator")
+)
+
+(define-method get_app_code_name
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_app_code_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_app_name
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_app_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_app_version
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_app_version")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_cookie_enabled
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_cookie_enabled")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_geolocation
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_geolocation")
+  (return-type "WebKitDOMGeolocation*")
+  (parameters
+  )
+)
+
+(define-method get_language
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_language")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_mime_types
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_mime_types")
+  (return-type "WebKitDOMDOMMimeTypeArray*")
+  (parameters
+  )
+)
+
+(define-method get_on_line
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_on_line")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_platform
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_platform")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_plugins
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_plugins")
+  (return-type "WebKitDOMDOMPluginArray*")
+  (parameters
+  )
+)
+
+(define-method get_product
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_product")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_product_sub
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_product_sub")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_storage_updates
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_storage_updates")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_user_agent
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_user_agent")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_vendor
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_vendor")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_vendor_sub
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_get_vendor_sub")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method java_enabled
+  (of-object "WebKitDOMNavigator")
+  (c-name "webkit_dom_navigator_java_enabled")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+

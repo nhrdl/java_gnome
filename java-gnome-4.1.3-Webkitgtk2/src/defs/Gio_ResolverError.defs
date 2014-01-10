@@ -1,0 +1,10 @@
+(define-enum ResolverError
+  (in-module "Gio")
+  (c-name "GResolverError")
+  (values
+    '("not_found" "G_RESOLVER_ERROR_NOT_FOUND")
+    '("temporary_failure" "G_RESOLVER_ERROR_TEMPORARY_FAILURE")
+    '("internal" "G_RESOLVER_ERROR_INTERNAL")
+  )
+)
+

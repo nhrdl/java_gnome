@@ -1,0 +1,12 @@
+(define-enum DownloadStatus
+  (in-module "WebKit")
+  (c-name "WebKitDownloadStatus")
+  (values
+    '("error" "WEBKIT_DOWNLOAD_STATUS_ERROR")
+    '("created" "WEBKIT_DOWNLOAD_STATUS_CREATED")
+    '("started" "WEBKIT_DOWNLOAD_STATUS_STARTED")
+    '("cancelled" "WEBKIT_DOWNLOAD_STATUS_CANCELLED")
+    '("finished" "WEBKIT_DOWNLOAD_STATUS_FINISHED")
+  )
+)
+

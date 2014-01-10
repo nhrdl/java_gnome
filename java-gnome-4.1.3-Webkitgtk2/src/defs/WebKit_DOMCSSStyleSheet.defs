@@ -1,0 +1,75 @@
+(define-object DOMCSSStyleSheet
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMStyleSheet")
+  (c-name "WebKitDOMCSSStyleSheet")
+)
+
+(define-method add_rule
+  (of-object "WebKitDOMCSSStyleSheet")
+  (c-name "webkit_dom_css_style_sheet_add_rule")
+  (return-type "glong")
+  (parameters
+    '("gchar*" "selector")
+    '("gchar*" "style")
+    '("gulong" "index")
+    '("GError**" "error")
+  )
+)
+
+(define-method delete_rule
+  (of-object "WebKitDOMCSSStyleSheet")
+  (c-name "webkit_dom_css_style_sheet_delete_rule")
+  (return-type "none")
+  (parameters
+    '("gulong" "index")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_css_rules
+  (of-object "WebKitDOMCSSStyleSheet")
+  (c-name "webkit_dom_css_style_sheet_get_css_rules")
+  (return-type "WebKitDOMCSSRuleList*")
+  (parameters
+  )
+)
+
+(define-method get_owner_rule
+  (of-object "WebKitDOMCSSStyleSheet")
+  (c-name "webkit_dom_css_style_sheet_get_owner_rule")
+  (return-type "WebKitDOMCSSRule*")
+  (parameters
+  )
+)
+
+(define-method get_rules
+  (of-object "WebKitDOMCSSStyleSheet")
+  (c-name "webkit_dom_css_style_sheet_get_rules")
+  (return-type "WebKitDOMCSSRuleList*")
+  (parameters
+  )
+)
+
+(define-method insert_rule
+  (of-object "WebKitDOMCSSStyleSheet")
+  (c-name "webkit_dom_css_style_sheet_insert_rule")
+  (return-type "gulong")
+  (parameters
+    '("gchar*" "rule")
+    '("gulong" "index")
+    '("GError**" "error")
+  )
+)
+
+(define-method remove_rule
+  (of-object "WebKitDOMCSSStyleSheet")
+  (c-name "webkit_dom_css_style_sheet_remove_rule")
+  (return-type "none")
+  (parameters
+    '("gulong" "index")
+    '("GError**" "error")
+  )
+)
+

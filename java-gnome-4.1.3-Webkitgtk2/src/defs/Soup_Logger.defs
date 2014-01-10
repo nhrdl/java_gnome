@@ -1,0 +1,68 @@
+(define-object Logger
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "SoupLogger")
+)
+
+(define-function Logger_new
+  (is-constructor-of "SoupLogger")
+  (c-name "soup_logger_new")
+  (return-type "SoupLogger*")
+  (parameters
+    '("SoupLoggerLogLevel" "level")
+    '("int" "max_body_size")
+  )
+)
+
+(define-method attach
+  (of-object "SoupLogger")
+  (c-name "soup_logger_attach")
+  (return-type "none")
+  (parameters
+    '("SoupSession*" "session")
+  )
+)
+
+(define-method detach
+  (of-object "SoupLogger")
+  (c-name "soup_logger_detach")
+  (return-type "none")
+  (parameters
+    '("SoupSession*" "session")
+  )
+)
+
+(define-method set_printer
+  (of-object "SoupLogger")
+  (c-name "soup_logger_set_printer")
+  (return-type "none")
+  (parameters
+    '("SoupLoggerPrinter" "printer")
+    '("gpointer" "printer_data")
+    '("GDestroyNotify" "destroy")
+  )
+)
+
+(define-method set_request_filter
+  (of-object "SoupLogger")
+  (c-name "soup_logger_set_request_filter")
+  (return-type "none")
+  (parameters
+    '("SoupLoggerFilter" "request_filter")
+    '("gpointer" "filter_data")
+    '("GDestroyNotify" "destroy")
+  )
+)
+
+(define-method set_response_filter
+  (of-object "SoupLogger")
+  (c-name "soup_logger_set_response_filter")
+  (return-type "none")
+  (parameters
+    '("SoupLoggerFilter" "response_filter")
+    '("gpointer" "filter_data")
+    '("GDestroyNotify" "destroy")
+  )
+)
+

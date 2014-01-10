@@ -1,0 +1,494 @@
+(define-object DBusConnection
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GDBusConnection")
+)
+
+(define-function DBusConnection_new_finish
+  (is-constructor-of "GDBusConnection")
+  (c-name "g_dbus_connection_new_finish")
+  (return-type "GDBusConnection*")
+  (parameters
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-function DBusConnection_new_for_address_finish
+  (is-constructor-of "GDBusConnection")
+  (c-name "g_dbus_connection_new_for_address_finish")
+  (return-type "GDBusConnection*")
+  (parameters
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-function DBusConnection_new_for_address_sync
+  (is-constructor-of "GDBusConnection")
+  (c-name "g_dbus_connection_new_for_address_sync")
+  (return-type "GDBusConnection*")
+  (parameters
+    '("gchar*" "paddress")
+    '("GDBusConnectionFlags" "pflags")
+    '("GDBusAuthObserver*" "pobserver")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-function DBusConnection_new_sync
+  (is-constructor-of "GDBusConnection")
+  (c-name "g_dbus_connection_new_sync")
+  (return-type "GDBusConnection*")
+  (parameters
+    '("GIOStream*" "pstream")
+    '("gchar*" "pguid")
+    '("GDBusConnectionFlags" "pflags")
+    '("GDBusAuthObserver*" "pobserver")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method add_filter
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_add_filter")
+  (return-type "guint")
+  (parameters
+    '("GDBusMessageFilterFunction" "pfilter_function")
+    '("gpointer" "puser_data")
+    '("GDestroyNotify" "puser_data_free_func")
+  )
+)
+
+(define-method call
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_call")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pbus_name")
+    '("gchar*" "pobject_path")
+    '("gchar*" "pinterface_name")
+    '("gchar*" "pmethod_name")
+    '("GVariant*" "pparameters")
+    '("GVariantType*" "preply_type")
+    '("GDBusCallFlags" "pflags")
+    '("gint" "ptimeout_msec")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method call_finish
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_call_finish")
+  (return-type "GVariant*")
+  (parameters
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-method call_sync
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_call_sync")
+  (return-type "GVariant*")
+  (parameters
+    '("gchar*" "pbus_name")
+    '("gchar*" "pobject_path")
+    '("gchar*" "pinterface_name")
+    '("gchar*" "pmethod_name")
+    '("GVariant*" "pparameters")
+    '("GVariantType*" "preply_type")
+    '("GDBusCallFlags" "pflags")
+    '("gint" "ptimeout_msec")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method call_with_unix_fd_list
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_call_with_unix_fd_list")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pbus_name")
+    '("gchar*" "pobject_path")
+    '("gchar*" "pinterface_name")
+    '("gchar*" "pmethod_name")
+    '("GVariant*" "pparameters")
+    '("GVariantType*" "preply_type")
+    '("GDBusCallFlags" "pflags")
+    '("gint" "ptimeout_msec")
+    '("GUnixFDList*" "pfd_list")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method call_with_unix_fd_list_finish
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_call_with_unix_fd_list_finish")
+  (return-type "GVariant*")
+  (parameters
+    '("GUnixFDList**" "pout_fd_list")
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-method call_with_unix_fd_list_sync
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_call_with_unix_fd_list_sync")
+  (return-type "GVariant*")
+  (parameters
+    '("gchar*" "pbus_name")
+    '("gchar*" "pobject_path")
+    '("gchar*" "pinterface_name")
+    '("gchar*" "pmethod_name")
+    '("GVariant*" "pparameters")
+    '("GVariantType*" "preply_type")
+    '("GDBusCallFlags" "pflags")
+    '("gint" "ptimeout_msec")
+    '("GUnixFDList*" "pfd_list")
+    '("GUnixFDList**" "pout_fd_list")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method close
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_close")
+  (return-type "none")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method close_finish
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_close_finish")
+  (return-type "gboolean")
+  (parameters
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-method close_sync
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_close_sync")
+  (return-type "gboolean")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method emit_signal
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_emit_signal")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "pdestination_bus_name")
+    '("gchar*" "pobject_path")
+    '("gchar*" "pinterface_name")
+    '("gchar*" "psignal_name")
+    '("GVariant*" "pparameters")
+    '("GError**" "error")
+  )
+)
+
+(define-method export_action_group
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_export_action_group")
+  (return-type "guint")
+  (parameters
+    '("gchar*" "pobject_path")
+    '("GActionGroup*" "paction_group")
+    '("GError**" "error")
+  )
+)
+
+(define-method export_menu_model
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_export_menu_model")
+  (return-type "guint")
+  (parameters
+    '("gchar*" "pobject_path")
+    '("GMenuModel*" "pmenu")
+    '("GError**" "error")
+  )
+)
+
+(define-method flush
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_flush")
+  (return-type "none")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method flush_finish
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_flush_finish")
+  (return-type "gboolean")
+  (parameters
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-method flush_sync
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_flush_sync")
+  (return-type "gboolean")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_capabilities
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_get_capabilities")
+  (return-type "GDBusCapabilityFlags")
+  (parameters
+  )
+)
+
+(define-method get_exit_on_close
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_get_exit_on_close")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_guid
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_get_guid")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_peer_credentials
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_get_peer_credentials")
+  (return-type "GCredentials*")
+  (parameters
+  )
+)
+
+(define-method get_stream
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_get_stream")
+  (return-type "GIOStream*")
+  (parameters
+  )
+)
+
+(define-method get_unique_name
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_get_unique_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method is_closed
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_is_closed")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method register_object
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_register_object")
+  (return-type "guint")
+  (parameters
+    '("gchar*" "pobject_path")
+    '("GDBusInterfaceInfo*" "pinterface_info")
+    '("GDBusInterfaceVTable*" "pvtable")
+    '("gpointer" "puser_data")
+    '("GDestroyNotify" "puser_data_free_func")
+    '("GError**" "error")
+  )
+)
+
+(define-method register_subtree
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_register_subtree")
+  (return-type "guint")
+  (parameters
+    '("gchar*" "pobject_path")
+    '("GDBusSubtreeVTable*" "pvtable")
+    '("GDBusSubtreeFlags" "pflags")
+    '("gpointer" "puser_data")
+    '("GDestroyNotify" "puser_data_free_func")
+    '("GError**" "error")
+  )
+)
+
+(define-method remove_filter
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_remove_filter")
+  (return-type "none")
+  (parameters
+    '("guint" "pfilter_id")
+  )
+)
+
+(define-method send_message
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_send_message")
+  (return-type "gboolean")
+  (parameters
+    '("GDBusMessage*" "pmessage")
+    '("GDBusSendMessageFlags" "pflags")
+    '("guint32*" "pout_serial")
+    '("GError**" "error")
+  )
+)
+
+(define-method send_message_with_reply
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_send_message_with_reply")
+  (return-type "none")
+  (parameters
+    '("GDBusMessage*" "pmessage")
+    '("GDBusSendMessageFlags" "pflags")
+    '("gint" "ptimeout_msec")
+    '("guint32*" "pout_serial")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method send_message_with_reply_finish
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_send_message_with_reply_finish")
+  (return-type "GDBusMessage*")
+  (parameters
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-method send_message_with_reply_sync
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_send_message_with_reply_sync")
+  (return-type "GDBusMessage*")
+  (parameters
+    '("GDBusMessage*" "pmessage")
+    '("GDBusSendMessageFlags" "pflags")
+    '("gint" "ptimeout_msec")
+    '("guint32*" "pout_serial")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_exit_on_close
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_set_exit_on_close")
+  (return-type "none")
+  (parameters
+    '("gboolean" "pexit_on_close")
+  )
+)
+
+(define-method signal_subscribe
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_signal_subscribe")
+  (return-type "guint")
+  (parameters
+    '("gchar*" "psender")
+    '("gchar*" "pinterface_name")
+    '("gchar*" "pmember")
+    '("gchar*" "pobject_path")
+    '("gchar*" "parg0")
+    '("GDBusSignalFlags" "pflags")
+    '("GDBusSignalCallback" "pcallback")
+    '("gpointer" "puser_data")
+    '("GDestroyNotify" "puser_data_free_func")
+  )
+)
+
+(define-method signal_unsubscribe
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_signal_unsubscribe")
+  (return-type "none")
+  (parameters
+    '("guint" "psubscription_id")
+  )
+)
+
+(define-method start_message_processing
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_start_message_processing")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method unexport_action_group
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_unexport_action_group")
+  (return-type "none")
+  (parameters
+    '("guint" "pexport_id")
+  )
+)
+
+(define-method unexport_menu_model
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_unexport_menu_model")
+  (return-type "none")
+  (parameters
+    '("guint" "pexport_id")
+  )
+)
+
+(define-method unregister_object
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_unregister_object")
+  (return-type "gboolean")
+  (parameters
+    '("guint" "pregistration_id")
+  )
+)
+
+(define-method unregister_subtree
+  (of-object "GDBusConnection")
+  (c-name "g_dbus_connection_unregister_subtree")
+  (return-type "gboolean")
+  (parameters
+    '("guint" "pregistration_id")
+  )
+)
+

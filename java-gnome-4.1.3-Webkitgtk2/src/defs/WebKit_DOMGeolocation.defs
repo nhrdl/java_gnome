@@ -1,0 +1,17 @@
+(define-object DOMGeolocation
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMGeolocation")
+)
+
+(define-method clear_watch
+  (of-object "WebKitDOMGeolocation")
+  (c-name "webkit_dom_geolocation_clear_watch")
+  (return-type "none")
+  (parameters
+    '("glong" "watch_id")
+  )
+)
+

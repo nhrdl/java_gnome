@@ -1,0 +1,138 @@
+(define-object Server
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "SoupServer")
+)
+
+(define-function Server_new
+  (is-constructor-of "SoupServer")
+  (c-name "soup_server_new")
+  (return-type "SoupServer*")
+  (parameters
+    '("const char*" "optname1")
+    '("null" "null")
+  )
+)
+
+(define-method add_auth_domain
+  (of-object "SoupServer")
+  (c-name "soup_server_add_auth_domain")
+  (return-type "none")
+  (parameters
+    '("SoupAuthDomain*" "auth_domain")
+  )
+)
+
+(define-method add_handler
+  (of-object "SoupServer")
+  (c-name "soup_server_add_handler")
+  (return-type "none")
+  (parameters
+    '("const char*" "path")
+    '("SoupServerCallback" "callback")
+    '("gpointer" "user_data")
+    '("GDestroyNotify" "destroy")
+  )
+)
+
+(define-method disconnect
+  (of-object "SoupServer")
+  (c-name "soup_server_disconnect")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_async_context
+  (of-object "SoupServer")
+  (c-name "soup_server_get_async_context")
+  (return-type "GMainContext*")
+  (parameters
+  )
+)
+
+(define-method get_listener
+  (of-object "SoupServer")
+  (c-name "soup_server_get_listener")
+  (return-type "SoupSocket*")
+  (parameters
+  )
+)
+
+(define-method get_port
+  (of-object "SoupServer")
+  (c-name "soup_server_get_port")
+  (return-type "guint")
+  (parameters
+  )
+)
+
+(define-method is_https
+  (of-object "SoupServer")
+  (c-name "soup_server_is_https")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method pause_message
+  (of-object "SoupServer")
+  (c-name "soup_server_pause_message")
+  (return-type "none")
+  (parameters
+    '("SoupMessage*" "msg")
+  )
+)
+
+(define-method quit
+  (of-object "SoupServer")
+  (c-name "soup_server_quit")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method remove_auth_domain
+  (of-object "SoupServer")
+  (c-name "soup_server_remove_auth_domain")
+  (return-type "none")
+  (parameters
+    '("SoupAuthDomain*" "auth_domain")
+  )
+)
+
+(define-method remove_handler
+  (of-object "SoupServer")
+  (c-name "soup_server_remove_handler")
+  (return-type "none")
+  (parameters
+    '("const char*" "path")
+  )
+)
+
+(define-method run
+  (of-object "SoupServer")
+  (c-name "soup_server_run")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method run_async
+  (of-object "SoupServer")
+  (c-name "soup_server_run_async")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method unpause_message
+  (of-object "SoupServer")
+  (c-name "soup_server_unpause_message")
+  (return-type "none")
+  (parameters
+    '("SoupMessage*" "msg")
+  )
+)
+

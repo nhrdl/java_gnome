@@ -1,0 +1,60 @@
+(define-boxed TextAttributes
+  (in-module "Gtk")
+  (c-name "GtkTextAttributes")
+  (gtype-id "GTK_TYPE_TEXT_ATTRIBUTES")
+  (fields
+    '("GtkTextAppearance" "appearance")
+    '("GtkJustification" "justification")
+    '("GtkTextDirection" "direction")
+    '("PangoFontDescription*" "font")
+    '("gdouble" "font_scale")
+    '("gint" "left_margin")
+    '("gint" "indent")
+    '("gint" "right_margin")
+    '("gint" "pixels_above_lines")
+    '("gint" "pixels_below_lines")
+    '("gint" "pixels_inside_wrap")
+    '("PangoTabArray*" "tabs")
+    '("GtkWrapMode" "wrap_mode")
+    '("PangoLanguage*" "language")
+    '("guint" "invisible")
+    '("guint" "bg_full_height")
+    '("guint" "editable")
+  )
+)
+
+(define-function gtk_text_attributes_new
+  (is-constructor-of "GtkTextAttributes")
+  (c-name "gtk_text_attributes_new")
+  (caller-owns-return #t)
+  (return-type "GtkTextAttributes*")
+)
+
+(define-method copy
+  (of-object "GtkTextAttributes")
+  (c-name "gtk_text_attributes_copy")
+  (caller-owns-return #t)
+  (return-type "GtkTextAttributes*")
+)
+
+(define-method copy_values
+  (of-object "GtkTextAttributes")
+  (c-name "gtk_text_attributes_copy_values")
+  (return-type "none")
+  (parameters
+    '("GtkTextAttributes*" "dest")
+  )
+)
+
+(define-method unref
+  (of-object "GtkTextAttributes")
+  (c-name "gtk_text_attributes_unref")
+  (return-type "none")
+)
+
+(define-method ref
+  (of-object "GtkTextAttributes")
+  (c-name "gtk_text_attributes_ref")
+  (return-type "none")
+)
+

@@ -1,0 +1,11 @@
+(define-enum EmblemOrigin
+  (in-module "Gio")
+  (c-name "GEmblemOrigin")
+  (values
+    '("unknown" "G_EMBLEM_ORIGIN_UNKNOWN")
+    '("device" "G_EMBLEM_ORIGIN_DEVICE")
+    '("livemetadata" "G_EMBLEM_ORIGIN_LIVEMETADATA")
+    '("tag" "G_EMBLEM_ORIGIN_TAG")
+  )
+)
+

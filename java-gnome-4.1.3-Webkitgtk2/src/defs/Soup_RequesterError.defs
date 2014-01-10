@@ -1,0 +1,9 @@
+(define-enum RequesterError
+  (in-module "Soup")
+  (c-name "SoupRequesterError")
+  (values
+    '("bad_uri" "SOUP_REQUESTER_ERROR_BAD_URI")
+    '("unsupported_uri_scheme" "SOUP_REQUESTER_ERROR_UNSUPPORTED_URI_SCHEME")
+  )
+)
+

@@ -1,0 +1,34 @@
+(define-object ContentSniffer
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "SoupContentSniffer")
+)
+
+(define-function ContentSniffer_new
+  (is-constructor-of "SoupContentSniffer")
+  (c-name "soup_content_sniffer_new")
+  (return-type "SoupContentSniffer*")
+  (parameters
+  )
+)
+
+(define-method get_buffer_size
+  (of-object "SoupContentSniffer")
+  (c-name "soup_content_sniffer_get_buffer_size")
+  (return-type "gsize")
+  (parameters
+  )
+)
+
+(define-method sniff
+  (of-object "SoupContentSniffer")
+  (c-name "soup_content_sniffer_sniff")
+  (return-type "char*")
+  (parameters
+    '("SoupMessage*" "msg")
+    '("SoupBuffer*" "buffer")
+    '("GHashTable**" "params")
+  )
+)
+

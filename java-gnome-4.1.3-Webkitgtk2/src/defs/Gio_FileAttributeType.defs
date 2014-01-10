@@ -1,0 +1,17 @@
+(define-enum FileAttributeType
+  (in-module "Gio")
+  (c-name "GFileAttributeType")
+  (values
+    '("invalid" "G_FILE_ATTRIBUTE_TYPE_INVALID")
+    '("string" "G_FILE_ATTRIBUTE_TYPE_STRING")
+    '("byte_string" "G_FILE_ATTRIBUTE_TYPE_BYTE_STRING")
+    '("boolean" "G_FILE_ATTRIBUTE_TYPE_BOOLEAN")
+    '("uint32" "G_FILE_ATTRIBUTE_TYPE_UINT32")
+    '("int32" "G_FILE_ATTRIBUTE_TYPE_INT32")
+    '("uint64" "G_FILE_ATTRIBUTE_TYPE_UINT64")
+    '("int64" "G_FILE_ATTRIBUTE_TYPE_INT64")
+    '("object" "G_FILE_ATTRIBUTE_TYPE_OBJECT")
+    '("stringv" "G_FILE_ATTRIBUTE_TYPE_STRINGV")
+  )
+)
+

@@ -1,0 +1,10 @@
+(define-enum CacheResponse
+  (in-module "Soup")
+  (c-name "SoupCacheResponse")
+  (values
+    '("fresh" "SOUP_CACHE_RESPONSE_FRESH")
+    '("needs_validation" "SOUP_CACHE_RESPONSE_NEEDS_VALIDATION")
+    '("stale" "SOUP_CACHE_RESPONSE_STALE")
+  )
+)
+

@@ -1,0 +1,52 @@
+(define-object DOMDOMApplicationCache
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMDOMApplicationCache")
+)
+
+(define-method abort
+  (of-object "WebKitDOMDOMApplicationCache")
+  (c-name "webkit_dom_dom_application_cache_abort")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method dispatch_event
+  (of-object "WebKitDOMDOMApplicationCache")
+  (c-name "webkit_dom_dom_application_cache_dispatch_event")
+  (return-type "gboolean")
+  (parameters
+    '("WebKitDOMEvent*" "evt")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_status
+  (of-object "WebKitDOMDOMApplicationCache")
+  (c-name "webkit_dom_dom_application_cache_get_status")
+  (return-type "gushort")
+  (parameters
+  )
+)
+
+(define-method swap_cache
+  (of-object "WebKitDOMDOMApplicationCache")
+  (c-name "webkit_dom_dom_application_cache_swap_cache")
+  (return-type "none")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method update
+  (of-object "WebKitDOMDOMApplicationCache")
+  (c-name "webkit_dom_dom_application_cache_update")
+  (return-type "none")
+  (parameters
+    '("GError**" "error")
+  )
+)
+

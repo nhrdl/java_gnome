@@ -1,0 +1,17 @@
+(define-object CookieJarText
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "CookieJar")
+  (c-name "SoupCookieJarText")
+)
+
+(define-function CookieJarText_new
+  (is-constructor-of "SoupCookieJarText")
+  (c-name "soup_cookie_jar_text_new")
+  (return-type "SoupCookieJar*")
+  (parameters
+    '("const char*" "filename")
+    '("gboolean" "read_only")
+  )
+)
+

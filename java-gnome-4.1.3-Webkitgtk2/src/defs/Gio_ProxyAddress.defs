@@ -1,0 +1,72 @@
+(define-object ProxyAddress
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "InetSocketAddress")
+  (c-name "GProxyAddress")
+)
+
+(define-function ProxyAddress_new
+  (is-constructor-of "GProxyAddress")
+  (c-name "g_proxy_address_new")
+  (return-type "GSocketAddress*")
+  (parameters
+    '("GInetAddress*" "pinetaddr")
+    '("guint16" "pport")
+    '("gchar*" "pprotocol")
+    '("gchar*" "pdest_hostname")
+    '("guint16" "pdest_port")
+    '("gchar*" "pusername")
+    '("gchar*" "ppassword")
+  )
+)
+
+(define-method get_destination_hostname
+  (of-object "GProxyAddress")
+  (c-name "g_proxy_address_get_destination_hostname")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_destination_port
+  (of-object "GProxyAddress")
+  (c-name "g_proxy_address_get_destination_port")
+  (return-type "guint16")
+  (parameters
+  )
+)
+
+(define-method get_password
+  (of-object "GProxyAddress")
+  (c-name "g_proxy_address_get_password")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_protocol
+  (of-object "GProxyAddress")
+  (c-name "g_proxy_address_get_protocol")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_username
+  (of-object "GProxyAddress")
+  (c-name "g_proxy_address_get_username")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+

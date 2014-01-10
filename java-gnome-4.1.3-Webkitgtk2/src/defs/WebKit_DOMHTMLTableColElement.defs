@@ -1,0 +1,111 @@
+(define-object DOMHTMLTableColElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLTableColElement")
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_ch
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_get_ch")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_ch_off
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_get_ch_off")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_span
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_get_span")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_v_align
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_get_v_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_get_width")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_ch
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_set_ch")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_ch_off
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_set_ch_off")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_span
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_set_span")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_v_align
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_set_v_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLTableColElement")
+  (c-name "webkit_dom_html_table_col_element_set_width")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

@@ -1,0 +1,171 @@
+(define-object TlsConnection
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "IOStream")
+  (c-name "GTlsConnection")
+)
+
+(define-method accept_certificate
+  (of-object "GTlsConnection")
+  (c-name "accept_certificate")
+  (return-type "gboolean")
+  (parameters
+    '("GTlsCertificate*" "ppeer_cert")
+    '("GTlsCertificateFlags" "perrors")
+  )
+)
+
+
+
+(define-method handshake_async
+  (of-object "GTlsConnection")
+  (c-name "handshake_async")
+  (return-type "none")
+  (parameters
+    '("int" "pio_priority")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+
+
+(define-method emit_accept_certificate
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_emit_accept_certificate")
+  (return-type "gboolean")
+  (parameters
+    '("GTlsCertificate*" "ppeer_cert")
+    '("GTlsCertificateFlags" "perrors")
+  )
+)
+
+(define-method get_certificate
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_get_certificate")
+  (return-type "GTlsCertificate*")
+  (parameters
+  )
+)
+
+(define-method get_database
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_get_database")
+  (return-type "GTlsDatabase*")
+  (parameters
+  )
+)
+
+(define-method get_interaction
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_get_interaction")
+  (return-type "GTlsInteraction*")
+  (parameters
+  )
+)
+
+(define-method get_peer_certificate
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_get_peer_certificate")
+  (return-type "GTlsCertificate*")
+  (parameters
+  )
+)
+
+(define-method get_peer_certificate_errors
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_get_peer_certificate_errors")
+  (return-type "GTlsCertificateFlags")
+  (parameters
+  )
+)
+
+(define-method get_rehandshake_mode
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_get_rehandshake_mode")
+  (return-type "GTlsRehandshakeMode")
+  (parameters
+  )
+)
+
+(define-method get_require_close_notify
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_get_require_close_notify")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_use_system_certdb
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_get_use_system_certdb")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method set_certificate
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_set_certificate")
+  (return-type "none")
+  (parameters
+    '("GTlsCertificate*" "pcertificate")
+  )
+)
+
+(define-method set_database
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_set_database")
+  (return-type "none")
+  (parameters
+    '("GTlsDatabase*" "pdatabase")
+  )
+)
+
+(define-method set_interaction
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_set_interaction")
+  (return-type "none")
+  (parameters
+    '("GTlsInteraction*" "pinteraction")
+  )
+)
+
+(define-method set_rehandshake_mode
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_set_rehandshake_mode")
+  (return-type "none")
+  (parameters
+    '("GTlsRehandshakeMode" "pmode")
+  )
+)
+
+(define-method set_require_close_notify
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_set_require_close_notify")
+  (return-type "none")
+  (parameters
+    '("gboolean" "prequire_close_notify")
+  )
+)
+
+(define-method set_use_system_certdb
+  (of-object "GTlsConnection")
+  (c-name "g_tls_connection_set_use_system_certdb")
+  (return-type "none")
+  (parameters
+    '("gboolean" "puse_system_certdb")
+  )
+)
+

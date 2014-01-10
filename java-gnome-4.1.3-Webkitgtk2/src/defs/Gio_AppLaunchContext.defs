@@ -1,0 +1,73 @@
+(define-object AppLaunchContext
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GAppLaunchContext")
+)
+
+(define-function AppLaunchContext_new
+  (is-constructor-of "GAppLaunchContext")
+  (c-name "g_app_launch_context_new")
+  (return-type "GAppLaunchContext*")
+  (parameters
+  )
+)
+
+(define-method get_display
+  (of-object "GAppLaunchContext")
+  (c-name "get_display")
+  (return-type "char*")
+  (parameters
+    '("GAppInfo*" "pinfo")
+    '("GList*" "pfiles")
+  )
+)
+
+(define-method get_startup_notify_id
+  (of-object "GAppLaunchContext")
+  (c-name "get_startup_notify_id")
+  (return-type "char*")
+  (parameters
+    '("GAppInfo*" "pinfo")
+    '("GList*" "pfiles")
+  )
+)
+
+
+(define-method get_environment
+  (of-object "GAppLaunchContext")
+  (c-name "g_app_launch_context_get_environment")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method setenv
+  (of-object "GAppLaunchContext")
+  (c-name "g_app_launch_context_setenv")
+  (return-type "none")
+  (parameters
+    '("char*" "pvariable")
+    '("char*" "pvalue")
+  )
+)
+
+(define-method unsetenv
+  (of-object "GAppLaunchContext")
+  (c-name "g_app_launch_context_unsetenv")
+  (return-type "none")
+  (parameters
+    '("char*" "pvariable")
+  )
+)
+

@@ -1,0 +1,114 @@
+(define-object DOMTreeWalker
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMTreeWalker")
+)
+
+(define-method first_child
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_first_child")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_current_node
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_get_current_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_expand_entity_references
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_get_expand_entity_references")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_filter
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_get_filter")
+  (return-type "WebKitDOMNodeFilter*")
+  (parameters
+  )
+)
+
+(define-method get_root
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_get_root")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_what_to_show
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_get_what_to_show")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method last_child
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_last_child")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method next_node
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_next_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method next_sibling
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_next_sibling")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method parent_node
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_parent_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method previous_node
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_previous_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method previous_sibling
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_previous_sibling")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method set_current_node
+  (of-object "WebKitDOMTreeWalker")
+  (c-name "webkit_dom_tree_walker_set_current_node")
+  (return-type "none")
+  (parameters
+    '("WebKitDOMNode*" "value")
+    '("GError**" "error")
+  )
+)
+

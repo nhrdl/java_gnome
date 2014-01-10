@@ -1,0 +1,11 @@
+(define-enum DataStreamNewlineType
+  (in-module "Gio")
+  (c-name "GDataStreamNewlineType")
+  (values
+    '("lf" "G_DATA_STREAM_NEWLINE_TYPE_LF")
+    '("cr" "G_DATA_STREAM_NEWLINE_TYPE_CR")
+    '("cr_lf" "G_DATA_STREAM_NEWLINE_TYPE_CR_LF")
+    '("any" "G_DATA_STREAM_NEWLINE_TYPE_ANY")
+  )
+)
+

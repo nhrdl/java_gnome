@@ -1,0 +1,13 @@
+(define-enum ConnectionState
+  (in-module "Soup")
+  (c-name "SoupConnectionState")
+  (values
+    '("new" "SOUP_CONNECTION_NEW")
+    '("connecting" "SOUP_CONNECTION_CONNECTING")
+    '("idle" "SOUP_CONNECTION_IDLE")
+    '("in_use" "SOUP_CONNECTION_IN_USE")
+    '("remote_disconnected" "SOUP_CONNECTION_REMOTE_DISCONNECTED")
+    '("disconnected" "SOUP_CONNECTION_DISCONNECTED")
+  )
+)
+

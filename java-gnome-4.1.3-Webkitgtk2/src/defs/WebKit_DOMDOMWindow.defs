@@ -1,0 +1,655 @@
+(define-object DOMDOMWindow
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMDOMWindow")
+)
+
+(define-method alert
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_alert")
+  (return-type "none")
+  (parameters
+    '("gchar*" "message")
+  )
+)
+
+(define-method atob
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_atob")
+  (return-type "gchar*")
+  (parameters
+    '("gchar*" "string")
+    '("GError**" "error")
+  )
+)
+
+(define-method blur
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_blur")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method btoa
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_btoa")
+  (return-type "gchar*")
+  (parameters
+    '("gchar*" "string")
+    '("GError**" "error")
+  )
+)
+
+(define-method capture_events
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_capture_events")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method clear_interval
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_clear_interval")
+  (return-type "none")
+  (parameters
+    '("glong" "handle")
+  )
+)
+
+(define-method clear_timeout
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_clear_timeout")
+  (return-type "none")
+  (parameters
+    '("glong" "handle")
+  )
+)
+
+(define-method close
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_close")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method confirm
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_confirm")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "message")
+  )
+)
+
+(define-method dispatch_event
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_dispatch_event")
+  (return-type "gboolean")
+  (parameters
+    '("WebKitDOMEvent*" "evt")
+    '("GError**" "error")
+  )
+)
+
+(define-method find
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_find")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "string")
+    '("gboolean" "case_sensitive")
+    '("gboolean" "backwards")
+    '("gboolean" "wrap")
+    '("gboolean" "whole_word")
+    '("gboolean" "search_in_frames")
+    '("gboolean" "show_dialog")
+  )
+)
+
+(define-method focus
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_focus")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_application_cache
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_application_cache")
+  (return-type "WebKitDOMDOMApplicationCache*")
+  (parameters
+  )
+)
+
+(define-method get_client_information
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_client_information")
+  (return-type "WebKitDOMNavigator*")
+  (parameters
+  )
+)
+
+(define-method get_closed
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_closed")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_computed_style
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_computed_style")
+  (return-type "WebKitDOMCSSStyleDeclaration*")
+  (parameters
+    '("WebKitDOMElement*" "element")
+    '("gchar*" "pseudo_element")
+  )
+)
+
+(define-method get_console
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_console")
+  (return-type "WebKitDOMConsole*")
+  (parameters
+  )
+)
+
+(define-method get_default_status
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_default_status")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_device_pixel_ratio
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_device_pixel_ratio")
+  (return-type "gdouble")
+  (parameters
+  )
+)
+
+(define-method get_document
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_document")
+  (return-type "WebKitDOMDocument*")
+  (parameters
+  )
+)
+
+(define-method get_frame_element
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_frame_element")
+  (return-type "WebKitDOMElement*")
+  (parameters
+  )
+)
+
+(define-method get_frames
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_frames")
+  (return-type "WebKitDOMDOMWindow*")
+  (parameters
+  )
+)
+
+(define-method get_history
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_history")
+  (return-type "WebKitDOMHistory*")
+  (parameters
+  )
+)
+
+(define-method get_inner_height
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_inner_height")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_inner_width
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_inner_width")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_length
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_length")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_local_storage
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_local_storage")
+  (return-type "WebKitDOMStorage*")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method get_locationbar
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_locationbar")
+  (return-type "WebKitDOMBarInfo*")
+  (parameters
+  )
+)
+
+(define-method get_menubar
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_menubar")
+  (return-type "WebKitDOMBarInfo*")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_navigator
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_navigator")
+  (return-type "WebKitDOMNavigator*")
+  (parameters
+  )
+)
+
+(define-method get_offscreen_buffering
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_offscreen_buffering")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_opener
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_opener")
+  (return-type "WebKitDOMDOMWindow*")
+  (parameters
+  )
+)
+
+(define-method get_outer_height
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_outer_height")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_outer_width
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_outer_width")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_page_x_offset
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_page_x_offset")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_page_y_offset
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_page_y_offset")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_parent
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_parent")
+  (return-type "WebKitDOMDOMWindow*")
+  (parameters
+  )
+)
+
+(define-method get_personalbar
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_personalbar")
+  (return-type "WebKitDOMBarInfo*")
+  (parameters
+  )
+)
+
+(define-method get_screen
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_screen")
+  (return-type "WebKitDOMScreen*")
+  (parameters
+  )
+)
+
+(define-method get_screen_left
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_screen_left")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_screen_top
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_screen_top")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_screen_x
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_screen_x")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_screen_y
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_screen_y")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_scroll_x
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_scroll_x")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_scroll_y
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_scroll_y")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_scrollbars
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_scrollbars")
+  (return-type "WebKitDOMBarInfo*")
+  (parameters
+  )
+)
+
+(define-method get_selection
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_selection")
+  (return-type "WebKitDOMDOMSelection*")
+  (parameters
+  )
+)
+
+(define-method get_self
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_self")
+  (return-type "WebKitDOMDOMWindow*")
+  (parameters
+  )
+)
+
+(define-method get_session_storage
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_session_storage")
+  (return-type "WebKitDOMStorage*")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method get_status
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_status")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_statusbar
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_statusbar")
+  (return-type "WebKitDOMBarInfo*")
+  (parameters
+  )
+)
+
+(define-method get_style_media
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_style_media")
+  (return-type "WebKitDOMStyleMedia*")
+  (parameters
+  )
+)
+
+(define-method get_toolbar
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_toolbar")
+  (return-type "WebKitDOMBarInfo*")
+  (parameters
+  )
+)
+
+(define-method get_top
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_top")
+  (return-type "WebKitDOMDOMWindow*")
+  (parameters
+  )
+)
+
+(define-method get_window
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_get_window")
+  (return-type "WebKitDOMDOMWindow*")
+  (parameters
+  )
+)
+
+(define-method match_media
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_match_media")
+  (return-type "WebKitDOMMediaQueryList*")
+  (parameters
+    '("gchar*" "query")
+  )
+)
+
+(define-method move_by
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_move_by")
+  (return-type "none")
+  (parameters
+    '("gfloat" "x")
+    '("gfloat" "y")
+  )
+)
+
+(define-method move_to
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_move_to")
+  (return-type "none")
+  (parameters
+    '("gfloat" "x")
+    '("gfloat" "y")
+  )
+)
+
+(define-method print
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_print")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method prompt
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_prompt")
+  (return-type "gchar*")
+  (parameters
+    '("gchar*" "message")
+    '("gchar*" "default_value")
+  )
+)
+
+(define-method release_events
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_release_events")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method resize_by
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_resize_by")
+  (return-type "none")
+  (parameters
+    '("gfloat" "x")
+    '("gfloat" "y")
+  )
+)
+
+(define-method resize_to
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_resize_to")
+  (return-type "none")
+  (parameters
+    '("gfloat" "width")
+    '("gfloat" "height")
+  )
+)
+
+(define-method scroll
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_scroll")
+  (return-type "none")
+  (parameters
+    '("glong" "x")
+    '("glong" "y")
+  )
+)
+
+(define-method scroll_by
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_scroll_by")
+  (return-type "none")
+  (parameters
+    '("glong" "x")
+    '("glong" "y")
+  )
+)
+
+(define-method scroll_to
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_scroll_to")
+  (return-type "none")
+  (parameters
+    '("glong" "x")
+    '("glong" "y")
+  )
+)
+
+(define-method set_default_status
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_set_default_status")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_status
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_set_status")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method stop
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_stop")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method webkit_cancel_animation_frame
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_webkit_cancel_animation_frame")
+  (return-type "none")
+  (parameters
+    '("glong" "id")
+  )
+)
+
+(define-method webkit_cancel_request_animation_frame
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_webkit_cancel_request_animation_frame")
+  (return-type "none")
+  (parameters
+    '("glong" "id")
+  )
+)
+
+(define-method webkit_convert_point_from_node_to_page
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_webkit_convert_point_from_node_to_page")
+  (return-type "WebKitDOMWebKitPoint*")
+  (parameters
+    '("WebKitDOMNode*" "node")
+    '("WebKitDOMWebKitPoint*" "p")
+  )
+)
+
+(define-method webkit_convert_point_from_page_to_node
+  (of-object "WebKitDOMDOMWindow")
+  (c-name "webkit_dom_dom_window_webkit_convert_point_from_page_to_node")
+  (return-type "WebKitDOMWebKitPoint*")
+  (parameters
+    '("WebKitDOMNode*" "node")
+    '("WebKitDOMWebKitPoint*" "p")
+  )
+)
+

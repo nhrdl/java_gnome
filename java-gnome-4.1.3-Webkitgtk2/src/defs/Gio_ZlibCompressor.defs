@@ -1,0 +1,44 @@
+(define-object ZlibCompressor
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GZlibCompressor")
+)
+
+(define-function ZlibCompressor_new
+  (is-constructor-of "GZlibCompressor")
+  (c-name "g_zlib_compressor_new")
+  (return-type "GZlibCompressor*")
+  (parameters
+    '("GZlibCompressorFormat" "pformat")
+    '("int" "plevel")
+  )
+)
+
+(define-method get_file_info
+  (of-object "GZlibCompressor")
+  (c-name "g_zlib_compressor_get_file_info")
+  (return-type "GFileInfo*")
+  (parameters
+  )
+)
+
+(define-method set_file_info
+  (of-object "GZlibCompressor")
+  (c-name "g_zlib_compressor_set_file_info")
+  (return-type "none")
+  (parameters
+    '("GFileInfo*" "pfile_info")
+  )
+)
+

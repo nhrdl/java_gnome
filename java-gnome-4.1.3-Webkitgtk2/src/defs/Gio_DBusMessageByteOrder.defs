@@ -1,0 +1,9 @@
+(define-enum DBusMessageByteOrder
+  (in-module "Gio")
+  (c-name "GDBusMessageByteOrder")
+  (values
+    '("big_endian" "G_DBUS_MESSAGE_BYTE_ORDER_BIG_ENDIAN")
+    '("little_endian" "G_DBUS_MESSAGE_BYTE_ORDER_LITTLE_ENDIAN")
+  )
+)
+

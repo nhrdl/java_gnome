@@ -1,0 +1,47 @@
+(define-object MemoryInputStream
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "InputStream")
+  (c-name "GMemoryInputStream")
+)
+
+(define-function MemoryInputStream_new
+  (is-constructor-of "GMemoryInputStream")
+  (c-name "g_memory_input_stream_new")
+  (return-type "GInputStream*")
+  (parameters
+  )
+)
+
+(define-function MemoryInputStream_new_from_data
+  (is-constructor-of "GMemoryInputStream")
+  (c-name "g_memory_input_stream_new_from_data")
+  (return-type "GInputStream*")
+  (parameters
+    '("null" "pdata")
+    '("gssize" "plen")
+    '("GDestroyNotify" "pdestroy")
+  )
+)
+
+(define-method add_data
+  (of-object "GMemoryInputStream")
+  (c-name "g_memory_input_stream_add_data")
+  (return-type "none")
+  (parameters
+    '("null" "pdata")
+    '("gssize" "plen")
+    '("GDestroyNotify" "pdestroy")
+  )
+)
+

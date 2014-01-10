@@ -1,0 +1,77 @@
+(define-object DOMHTMLMetaElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLMetaElement")
+)
+
+(define-method get_content
+  (of-object "WebKitDOMHTMLMetaElement")
+  (c-name "webkit_dom_html_meta_element_get_content")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_http_equiv
+  (of-object "WebKitDOMHTMLMetaElement")
+  (c-name "webkit_dom_html_meta_element_get_http_equiv")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLMetaElement")
+  (c-name "webkit_dom_html_meta_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_scheme
+  (of-object "WebKitDOMHTMLMetaElement")
+  (c-name "webkit_dom_html_meta_element_get_scheme")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_content
+  (of-object "WebKitDOMHTMLMetaElement")
+  (c-name "webkit_dom_html_meta_element_set_content")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_http_equiv
+  (of-object "WebKitDOMHTMLMetaElement")
+  (c-name "webkit_dom_html_meta_element_set_http_equiv")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLMetaElement")
+  (c-name "webkit_dom_html_meta_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_scheme
+  (of-object "WebKitDOMHTMLMetaElement")
+  (c-name "webkit_dom_html_meta_element_set_scheme")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

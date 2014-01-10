@@ -1,0 +1,43 @@
+(define-object DOMHTMLFrameSetElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLFrameSetElement")
+)
+
+(define-method get_cols
+  (of-object "WebKitDOMHTMLFrameSetElement")
+  (c-name "webkit_dom_html_frame_set_element_get_cols")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_rows
+  (of-object "WebKitDOMHTMLFrameSetElement")
+  (c-name "webkit_dom_html_frame_set_element_get_rows")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_cols
+  (of-object "WebKitDOMHTMLFrameSetElement")
+  (c-name "webkit_dom_html_frame_set_element_set_cols")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_rows
+  (of-object "WebKitDOMHTMLFrameSetElement")
+  (c-name "webkit_dom_html_frame_set_element_set_rows")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

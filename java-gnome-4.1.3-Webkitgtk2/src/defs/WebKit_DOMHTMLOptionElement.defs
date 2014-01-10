@@ -1,0 +1,118 @@
+(define-object DOMHTMLOptionElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLOptionElement")
+)
+
+(define-method get_default_selected
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_get_default_selected")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_disabled
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_get_disabled")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_form
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_get_form")
+  (return-type "WebKitDOMHTMLFormElement*")
+  (parameters
+  )
+)
+
+(define-method get_index
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_get_index")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_label
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_get_label")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_selected
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_get_selected")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_text
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_get_text")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_value
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_get_value")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_default_selected
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_set_default_selected")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_disabled
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_set_disabled")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_label
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_set_label")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_selected
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_set_selected")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_value
+  (of-object "WebKitDOMHTMLOptionElement")
+  (c-name "webkit_dom_html_option_element_set_value")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

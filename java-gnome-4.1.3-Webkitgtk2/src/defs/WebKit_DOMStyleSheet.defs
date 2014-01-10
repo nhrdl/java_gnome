@@ -1,0 +1,65 @@
+(define-object DOMStyleSheet
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMStyleSheet")
+)
+
+(define-method get_disabled
+  (of-object "WebKitDOMStyleSheet")
+  (c-name "webkit_dom_style_sheet_get_disabled")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_href
+  (of-object "WebKitDOMStyleSheet")
+  (c-name "webkit_dom_style_sheet_get_href")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_media
+  (of-object "WebKitDOMStyleSheet")
+  (c-name "webkit_dom_style_sheet_get_media")
+  (return-type "WebKitDOMMediaList*")
+  (parameters
+  )
+)
+
+(define-method get_owner_node
+  (of-object "WebKitDOMStyleSheet")
+  (c-name "webkit_dom_style_sheet_get_owner_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_parent_style_sheet
+  (of-object "WebKitDOMStyleSheet")
+  (c-name "webkit_dom_style_sheet_get_parent_style_sheet")
+  (return-type "WebKitDOMStyleSheet*")
+  (parameters
+  )
+)
+
+(define-method get_title
+  (of-object "WebKitDOMStyleSheet")
+  (c-name "webkit_dom_style_sheet_get_title")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_disabled
+  (of-object "WebKitDOMStyleSheet")
+  (c-name "webkit_dom_style_sheet_set_disabled")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+

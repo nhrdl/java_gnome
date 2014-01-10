@@ -1,0 +1,9 @@
+(define-enum XMLRPCError
+  (in-module "Soup")
+  (c-name "SoupXMLRPCError")
+  (values
+    '("arguments" "SOUP_XMLRPC_ERROR_ARGUMENTS")
+    '("retval" "SOUP_XMLRPC_ERROR_RETVAL")
+  )
+)
+

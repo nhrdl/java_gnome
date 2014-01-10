@@ -1,0 +1,17 @@
+(define-enum DBusMessageHeaderField
+  (in-module "Gio")
+  (c-name "GDBusMessageHeaderField")
+  (values
+    '("invalid" "G_DBUS_MESSAGE_HEADER_FIELD_INVALID")
+    '("path" "G_DBUS_MESSAGE_HEADER_FIELD_PATH")
+    '("interface" "G_DBUS_MESSAGE_HEADER_FIELD_INTERFACE")
+    '("member" "G_DBUS_MESSAGE_HEADER_FIELD_MEMBER")
+    '("error_name" "G_DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME")
+    '("reply_serial" "G_DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL")
+    '("destination" "G_DBUS_MESSAGE_HEADER_FIELD_DESTINATION")
+    '("sender" "G_DBUS_MESSAGE_HEADER_FIELD_SENDER")
+    '("signature" "G_DBUS_MESSAGE_HEADER_FIELD_SIGNATURE")
+    '("num_unix_fds" "G_DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS")
+  )
+)
+

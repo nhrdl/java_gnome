@@ -1,0 +1,10 @@
+(define-enum TlsInteractionResult
+  (in-module "Gio")
+  (c-name "GTlsInteractionResult")
+  (values
+    '("unhandled" "G_TLS_INTERACTION_UNHANDLED")
+    '("handled" "G_TLS_INTERACTION_HANDLED")
+    '("failed" "G_TLS_INTERACTION_FAILED")
+  )
+)
+

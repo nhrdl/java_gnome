@@ -1,0 +1,26 @@
+(define-object DOMHTMLUListElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLUListElement")
+)
+
+(define-method get_compact
+  (of-object "WebKitDOMHTMLUListElement")
+  (c-name "webkit_dom_htmlu_list_element_get_compact")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method set_compact
+  (of-object "WebKitDOMHTMLUListElement")
+  (c-name "webkit_dom_htmlu_list_element_set_compact")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+

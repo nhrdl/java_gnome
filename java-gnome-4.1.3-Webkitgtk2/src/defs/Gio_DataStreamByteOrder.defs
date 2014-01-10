@@ -1,0 +1,10 @@
+(define-enum DataStreamByteOrder
+  (in-module "Gio")
+  (c-name "GDataStreamByteOrder")
+  (values
+    '("big_endian" "G_DATA_STREAM_BYTE_ORDER_BIG_ENDIAN")
+    '("little_endian" "G_DATA_STREAM_BYTE_ORDER_LITTLE_ENDIAN")
+    '("host_endian" "G_DATA_STREAM_BYTE_ORDER_HOST_ENDIAN")
+  )
+)
+

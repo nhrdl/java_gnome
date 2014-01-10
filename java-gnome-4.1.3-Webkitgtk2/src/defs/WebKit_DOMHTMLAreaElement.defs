@@ -1,0 +1,184 @@
+(define-object DOMHTMLAreaElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLAreaElement")
+)
+
+(define-method get_alt
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_alt")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_coords
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_coords")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_hash
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_hash")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_host
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_host")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_hostname
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_hostname")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_href
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_href")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_no_href
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_no_href")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_pathname
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_pathname")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_ping
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_ping")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_port
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_port")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_protocol
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_protocol")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_search
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_search")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_shape
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_shape")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_target
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_get_target")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_alt
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_set_alt")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_coords
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_set_coords")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_href
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_set_href")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_no_href
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_set_no_href")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_ping
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_set_ping")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_shape
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_set_shape")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_target
+  (of-object "WebKitDOMHTMLAreaElement")
+  (c-name "webkit_dom_html_area_element_set_target")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

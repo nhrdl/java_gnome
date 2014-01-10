@@ -1,0 +1,142 @@
+(define-object DOMHTMLVideoElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLMediaElement")
+  (c-name "WebKitDOMHTMLVideoElement")
+)
+
+(define-method get_height
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_get_height")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_poster
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_get_poster")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_video_height
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_get_video_height")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_video_width
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_get_video_width")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_webkit_decoded_frame_count
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_get_webkit_decoded_frame_count")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_webkit_displaying_fullscreen
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_get_webkit_displaying_fullscreen")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_webkit_dropped_frame_count
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_get_webkit_dropped_frame_count")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_webkit_supports_fullscreen
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_get_webkit_supports_fullscreen")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_get_width")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method set_height
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_set_height")
+  (return-type "none")
+  (parameters
+    '("gulong" "value")
+  )
+)
+
+(define-method set_poster
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_set_poster")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_set_width")
+  (return-type "none")
+  (parameters
+    '("gulong" "value")
+  )
+)
+
+(define-method webkit_enter_full_screen
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_webkit_enter_full_screen")
+  (return-type "none")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method webkit_enter_fullscreen
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_webkit_enter_fullscreen")
+  (return-type "none")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method webkit_exit_full_screen
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_webkit_exit_full_screen")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method webkit_exit_fullscreen
+  (of-object "WebKitDOMHTMLVideoElement")
+  (c-name "webkit_dom_html_video_element_webkit_exit_fullscreen")
+  (return-type "none")
+  (parameters
+  )
+)
+

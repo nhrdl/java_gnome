@@ -1,0 +1,25 @@
+(define-object DOMFileList
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMFileList")
+)
+
+(define-method get_length
+  (of-object "WebKitDOMFileList")
+  (c-name "webkit_dom_file_list_get_length")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method item
+  (of-object "WebKitDOMFileList")
+  (c-name "webkit_dom_file_list_item")
+  (return-type "WebKitDOMFile*")
+  (parameters
+    '("gulong" "index")
+  )
+)
+

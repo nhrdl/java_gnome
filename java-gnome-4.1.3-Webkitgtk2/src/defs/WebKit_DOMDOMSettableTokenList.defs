@@ -1,0 +1,25 @@
+(define-object DOMDOMSettableTokenList
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMDOMTokenList")
+  (c-name "WebKitDOMDOMSettableTokenList")
+)
+
+(define-method get_value
+  (of-object "WebKitDOMDOMSettableTokenList")
+  (c-name "webkit_dom_dom_settable_token_list_get_value")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_value
+  (of-object "WebKitDOMDOMSettableTokenList")
+  (c-name "webkit_dom_dom_settable_token_list_set_value")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

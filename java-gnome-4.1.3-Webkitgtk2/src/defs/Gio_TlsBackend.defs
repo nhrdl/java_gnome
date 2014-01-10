@@ -1,0 +1,50 @@
+(define-object TlsBackend
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GTlsBackend")
+)
+
+
+(define-method get_certificate_type
+  (of-object "GTlsBackend")
+  (c-name "g_tls_backend_get_certificate_type")
+  (return-type "GType")
+  (parameters
+  )
+)
+
+(define-method get_client_connection_type
+  (of-object "GTlsBackend")
+  (c-name "g_tls_backend_get_client_connection_type")
+  (return-type "GType")
+  (parameters
+  )
+)
+
+(define-method get_file_database_type
+  (of-object "GTlsBackend")
+  (c-name "g_tls_backend_get_file_database_type")
+  (return-type "GType")
+  (parameters
+  )
+)
+
+(define-method get_server_connection_type
+  (of-object "GTlsBackend")
+  (c-name "g_tls_backend_get_server_connection_type")
+  (return-type "GType")
+  (parameters
+  )
+)
+

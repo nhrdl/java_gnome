@@ -1,0 +1,41 @@
+(define-object DOMHistory
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMHistory")
+)
+
+(define-method back
+  (of-object "WebKitDOMHistory")
+  (c-name "webkit_dom_history_back")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method forward
+  (of-object "WebKitDOMHistory")
+  (c-name "webkit_dom_history_forward")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_length
+  (of-object "WebKitDOMHistory")
+  (c-name "webkit_dom_history_get_length")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method go
+  (of-object "WebKitDOMHistory")
+  (c-name "webkit_dom_history_go")
+  (return-type "none")
+  (parameters
+    '("glong" "distance")
+  )
+)
+

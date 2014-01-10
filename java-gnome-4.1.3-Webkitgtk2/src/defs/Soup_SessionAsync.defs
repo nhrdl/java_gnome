@@ -1,0 +1,25 @@
+(define-object SessionAsync
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "Session")
+  (c-name "SoupSessionAsync")
+)
+
+(define-function SessionAsync_new
+  (is-constructor-of "SoupSessionAsync")
+  (c-name "soup_session_async_new")
+  (return-type "SoupSession*")
+  (parameters
+  )
+)
+
+(define-function SessionAsync_new_with_options
+  (is-constructor-of "SoupSessionAsync")
+  (c-name "soup_session_async_new_with_options")
+  (return-type "SoupSession*")
+  (parameters
+    '("const char*" "optname1")
+    '("null" "null")
+  )
+)
+

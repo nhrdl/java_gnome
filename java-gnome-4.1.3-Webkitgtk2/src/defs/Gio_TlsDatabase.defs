@@ -1,0 +1,132 @@
+(define-object TlsDatabase
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GTlsDatabase")
+)
+
+
+
+
+(define-method lookup_certificate_for_handle_async
+  (of-object "GTlsDatabase")
+  (c-name "lookup_certificate_for_handle_async")
+  (return-type "none")
+  (parameters
+    '("gchar*" "phandle")
+    '("GTlsInteraction*" "pinteraction")
+    '("GTlsDatabaseLookupFlags" "pflags")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+
+
+
+
+(define-method lookup_certificate_issuer_async
+  (of-object "GTlsDatabase")
+  (c-name "lookup_certificate_issuer_async")
+  (return-type "none")
+  (parameters
+    '("GTlsCertificate*" "pcertificate")
+    '("GTlsInteraction*" "pinteraction")
+    '("GTlsDatabaseLookupFlags" "pflags")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+
+
+(define-method lookup_certificates_issued_by
+  (of-object "GTlsDatabase")
+  (c-name "lookup_certificates_issued_by")
+  (return-type "GList*")
+  (parameters
+    '("null" "pissuer_raw_dn")
+    '("GTlsInteraction*" "pinteraction")
+    '("GTlsDatabaseLookupFlags" "pflags")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method lookup_certificates_issued_by_async
+  (of-object "GTlsDatabase")
+  (c-name "lookup_certificates_issued_by_async")
+  (return-type "none")
+  (parameters
+    '("null" "pissuer_raw_dn")
+    '("GTlsInteraction*" "pinteraction")
+    '("GTlsDatabaseLookupFlags" "pflags")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method lookup_certificates_issued_by_finish
+  (of-object "GTlsDatabase")
+  (c-name "lookup_certificates_issued_by_finish")
+  (return-type "GList*")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("GError**" "error")
+  )
+)
+
+(define-method verify_chain
+  (of-object "GTlsDatabase")
+  (c-name "verify_chain")
+  (return-type "GTlsCertificateFlags")
+  (parameters
+    '("GTlsCertificate*" "pchain")
+    '("gchar*" "ppurpose")
+    '("GSocketConnectable*" "pidentity")
+    '("GTlsInteraction*" "pinteraction")
+    '("GTlsDatabaseVerifyFlags" "pflags")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method verify_chain_async
+  (of-object "GTlsDatabase")
+  (c-name "verify_chain_async")
+  (return-type "none")
+  (parameters
+    '("GTlsCertificate*" "pchain")
+    '("gchar*" "ppurpose")
+    '("GSocketConnectable*" "pidentity")
+    '("GTlsInteraction*" "pinteraction")
+    '("GTlsDatabaseVerifyFlags" "pflags")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method verify_chain_finish
+  (of-object "GTlsDatabase")
+  (c-name "verify_chain_finish")
+  (return-type "GTlsCertificateFlags")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("GError**" "error")
+  )
+)
+

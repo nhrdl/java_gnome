@@ -1,0 +1,15 @@
+(define-object RequestHTTP
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "Request")
+  (c-name "SoupRequestHTTP")
+)
+
+(define-method get_message
+  (of-object "SoupRequestHTTP")
+  (c-name "soup_request_http_get_message")
+  (return-type "SoupMessage*")
+  (parameters
+  )
+)
+

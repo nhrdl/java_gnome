@@ -1,0 +1,52 @@
+(define-object UnixInputStream
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "InputStream")
+  (c-name "GUnixInputStream")
+)
+
+(define-function UnixInputStream_new
+  (is-constructor-of "GUnixInputStream")
+  (c-name "g_unix_input_stream_new")
+  (return-type "GInputStream*")
+  (parameters
+    '("gint" "pfd")
+    '("gboolean" "pclose_fd")
+  )
+)
+
+(define-method get_close_fd
+  (of-object "GUnixInputStream")
+  (c-name "g_unix_input_stream_get_close_fd")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_fd
+  (of-object "GUnixInputStream")
+  (c-name "g_unix_input_stream_get_fd")
+  (return-type "gint")
+  (parameters
+  )
+)
+
+(define-method set_close_fd
+  (of-object "GUnixInputStream")
+  (c-name "g_unix_input_stream_set_close_fd")
+  (return-type "none")
+  (parameters
+    '("gboolean" "pclose_fd")
+  )
+)
+

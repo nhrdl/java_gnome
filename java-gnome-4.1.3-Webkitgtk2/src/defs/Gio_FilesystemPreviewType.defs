@@ -1,0 +1,10 @@
+(define-enum FilesystemPreviewType
+  (in-module "Gio")
+  (c-name "GFilesystemPreviewType")
+  (values
+    '("if_always" "G_FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS")
+    '("if_local" "G_FILESYSTEM_PREVIEW_TYPE_IF_LOCAL")
+    '("never" "G_FILESYSTEM_PREVIEW_TYPE_NEVER")
+  )
+)
+

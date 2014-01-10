@@ -1,0 +1,163 @@
+(define-object Menu
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "MenuModel")
+  (c-name "GMenu")
+)
+
+(define-function Menu_new
+  (is-constructor-of "GMenu")
+  (c-name "g_menu_new")
+  (return-type "GMenu*")
+  (parameters
+  )
+)
+
+(define-method append
+  (of-object "GMenu")
+  (c-name "g_menu_append")
+  (return-type "none")
+  (parameters
+    '("gchar*" "plabel")
+    '("gchar*" "pdetailed_action")
+  )
+)
+
+(define-method append_item
+  (of-object "GMenu")
+  (c-name "g_menu_append_item")
+  (return-type "none")
+  (parameters
+    '("GMenuItem*" "pitem")
+  )
+)
+
+(define-method append_section
+  (of-object "GMenu")
+  (c-name "g_menu_append_section")
+  (return-type "none")
+  (parameters
+    '("gchar*" "plabel")
+    '("GMenuModel*" "psection")
+  )
+)
+
+(define-method append_submenu
+  (of-object "GMenu")
+  (c-name "g_menu_append_submenu")
+  (return-type "none")
+  (parameters
+    '("gchar*" "plabel")
+    '("GMenuModel*" "psubmenu")
+  )
+)
+
+(define-method freeze
+  (of-object "GMenu")
+  (c-name "g_menu_freeze")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method insert
+  (of-object "GMenu")
+  (c-name "g_menu_insert")
+  (return-type "none")
+  (parameters
+    '("gint" "pposition")
+    '("gchar*" "plabel")
+    '("gchar*" "pdetailed_action")
+  )
+)
+
+(define-method insert_item
+  (of-object "GMenu")
+  (c-name "g_menu_insert_item")
+  (return-type "none")
+  (parameters
+    '("gint" "pposition")
+    '("GMenuItem*" "pitem")
+  )
+)
+
+(define-method insert_section
+  (of-object "GMenu")
+  (c-name "g_menu_insert_section")
+  (return-type "none")
+  (parameters
+    '("gint" "pposition")
+    '("gchar*" "plabel")
+    '("GMenuModel*" "psection")
+  )
+)
+
+(define-method insert_submenu
+  (of-object "GMenu")
+  (c-name "g_menu_insert_submenu")
+  (return-type "none")
+  (parameters
+    '("gint" "pposition")
+    '("gchar*" "plabel")
+    '("GMenuModel*" "psubmenu")
+  )
+)
+
+(define-method prepend
+  (of-object "GMenu")
+  (c-name "g_menu_prepend")
+  (return-type "none")
+  (parameters
+    '("gchar*" "plabel")
+    '("gchar*" "pdetailed_action")
+  )
+)
+
+(define-method prepend_item
+  (of-object "GMenu")
+  (c-name "g_menu_prepend_item")
+  (return-type "none")
+  (parameters
+    '("GMenuItem*" "pitem")
+  )
+)
+
+(define-method prepend_section
+  (of-object "GMenu")
+  (c-name "g_menu_prepend_section")
+  (return-type "none")
+  (parameters
+    '("gchar*" "plabel")
+    '("GMenuModel*" "psection")
+  )
+)
+
+(define-method prepend_submenu
+  (of-object "GMenu")
+  (c-name "g_menu_prepend_submenu")
+  (return-type "none")
+  (parameters
+    '("gchar*" "plabel")
+    '("GMenuModel*" "psubmenu")
+  )
+)
+
+(define-method remove
+  (of-object "GMenu")
+  (c-name "g_menu_remove")
+  (return-type "none")
+  (parameters
+    '("gint" "pposition")
+  )
+)
+

@@ -1,0 +1,70 @@
+(define-object Request
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "SoupRequest")
+)
+
+(define-method get_content_length
+  (of-object "SoupRequest")
+  (c-name "soup_request_get_content_length")
+  (return-type "goffset")
+  (parameters
+  )
+)
+
+(define-method get_content_type
+  (of-object "SoupRequest")
+  (c-name "soup_request_get_content_type")
+  (return-type "const char*")
+  (parameters
+  )
+)
+
+(define-method get_session
+  (of-object "SoupRequest")
+  (c-name "soup_request_get_session")
+  (return-type "SoupSession*")
+  (parameters
+  )
+)
+
+(define-method get_uri
+  (of-object "SoupRequest")
+  (c-name "soup_request_get_uri")
+  (return-type "SoupURI*")
+  (parameters
+  )
+)
+
+(define-method send
+  (of-object "SoupRequest")
+  (c-name "soup_request_send")
+  (return-type "GInputStream*")
+  (parameters
+    '("GCancellable*" "cancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method send_async
+  (of-object "SoupRequest")
+  (c-name "soup_request_send_async")
+  (return-type "none")
+  (parameters
+    '("GCancellable*" "cancellable")
+    '("GAsyncReadyCallback" "callback")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-method send_finish
+  (of-object "SoupRequest")
+  (c-name "soup_request_send_finish")
+  (return-type "GInputStream*")
+  (parameters
+    '("GAsyncResult*" "rresult")
+    '("GError**" "error")
+  )
+)
+

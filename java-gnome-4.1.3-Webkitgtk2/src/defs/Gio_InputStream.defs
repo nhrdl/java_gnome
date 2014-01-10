@@ -1,0 +1,126 @@
+(define-object InputStream
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GInputStream")
+)
+
+(define-method close_async
+  (of-object "GInputStream")
+  (c-name "close_async")
+  (return-type "none")
+  (parameters
+    '("int" "pio_priority")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method read_async
+  (of-object "GInputStream")
+  (c-name "read_async")
+  (return-type "none")
+  (parameters
+    '("void*" "pbuffer")
+    '("gsize" "pcount")
+    '("int" "pio_priority")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+
+(define-method skip_async
+  (of-object "GInputStream")
+  (c-name "skip_async")
+  (return-type "none")
+  (parameters
+    '("gsize" "pcount")
+    '("int" "pio_priority")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+
+(define-method clear_pending
+  (of-object "GInputStream")
+  (c-name "g_input_stream_clear_pending")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method close
+  (of-object "GInputStream")
+  (c-name "g_input_stream_close")
+  (return-type "gboolean")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method has_pending
+  (of-object "GInputStream")
+  (c-name "g_input_stream_has_pending")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method is_closed
+  (of-object "GInputStream")
+  (c-name "g_input_stream_is_closed")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method read
+  (of-object "GInputStream")
+  (c-name "g_input_stream_read")
+  (return-type "gssize")
+  (parameters
+    '("void*" "pbuffer")
+    '("gsize" "pcount")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method read_all
+  (of-object "GInputStream")
+  (c-name "g_input_stream_read_all")
+  (return-type "gboolean")
+  (parameters
+    '("void*" "pbuffer")
+    '("gsize" "pcount")
+    '("gsize*" "pbytes_read")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_pending
+  (of-object "GInputStream")
+  (c-name "g_input_stream_set_pending")
+  (return-type "gboolean")
+  (parameters
+    '("GError**" "error")
+  )
+)
+

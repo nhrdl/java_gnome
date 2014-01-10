@@ -1,0 +1,94 @@
+(define-object DOMHTMLEmbedElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLEmbedElement")
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLEmbedElement")
+  (c-name "webkit_dom_html_embed_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_height
+  (of-object "WebKitDOMHTMLEmbedElement")
+  (c-name "webkit_dom_html_embed_element_get_height")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLEmbedElement")
+  (c-name "webkit_dom_html_embed_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_src
+  (of-object "WebKitDOMHTMLEmbedElement")
+  (c-name "webkit_dom_html_embed_element_get_src")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLEmbedElement")
+  (c-name "webkit_dom_html_embed_element_get_width")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLEmbedElement")
+  (c-name "webkit_dom_html_embed_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_height
+  (of-object "WebKitDOMHTMLEmbedElement")
+  (c-name "webkit_dom_html_embed_element_set_height")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLEmbedElement")
+  (c-name "webkit_dom_html_embed_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_src
+  (of-object "WebKitDOMHTMLEmbedElement")
+  (c-name "webkit_dom_html_embed_element_set_src")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLEmbedElement")
+  (c-name "webkit_dom_html_embed_element_set_width")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+

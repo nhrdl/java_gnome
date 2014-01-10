@@ -1,0 +1,12 @@
+(define-enum DBusMessageType
+  (in-module "Gio")
+  (c-name "GDBusMessageType")
+  (values
+    '("invalid" "G_DBUS_MESSAGE_TYPE_INVALID")
+    '("method_call" "G_DBUS_MESSAGE_TYPE_METHOD_CALL")
+    '("method_return" "G_DBUS_MESSAGE_TYPE_METHOD_RETURN")
+    '("error" "G_DBUS_MESSAGE_TYPE_ERROR")
+    '("signal" "G_DBUS_MESSAGE_TYPE_SIGNAL")
+  )
+)
+

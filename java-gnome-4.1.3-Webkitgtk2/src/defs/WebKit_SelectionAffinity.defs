@@ -1,0 +1,9 @@
+(define-enum SelectionAffinity
+  (in-module "WebKit")
+  (c-name "WebKitSelectionAffinity")
+  (values
+    '("upstream" "WEBKIT_SELECTION_AFFINITY_UPSTREAM")
+    '("downstream" "WEBKIT_SELECTION_AFFINITY_DOWNSTREAM")
+  )
+)
+

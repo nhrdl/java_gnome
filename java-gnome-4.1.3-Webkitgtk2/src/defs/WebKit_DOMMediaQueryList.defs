@@ -1,0 +1,24 @@
+(define-object DOMMediaQueryList
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMMediaQueryList")
+)
+
+(define-method get_matches
+  (of-object "WebKitDOMMediaQueryList")
+  (c-name "webkit_dom_media_query_list_get_matches")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_media
+  (of-object "WebKitDOMMediaQueryList")
+  (c-name "webkit_dom_media_query_list_get_media")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+

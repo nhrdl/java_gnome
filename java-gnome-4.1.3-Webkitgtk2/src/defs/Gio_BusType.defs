@@ -1,0 +1,11 @@
+(define-enum BusType
+  (in-module "Gio")
+  (c-name "GBusType")
+  (values
+    '("starter" "G_BUS_TYPE_STARTER")
+    '("none" "G_BUS_TYPE_NONE")
+    '("system" "G_BUS_TYPE_SYSTEM")
+    '("session" "G_BUS_TYPE_SESSION")
+  )
+)
+

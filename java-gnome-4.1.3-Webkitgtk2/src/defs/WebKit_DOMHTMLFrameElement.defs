@@ -1,0 +1,177 @@
+(define-object DOMHTMLFrameElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLFrameElement")
+)
+
+(define-method get_content_document
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_content_document")
+  (return-type "WebKitDOMDocument*")
+  (parameters
+  )
+)
+
+(define-method get_content_window
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_content_window")
+  (return-type "WebKitDOMDOMWindow*")
+  (parameters
+  )
+)
+
+(define-method get_frame_border
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_frame_border")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_height
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_height")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_long_desc
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_long_desc")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_margin_height
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_margin_height")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_margin_width
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_margin_width")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_no_resize
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_no_resize")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_scrolling
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_scrolling")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_src
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_src")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_get_width")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method set_frame_border
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_set_frame_border")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_long_desc
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_set_long_desc")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_margin_height
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_set_margin_height")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_margin_width
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_set_margin_width")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_no_resize
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_set_no_resize")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_scrolling
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_set_scrolling")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_src
+  (of-object "WebKitDOMHTMLFrameElement")
+  (c-name "webkit_dom_html_frame_element_set_src")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

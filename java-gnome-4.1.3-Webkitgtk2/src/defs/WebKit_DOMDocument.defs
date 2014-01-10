@@ -1,0 +1,723 @@
+(define-object DOMDocument
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMNode")
+  (c-name "WebKitDOMDocument")
+)
+
+(define-method adopt_node
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_adopt_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("WebKitDOMNode*" "source")
+    '("GError**" "error")
+  )
+)
+
+(define-method caret_range_from_point
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_caret_range_from_point")
+  (return-type "WebKitDOMRange*")
+  (parameters
+    '("glong" "x")
+    '("glong" "y")
+  )
+)
+
+(define-method create_attribute
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_attribute")
+  (return-type "WebKitDOMAttr*")
+  (parameters
+    '("gchar*" "name")
+    '("GError**" "error")
+  )
+)
+
+(define-method create_attribute_ns
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_attribute_ns")
+  (return-type "WebKitDOMAttr*")
+  (parameters
+    '("gchar*" "namespace_uri")
+    '("gchar*" "qualified_name")
+    '("GError**" "error")
+  )
+)
+
+(define-method create_cdata_section
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_cdata_section")
+  (return-type "WebKitDOMCDATASection*")
+  (parameters
+    '("gchar*" "data")
+    '("GError**" "error")
+  )
+)
+
+(define-method create_comment
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_comment")
+  (return-type "WebKitDOMComment*")
+  (parameters
+    '("gchar*" "data")
+  )
+)
+
+(define-method create_css_style_declaration
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_css_style_declaration")
+  (return-type "WebKitDOMCSSStyleDeclaration*")
+  (parameters
+  )
+)
+
+(define-method create_document_fragment
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_document_fragment")
+  (return-type "WebKitDOMDocumentFragment*")
+  (parameters
+  )
+)
+
+(define-method create_element
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_element")
+  (return-type "WebKitDOMElement*")
+  (parameters
+    '("gchar*" "tag_name")
+    '("GError**" "error")
+  )
+)
+
+(define-method create_element_ns
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_element_ns")
+  (return-type "WebKitDOMElement*")
+  (parameters
+    '("gchar*" "namespace_uri")
+    '("gchar*" "qualified_name")
+    '("GError**" "error")
+  )
+)
+
+(define-method create_entity_reference
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_entity_reference")
+  (return-type "WebKitDOMEntityReference*")
+  (parameters
+    '("gchar*" "name")
+    '("GError**" "error")
+  )
+)
+
+(define-method create_event
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_event")
+  (return-type "WebKitDOMEvent*")
+  (parameters
+    '("gchar*" "event_type")
+    '("GError**" "error")
+  )
+)
+
+(define-method create_expression
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_expression")
+  (return-type "WebKitDOMXPathExpression*")
+  (parameters
+    '("gchar*" "expression")
+    '("WebKitDOMXPathNSResolver*" "resolver")
+    '("GError**" "error")
+  )
+)
+
+(define-method create_node_iterator
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_node_iterator")
+  (return-type "WebKitDOMNodeIterator*")
+  (parameters
+    '("WebKitDOMNode*" "root")
+    '("gulong" "what_to_show")
+    '("WebKitDOMNodeFilter*" "filter")
+    '("gboolean" "expand_entity_references")
+    '("GError**" "error")
+  )
+)
+
+(define-method create_ns_resolver
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_ns_resolver")
+  (return-type "WebKitDOMXPathNSResolver*")
+  (parameters
+    '("WebKitDOMNode*" "node_resolver")
+  )
+)
+
+(define-method create_processing_instruction
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_processing_instruction")
+  (return-type "WebKitDOMProcessingInstruction*")
+  (parameters
+    '("gchar*" "target")
+    '("gchar*" "data")
+    '("GError**" "error")
+  )
+)
+
+(define-method create_range
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_range")
+  (return-type "WebKitDOMRange*")
+  (parameters
+  )
+)
+
+(define-method create_text_node
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_text_node")
+  (return-type "WebKitDOMText*")
+  (parameters
+    '("gchar*" "data")
+  )
+)
+
+(define-method create_tree_walker
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_create_tree_walker")
+  (return-type "WebKitDOMTreeWalker*")
+  (parameters
+    '("WebKitDOMNode*" "root")
+    '("gulong" "what_to_show")
+    '("WebKitDOMNodeFilter*" "filter")
+    '("gboolean" "expand_entity_references")
+    '("GError**" "error")
+  )
+)
+
+(define-method element_from_point
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_element_from_point")
+  (return-type "WebKitDOMElement*")
+  (parameters
+    '("glong" "x")
+    '("glong" "y")
+  )
+)
+
+(define-method evaluate
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_evaluate")
+  (return-type "WebKitDOMXPathResult*")
+  (parameters
+    '("gchar*" "expression")
+    '("WebKitDOMNode*" "context_node")
+    '("WebKitDOMXPathNSResolver*" "resolver")
+    '("gushort" "type")
+    '("WebKitDOMXPathResult*" "in_result"  (null-ok))
+    '("GError**" "error")
+  )
+)
+
+(define-method exec_command
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_exec_command")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "command")
+    '("gboolean" "user_interface")
+    '("gchar*" "value")
+  )
+)
+
+(define-method get_anchors
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_anchors")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_applets
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_applets")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_body
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_body")
+  (return-type "WebKitDOMHTMLElement*")
+  (parameters
+  )
+)
+
+(define-method get_character_set
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_character_set")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_charset
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_charset")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_compat_mode
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_compat_mode")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_cookie
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_cookie")
+  (return-type "gchar*")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method get_default_charset
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_default_charset")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_default_view
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_default_view")
+  (return-type "WebKitDOMDOMWindow*")
+  (parameters
+  )
+)
+
+(define-method get_doctype
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_doctype")
+  (return-type "WebKitDOMDocumentType*")
+  (parameters
+  )
+)
+
+(define-method get_document_element
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_document_element")
+  (return-type "WebKitDOMElement*")
+  (parameters
+  )
+)
+
+(define-method get_document_uri
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_document_uri")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_domain
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_domain")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_element_by_id
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_element_by_id")
+  (return-type "WebKitDOMElement*")
+  (parameters
+    '("gchar*" "element_id")
+  )
+)
+
+(define-method get_elements_by_class_name
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_elements_by_class_name")
+  (return-type "WebKitDOMNodeList*")
+  (parameters
+    '("gchar*" "tagname")
+  )
+)
+
+(define-method get_elements_by_name
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_elements_by_name")
+  (return-type "WebKitDOMNodeList*")
+  (parameters
+    '("gchar*" "element_name")
+  )
+)
+
+(define-method get_elements_by_tag_name
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_elements_by_tag_name")
+  (return-type "WebKitDOMNodeList*")
+  (parameters
+    '("gchar*" "tagname")
+  )
+)
+
+(define-method get_elements_by_tag_name_ns
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_elements_by_tag_name_ns")
+  (return-type "WebKitDOMNodeList*")
+  (parameters
+    '("gchar*" "namespace_uri")
+    '("gchar*" "local_name")
+  )
+)
+
+(define-method get_forms
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_forms")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_head
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_head")
+  (return-type "WebKitDOMHTMLHeadElement*")
+  (parameters
+  )
+)
+
+(define-method get_images
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_images")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_implementation
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_implementation")
+  (return-type "WebKitDOMDOMImplementation*")
+  (parameters
+  )
+)
+
+(define-method get_input_encoding
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_input_encoding")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_last_modified
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_last_modified")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_links
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_links")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_override_style
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_override_style")
+  (return-type "WebKitDOMCSSStyleDeclaration*")
+  (parameters
+    '("WebKitDOMElement*" "element")
+    '("gchar*" "pseudo_element")
+  )
+)
+
+(define-method get_preferred_stylesheet_set
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_preferred_stylesheet_set")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_ready_state
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_ready_state")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_referrer
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_referrer")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_selected_stylesheet_set
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_selected_stylesheet_set")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_style_sheets
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_style_sheets")
+  (return-type "WebKitDOMStyleSheetList*")
+  (parameters
+  )
+)
+
+(define-method get_title
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_title")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_webkit_current_full_screen_element
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_webkit_current_full_screen_element")
+  (return-type "WebKitDOMElement*")
+  (parameters
+  )
+)
+
+(define-method get_webkit_full_screen_keyboard_input_allowed
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_webkit_full_screen_keyboard_input_allowed")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_webkit_hidden
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_webkit_hidden")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_webkit_is_full_screen
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_webkit_is_full_screen")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_webkit_visibility_state
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_webkit_visibility_state")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_xml_encoding
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_xml_encoding")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_xml_standalone
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_xml_standalone")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_xml_version
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_get_xml_version")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method import_node
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_import_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("WebKitDOMNode*" "imported_node")
+    '("gboolean" "deep")
+    '("GError**" "error")
+  )
+)
+
+(define-method query_command_enabled
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_query_command_enabled")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "command")
+  )
+)
+
+(define-method query_command_indeterm
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_query_command_indeterm")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "command")
+  )
+)
+
+(define-method query_command_state
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_query_command_state")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "command")
+  )
+)
+
+(define-method query_command_supported
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_query_command_supported")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "command")
+  )
+)
+
+(define-method query_command_value
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_query_command_value")
+  (return-type "gchar*")
+  (parameters
+    '("gchar*" "command")
+  )
+)
+
+(define-method query_selector
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_query_selector")
+  (return-type "WebKitDOMElement*")
+  (parameters
+    '("gchar*" "selectors")
+    '("GError**" "error")
+  )
+)
+
+(define-method query_selector_all
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_query_selector_all")
+  (return-type "WebKitDOMNodeList*")
+  (parameters
+    '("gchar*" "selectors")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_body
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_set_body")
+  (return-type "none")
+  (parameters
+    '("WebKitDOMHTMLElement*" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_charset
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_set_charset")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_cookie
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_set_cookie")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_document_uri
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_set_document_uri")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_selected_stylesheet_set
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_set_selected_stylesheet_set")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_title
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_set_title")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_xml_standalone
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_set_xml_standalone")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_xml_version
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_set_xml_version")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method webkit_cancel_full_screen
+  (of-object "WebKitDOMDocument")
+  (c-name "webkit_dom_document_webkit_cancel_full_screen")
+  (return-type "none")
+  (parameters
+  )
+)
+

@@ -1,0 +1,318 @@
+(define-object Message
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "SoupMessage")
+)
+
+(define-function Message_new
+  (is-constructor-of "SoupMessage")
+  (c-name "soup_message_new")
+  (return-type "SoupMessage*")
+  (parameters
+    '("const char*" "method")
+    '("const char*" "uri_string")
+  )
+)
+
+(define-function Message_new_from_uri
+  (is-constructor-of "SoupMessage")
+  (c-name "soup_message_new_from_uri")
+  (return-type "SoupMessage*")
+  (parameters
+    '("const char*" "method")
+    '("SoupURI*" "uri")
+  )
+)
+
+(define-method add_header_handler
+  (of-object "SoupMessage")
+  (c-name "soup_message_add_header_handler")
+  (return-type "guint")
+  (parameters
+    '("const char*" "signal")
+    '("const char*" "header")
+    '("GCallback" "callback")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-method add_status_code_handler
+  (of-object "SoupMessage")
+  (c-name "soup_message_add_status_code_handler")
+  (return-type "guint")
+  (parameters
+    '("const char*" "signal")
+    '("guint" "status_code")
+    '("GCallback" "callback")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-method content_sniffed
+  (of-object "SoupMessage")
+  (c-name "soup_message_content_sniffed")
+  (return-type "none")
+  (parameters
+    '("const char*" "content_type")
+    '("GHashTable*" "params")
+  )
+)
+
+(define-method disable_feature
+  (of-object "SoupMessage")
+  (c-name "soup_message_disable_feature")
+  (return-type "none")
+  (parameters
+    '("GType" "feature_type")
+  )
+)
+
+(define-method finished
+  (of-object "SoupMessage")
+  (c-name "soup_message_finished")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_address
+  (of-object "SoupMessage")
+  (c-name "soup_message_get_address")
+  (return-type "SoupAddress*")
+  (parameters
+  )
+)
+
+(define-method get_first_party
+  (of-object "SoupMessage")
+  (c-name "soup_message_get_first_party")
+  (return-type "SoupURI*")
+  (parameters
+  )
+)
+
+(define-method get_flags
+  (of-object "SoupMessage")
+  (c-name "soup_message_get_flags")
+  (return-type "SoupMessageFlags")
+  (parameters
+  )
+)
+
+(define-method get_http_version
+  (of-object "SoupMessage")
+  (c-name "soup_message_get_http_version")
+  (return-type "SoupHTTPVersion")
+  (parameters
+  )
+)
+
+(define-method get_https_status
+  (of-object "SoupMessage")
+  (c-name "soup_message_get_https_status")
+  (return-type "gboolean")
+  (parameters
+    '("GTlsCertificate**" "certificate")
+    '("GTlsCertificateFlags*" "errors")
+  )
+)
+
+(define-method get_uri
+  (of-object "SoupMessage")
+  (c-name "soup_message_get_uri")
+  (return-type "SoupURI*")
+  (parameters
+  )
+)
+
+(define-method got_body
+  (of-object "SoupMessage")
+  (c-name "soup_message_got_body")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method got_chunk
+  (of-object "SoupMessage")
+  (c-name "soup_message_got_chunk")
+  (return-type "none")
+  (parameters
+    '("SoupBuffer*" "chunk")
+  )
+)
+
+(define-method got_headers
+  (of-object "SoupMessage")
+  (c-name "soup_message_got_headers")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method got_informational
+  (of-object "SoupMessage")
+  (c-name "soup_message_got_informational")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method is_keepalive
+  (of-object "SoupMessage")
+  (c-name "soup_message_is_keepalive")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method restarted
+  (of-object "SoupMessage")
+  (c-name "soup_message_restarted")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method set_chunk_allocator
+  (of-object "SoupMessage")
+  (c-name "soup_message_set_chunk_allocator")
+  (return-type "none")
+  (parameters
+    '("SoupChunkAllocator" "allocator")
+    '("gpointer" "user_data")
+    '("GDestroyNotify" "destroy_notify")
+  )
+)
+
+(define-method set_first_party
+  (of-object "SoupMessage")
+  (c-name "soup_message_set_first_party")
+  (return-type "none")
+  (parameters
+    '("SoupURI*" "first_party")
+  )
+)
+
+(define-method set_flags
+  (of-object "SoupMessage")
+  (c-name "soup_message_set_flags")
+  (return-type "none")
+  (parameters
+    '("SoupMessageFlags" "flags")
+  )
+)
+
+(define-method set_http_version
+  (of-object "SoupMessage")
+  (c-name "soup_message_set_http_version")
+  (return-type "none")
+  (parameters
+    '("SoupHTTPVersion" "version")
+  )
+)
+
+(define-method set_redirect
+  (of-object "SoupMessage")
+  (c-name "soup_message_set_redirect")
+  (return-type "none")
+  (parameters
+    '("guint" "status_code")
+    '("const char*" "redirect_uri")
+  )
+)
+
+(define-method set_request
+  (of-object "SoupMessage")
+  (c-name "soup_message_set_request")
+  (return-type "none")
+  (parameters
+    '("const char*" "content_type")
+    '("SoupMemoryUse" "req_use")
+    '("const char*" "req_body")
+    '("gsize" "req_length")
+  )
+)
+
+(define-method set_response
+  (of-object "SoupMessage")
+  (c-name "soup_message_set_response")
+  (return-type "none")
+  (parameters
+    '("const char*" "content_type")
+    '("SoupMemoryUse" "resp_use")
+    '("null" "resp_body")
+    '("gsize" "resp_length")
+  )
+)
+
+(define-method set_status
+  (of-object "SoupMessage")
+  (c-name "soup_message_set_status")
+  (return-type "none")
+  (parameters
+    '("guint" "status_code")
+  )
+)
+
+(define-method set_status_full
+  (of-object "SoupMessage")
+  (c-name "soup_message_set_status_full")
+  (return-type "none")
+  (parameters
+    '("guint" "status_code")
+    '("const char*" "reason_phrase")
+  )
+)
+
+(define-method set_uri
+  (of-object "SoupMessage")
+  (c-name "soup_message_set_uri")
+  (return-type "none")
+  (parameters
+    '("SoupURI*" "uri")
+  )
+)
+
+(define-method wrote_body
+  (of-object "SoupMessage")
+  (c-name "soup_message_wrote_body")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method wrote_body_data
+  (of-object "SoupMessage")
+  (c-name "soup_message_wrote_body_data")
+  (return-type "none")
+  (parameters
+    '("SoupBuffer*" "chunk")
+  )
+)
+
+(define-method wrote_chunk
+  (of-object "SoupMessage")
+  (c-name "soup_message_wrote_chunk")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method wrote_headers
+  (of-object "SoupMessage")
+  (c-name "soup_message_wrote_headers")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method wrote_informational
+  (of-object "SoupMessage")
+  (c-name "soup_message_wrote_informational")
+  (return-type "none")
+  (parameters
+  )
+)
+

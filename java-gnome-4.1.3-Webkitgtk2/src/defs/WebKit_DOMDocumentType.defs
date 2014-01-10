@@ -1,0 +1,56 @@
+(define-object DOMDocumentType
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMNode")
+  (c-name "WebKitDOMDocumentType")
+)
+
+(define-method get_entities
+  (of-object "WebKitDOMDocumentType")
+  (c-name "webkit_dom_document_type_get_entities")
+  (return-type "WebKitDOMNamedNodeMap*")
+  (parameters
+  )
+)
+
+(define-method get_internal_subset
+  (of-object "WebKitDOMDocumentType")
+  (c-name "webkit_dom_document_type_get_internal_subset")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMDocumentType")
+  (c-name "webkit_dom_document_type_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_notations
+  (of-object "WebKitDOMDocumentType")
+  (c-name "webkit_dom_document_type_get_notations")
+  (return-type "WebKitDOMNamedNodeMap*")
+  (parameters
+  )
+)
+
+(define-method get_public_id
+  (of-object "WebKitDOMDocumentType")
+  (c-name "webkit_dom_document_type_get_public_id")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_system_id
+  (of-object "WebKitDOMDocumentType")
+  (c-name "webkit_dom_document_type_get_system_id")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+

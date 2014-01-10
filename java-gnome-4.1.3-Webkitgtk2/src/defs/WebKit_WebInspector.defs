@@ -1,0 +1,40 @@
+(define-object WebInspector
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "GObject.Object")
+  (c-name "WebKitWebInspector")
+)
+
+(define-method close
+  (of-object "WebKitWebInspector")
+  (c-name "webkit_web_inspector_close")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_inspected_uri
+  (of-object "WebKitWebInspector")
+  (c-name "webkit_web_inspector_get_inspected_uri")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_web_view
+  (of-object "WebKitWebInspector")
+  (c-name "webkit_web_inspector_get_web_view")
+  (return-type "WebKitWebView*")
+  (parameters
+  )
+)
+
+(define-method show
+  (of-object "WebKitWebInspector")
+  (c-name "webkit_web_inspector_show")
+  (return-type "none")
+  (parameters
+  )
+)
+

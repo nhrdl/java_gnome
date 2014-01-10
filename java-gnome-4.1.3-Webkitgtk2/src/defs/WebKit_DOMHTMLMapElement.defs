@@ -1,0 +1,34 @@
+(define-object DOMHTMLMapElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLMapElement")
+)
+
+(define-method get_areas
+  (of-object "WebKitDOMHTMLMapElement")
+  (c-name "webkit_dom_html_map_element_get_areas")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLMapElement")
+  (c-name "webkit_dom_html_map_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLMapElement")
+  (c-name "webkit_dom_html_map_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

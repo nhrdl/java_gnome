@@ -1,0 +1,43 @@
+(define-object DOMHTMLBaseElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLBaseElement")
+)
+
+(define-method get_href
+  (of-object "WebKitDOMHTMLBaseElement")
+  (c-name "webkit_dom_html_base_element_get_href")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_target
+  (of-object "WebKitDOMHTMLBaseElement")
+  (c-name "webkit_dom_html_base_element_get_target")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_href
+  (of-object "WebKitDOMHTMLBaseElement")
+  (c-name "webkit_dom_html_base_element_set_href")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_target
+  (of-object "WebKitDOMHTMLBaseElement")
+  (c-name "webkit_dom_html_base_element_set_target")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

@@ -1,0 +1,72 @@
+(define-object DOMScreen
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMScreen")
+)
+
+(define-method get_avail_height
+  (of-object "WebKitDOMScreen")
+  (c-name "webkit_dom_screen_get_avail_height")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_avail_left
+  (of-object "WebKitDOMScreen")
+  (c-name "webkit_dom_screen_get_avail_left")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_avail_top
+  (of-object "WebKitDOMScreen")
+  (c-name "webkit_dom_screen_get_avail_top")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_avail_width
+  (of-object "WebKitDOMScreen")
+  (c-name "webkit_dom_screen_get_avail_width")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_color_depth
+  (of-object "WebKitDOMScreen")
+  (c-name "webkit_dom_screen_get_color_depth")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_height
+  (of-object "WebKitDOMScreen")
+  (c-name "webkit_dom_screen_get_height")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_pixel_depth
+  (of-object "WebKitDOMScreen")
+  (c-name "webkit_dom_screen_get_pixel_depth")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMScreen")
+  (c-name "webkit_dom_screen_get_width")
+  (return-type "gulong")
+  (parameters
+  )
+)
+

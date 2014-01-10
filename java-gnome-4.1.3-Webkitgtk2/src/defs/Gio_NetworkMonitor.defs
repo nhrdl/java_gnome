@@ -1,0 +1,43 @@
+(define-object NetworkMonitor
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GNetworkMonitor")
+)
+
+
+
+(define-method can_reach_async
+  (of-object "GNetworkMonitor")
+  (c-name "can_reach_async")
+  (return-type "none")
+  (parameters
+    '("GSocketConnectable*" "pconnectable")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+
+
+
+
+(define-method get_network_available
+  (of-object "GNetworkMonitor")
+  (c-name "g_network_monitor_get_network_available")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+

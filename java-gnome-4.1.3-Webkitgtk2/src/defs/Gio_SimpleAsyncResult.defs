@@ -1,0 +1,224 @@
+(define-object SimpleAsyncResult
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GSimpleAsyncResult")
+)
+
+(define-function SimpleAsyncResult_new
+  (is-constructor-of "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_new")
+  (return-type "GSimpleAsyncResult*")
+  (parameters
+    '("GObject*" "psource_object")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+    '("gpointer" "psource_tag")
+  )
+)
+
+(define-function SimpleAsyncResult_new_error
+  (is-constructor-of "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_new_error")
+  (return-type "GSimpleAsyncResult*")
+  (parameters
+    '("GObject*" "psource_object")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+    '("GQuark" "pdomain")
+    '("gint" "pcode")
+    '("char*" "pformat")
+    '("null" "pnull")
+  )
+)
+
+(define-function SimpleAsyncResult_new_from_error
+  (is-constructor-of "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_new_from_error")
+  (return-type "GSimpleAsyncResult*")
+  (parameters
+    '("GObject*" "psource_object")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+    '("GError*" "perror")
+  )
+)
+
+(define-function SimpleAsyncResult_new_take_error
+  (is-constructor-of "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_new_take_error")
+  (return-type "GSimpleAsyncResult*")
+  (parameters
+    '("GObject*" "psource_object")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+    '("GError*" "perror")
+  )
+)
+
+(define-method complete
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_complete")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method complete_in_idle
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_complete_in_idle")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_op_res_gboolean
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_get_op_res_gboolean")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_op_res_gpointer
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_get_op_res_gpointer")
+  (return-type "gpointer")
+  (parameters
+  )
+)
+
+(define-method get_op_res_gssize
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_get_op_res_gssize")
+  (return-type "gssize")
+  (parameters
+  )
+)
+
+(define-method get_source_tag
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_get_source_tag")
+  (return-type "gpointer")
+  (parameters
+  )
+)
+
+(define-method propagate_error
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_propagate_error")
+  (return-type "gboolean")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method run_in_thread
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_run_in_thread")
+  (return-type "none")
+  (parameters
+    '("GSimpleAsyncThreadFunc" "pfunc")
+    '("int" "pio_priority")
+    '("GCancellable*" "pcancellable")
+  )
+)
+
+(define-method set_check_cancellable
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_set_check_cancellable")
+  (return-type "none")
+  (parameters
+    '("GCancellable*" "pcheck_cancellable")
+  )
+)
+
+(define-method set_error
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_set_error")
+  (return-type "none")
+  (parameters
+    '("GQuark" "pdomain")
+    '("gint" "pcode")
+    '("char*" "pformat")
+    '("null" "pnull")
+  )
+)
+
+(define-method set_error_va
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_set_error_va")
+  (return-type "none")
+  (parameters
+    '("GQuark" "pdomain")
+    '("gint" "pcode")
+    '("char*" "pformat")
+    '("va_list" "pargs")
+  )
+)
+
+(define-method set_from_error
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_set_from_error")
+  (return-type "none")
+  (parameters
+    '("GError*" "perror")
+  )
+)
+
+(define-method set_handle_cancellation
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_set_handle_cancellation")
+  (return-type "none")
+  (parameters
+    '("gboolean" "phandle_cancellation")
+  )
+)
+
+(define-method set_op_res_gboolean
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_set_op_res_gboolean")
+  (return-type "none")
+  (parameters
+    '("gboolean" "pop_res")
+  )
+)
+
+(define-method set_op_res_gpointer
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_set_op_res_gpointer")
+  (return-type "none")
+  (parameters
+    '("gpointer" "pop_res")
+    '("GDestroyNotify" "pdestroy_op_res")
+  )
+)
+
+(define-method set_op_res_gssize
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_set_op_res_gssize")
+  (return-type "none")
+  (parameters
+    '("gssize" "pop_res")
+  )
+)
+
+(define-method take_error
+  (of-object "GSimpleAsyncResult")
+  (c-name "g_simple_async_result_take_error")
+  (return-type "none")
+  (parameters
+    '("GError*" "perror")
+  )
+)
+

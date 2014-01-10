@@ -1,0 +1,42 @@
+(define-object FilterOutputStream
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "OutputStream")
+  (c-name "GFilterOutputStream")
+)
+
+(define-method get_base_stream
+  (of-object "GFilterOutputStream")
+  (c-name "g_filter_output_stream_get_base_stream")
+  (return-type "GOutputStream*")
+  (parameters
+  )
+)
+
+(define-method get_close_base_stream
+  (of-object "GFilterOutputStream")
+  (c-name "g_filter_output_stream_get_close_base_stream")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method set_close_base_stream
+  (of-object "GFilterOutputStream")
+  (c-name "g_filter_output_stream_set_close_base_stream")
+  (return-type "none")
+  (parameters
+    '("gboolean" "pclose_base")
+  )
+)
+

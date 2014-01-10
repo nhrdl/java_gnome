@@ -1,0 +1,141 @@
+(define-object Address
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "SoupAddress")
+)
+
+(define-function Address_new
+  (is-constructor-of "SoupAddress")
+  (c-name "soup_address_new")
+  (return-type "SoupAddress*")
+  (parameters
+    '("const char*" "name")
+    '("guint" "port")
+  )
+)
+
+(define-function Address_new_any
+  (is-constructor-of "SoupAddress")
+  (c-name "soup_address_new_any")
+  (return-type "SoupAddress*")
+  (parameters
+    '("SoupAddressFamily" "family")
+    '("guint" "port")
+  )
+)
+
+(define-function Address_new_from_sockaddr
+  (is-constructor-of "SoupAddress")
+  (c-name "soup_address_new_from_sockaddr")
+  (return-type "SoupAddress*")
+  (parameters
+    '("sockaddr*" "sa")
+    '("int" "len")
+  )
+)
+
+(define-method equal_by_ip
+  (of-object "SoupAddress")
+  (c-name "soup_address_equal_by_ip")
+  (return-type "gboolean")
+  (parameters
+    '("gconstpointer" "addr2")
+  )
+)
+
+(define-method equal_by_name
+  (of-object "SoupAddress")
+  (c-name "soup_address_equal_by_name")
+  (return-type "gboolean")
+  (parameters
+    '("gconstpointer" "addr2")
+  )
+)
+
+(define-method get_gsockaddr
+  (of-object "SoupAddress")
+  (c-name "soup_address_get_gsockaddr")
+  (return-type "GSocketAddress*")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "SoupAddress")
+  (c-name "soup_address_get_name")
+  (return-type "const char*")
+  (parameters
+  )
+)
+
+(define-method get_physical
+  (of-object "SoupAddress")
+  (c-name "soup_address_get_physical")
+  (return-type "const char*")
+  (parameters
+  )
+)
+
+(define-method get_port
+  (of-object "SoupAddress")
+  (c-name "soup_address_get_port")
+  (return-type "guint")
+  (parameters
+  )
+)
+
+(define-method get_sockaddr
+  (of-object "SoupAddress")
+  (c-name "soup_address_get_sockaddr")
+  (return-type "sockaddr*")
+  (parameters
+    '("int*" "len")
+  )
+)
+
+(define-method hash_by_ip
+  (of-object "SoupAddress")
+  (c-name "soup_address_hash_by_ip")
+  (return-type "guint")
+  (parameters
+  )
+)
+
+(define-method hash_by_name
+  (of-object "SoupAddress")
+  (c-name "soup_address_hash_by_name")
+  (return-type "guint")
+  (parameters
+  )
+)
+
+(define-method is_resolved
+  (of-object "SoupAddress")
+  (c-name "soup_address_is_resolved")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method resolve_async
+  (of-object "SoupAddress")
+  (c-name "soup_address_resolve_async")
+  (return-type "none")
+  (parameters
+    '("GMainContext*" "async_context")
+    '("GCancellable*" "cancellable")
+    '("SoupAddressCallback" "callback")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-method resolve_sync
+  (of-object "SoupAddress")
+  (c-name "soup_address_resolve_sync")
+  (return-type "guint")
+  (parameters
+    '("GCancellable*" "cancellable")
+  )
+)
+

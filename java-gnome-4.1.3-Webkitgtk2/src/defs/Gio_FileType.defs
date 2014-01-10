@@ -1,0 +1,14 @@
+(define-enum FileType
+  (in-module "Gio")
+  (c-name "GFileType")
+  (values
+    '("unknown" "G_FILE_TYPE_UNKNOWN")
+    '("regular" "G_FILE_TYPE_REGULAR")
+    '("directory" "G_FILE_TYPE_DIRECTORY")
+    '("symbolic_link" "G_FILE_TYPE_SYMBOLIC_LINK")
+    '("special" "G_FILE_TYPE_SPECIAL")
+    '("shortcut" "G_FILE_TYPE_SHORTCUT")
+    '("mountable" "G_FILE_TYPE_MOUNTABLE")
+  )
+)
+

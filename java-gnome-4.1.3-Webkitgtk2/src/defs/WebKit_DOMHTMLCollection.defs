@@ -1,0 +1,35 @@
+(define-object DOMHTMLCollection
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMHTMLCollection")
+)
+
+(define-method get_length
+  (of-object "WebKitDOMHTMLCollection")
+  (c-name "webkit_dom_html_collection_get_length")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method item
+  (of-object "WebKitDOMHTMLCollection")
+  (c-name "webkit_dom_html_collection_item")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("gulong" "index")
+  )
+)
+
+(define-method named_item
+  (of-object "WebKitDOMHTMLCollection")
+  (c-name "webkit_dom_html_collection_named_item")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("gchar*" "name")
+  )
+)
+

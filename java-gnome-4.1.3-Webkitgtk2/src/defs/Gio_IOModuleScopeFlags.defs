@@ -1,0 +1,9 @@
+(define-enum IOModuleScopeFlags
+  (in-module "Gio")
+  (c-name "GIOModuleScopeFlags")
+  (values
+    '("none" "G_IO_MODULE_SCOPE_NONE")
+    '("block_duplicates" "G_IO_MODULE_SCOPE_BLOCK_DUPLICATES")
+  )
+)
+

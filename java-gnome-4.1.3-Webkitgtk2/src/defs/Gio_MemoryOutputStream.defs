@@ -1,0 +1,61 @@
+(define-object MemoryOutputStream
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "OutputStream")
+  (c-name "GMemoryOutputStream")
+)
+
+(define-function MemoryOutputStream_new
+  (is-constructor-of "GMemoryOutputStream")
+  (c-name "g_memory_output_stream_new")
+  (return-type "GOutputStream*")
+  (parameters
+    '("gpointer" "pdata")
+    '("gsize" "psize")
+    '("GReallocFunc" "prealloc_function")
+    '("GDestroyNotify" "pdestroy_function")
+  )
+)
+
+(define-method get_data
+  (of-object "GMemoryOutputStream")
+  (c-name "g_memory_output_stream_get_data")
+  (return-type "gpointer")
+  (parameters
+  )
+)
+
+(define-method get_data_size
+  (of-object "GMemoryOutputStream")
+  (c-name "g_memory_output_stream_get_data_size")
+  (return-type "gsize")
+  (parameters
+  )
+)
+
+(define-method get_size
+  (of-object "GMemoryOutputStream")
+  (c-name "g_memory_output_stream_get_size")
+  (return-type "gsize")
+  (parameters
+  )
+)
+
+(define-method steal_data
+  (of-object "GMemoryOutputStream")
+  (c-name "g_memory_output_stream_steal_data")
+  (return-type "gpointer")
+  (parameters
+  )
+)
+

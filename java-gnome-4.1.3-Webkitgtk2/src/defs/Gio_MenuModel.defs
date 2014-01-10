@@ -1,0 +1,73 @@
+(define-object MenuModel
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GMenuModel")
+)
+
+(define-method get_item_attribute_value
+  (of-object "GMenuModel")
+  (c-name "get_item_attribute_value")
+  (return-type "GVariant*")
+  (parameters
+    '("gint" "pitem_index")
+    '("gchar*" "pattribute")
+    '("GVariantType*" "pexpected_type")
+  )
+)
+
+(define-method get_item_attributes
+  (of-object "GMenuModel")
+  (c-name "get_item_attributes")
+  (return-type "none")
+  (parameters
+    '("gint" "pitem_index")
+    '("GHashTable**" "pattributes")
+  )
+)
+
+
+(define-method get_item_links
+  (of-object "GMenuModel")
+  (c-name "get_item_links")
+  (return-type "none")
+  (parameters
+    '("gint" "pitem_index")
+    '("GHashTable**" "plinks")
+  )
+)
+
+
+(define-method get_item_attribute
+  (of-object "GMenuModel")
+  (c-name "g_menu_model_get_item_attribute")
+  (return-type "gboolean")
+  (parameters
+    '("gint" "pitem_index")
+    '("gchar*" "pattribute")
+    '("gchar*" "pformat_string")
+    '("null" "pnull")
+  )
+)
+
+(define-method items_changed
+  (of-object "GMenuModel")
+  (c-name "g_menu_model_items_changed")
+  (return-type "none")
+  (parameters
+    '("gint" "pposition")
+    '("gint" "premoved")
+    '("gint" "padded")
+  )
+)
+

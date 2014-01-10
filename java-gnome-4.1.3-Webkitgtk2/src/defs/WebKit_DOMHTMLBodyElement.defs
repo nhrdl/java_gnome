@@ -1,0 +1,111 @@
+(define-object DOMHTMLBodyElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLBodyElement")
+)
+
+(define-method get_a_link
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_get_a_link")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_background
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_get_background")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_bg_color
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_get_bg_color")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_link
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_get_link")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_text
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_get_text")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_v_link
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_get_v_link")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_a_link
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_set_a_link")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_background
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_set_background")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_bg_color
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_set_bg_color")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_link
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_set_link")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_text
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_set_text")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_v_link
+  (of-object "WebKitDOMHTMLBodyElement")
+  (c-name "webkit_dom_html_body_element_set_v_link")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

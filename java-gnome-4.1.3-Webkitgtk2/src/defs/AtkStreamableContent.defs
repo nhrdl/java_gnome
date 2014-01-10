@@ -1,0 +1,69 @@
+(define-interface StreamableContent
+  (in-module "Atk")
+  (c-name "AtkStreamableContent")
+  (gtype-id "ATK_TYPE_STREAMABLE_CONTENT")
+)
+
+(define-method get_n_mime_types
+  (of-object "AtkStreamableContent")
+  (c-name "atk_streamable_content_get_n_mime_types")
+  (return-type "gint")
+)
+
+(define-method get_mime_type
+  (of-object "AtkStreamableContent")
+  (c-name "atk_streamable_content_get_mime_type")
+  (return-type "const-gchar*")
+  (parameters
+    '("gint" "i")
+  )
+)
+
+(define-method get_stream
+  (of-object "AtkStreamableContent")
+  (c-name "atk_streamable_content_get_stream")
+  (return-type "GIOChannel*")
+  (parameters
+    '("const-gchar*" "mime_type")
+  )
+)
+
+(define-method get_uri
+  (of-object "AtkStreamableContent")
+  (c-name "atk_streamable_content_get_uri")
+  (caller-owns-return #t)
+  (return-type "gchar*")
+  (parameters
+    '("const-gchar*" "mime_type")
+  )
+)
+
+(define-virtual get_n_mime_types
+  (of-object "AtkStreamableContent")
+  (return-type "gint")
+)
+
+(define-virtual get_mime_type
+  (of-object "AtkStreamableContent")
+  (return-type "const-gchar*")
+  (parameters
+    '("gint" "i")
+  )
+)
+
+(define-virtual get_stream
+  (of-object "AtkStreamableContent")
+  (return-type "GIOChannel*")
+  (parameters
+    '("const-gchar*" "mime_type")
+  )
+)
+
+(define-virtual get_uri
+  (of-object "AtkStreamableContent")
+  (return-type "G_CONST_RETURNgchar*")
+  (parameters
+    '("const-gchar*" "mime_type")
+  )
+)
+

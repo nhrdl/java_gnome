@@ -1,0 +1,15 @@
+(define-object WebResource
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (parent "GObject.Object")
+  (c-name "WebKitWebResource")
+)
+
+(define-method get_data
+  (of-object "WebKitWebResource")
+  (c-name "webkit_web_resource_get_data")
+  (return-type "GString*")
+  (parameters
+  )
+)
+

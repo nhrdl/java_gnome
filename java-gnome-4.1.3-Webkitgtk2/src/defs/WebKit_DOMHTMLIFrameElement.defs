@@ -1,0 +1,212 @@
+(define-object DOMHTMLIFrameElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLIFrameElement")
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_content_document
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_content_document")
+  (return-type "WebKitDOMDocument*")
+  (parameters
+  )
+)
+
+(define-method get_content_window
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_content_window")
+  (return-type "WebKitDOMDOMWindow*")
+  (parameters
+  )
+)
+
+(define-method get_frame_border
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_frame_border")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_height
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_height")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_long_desc
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_long_desc")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_margin_height
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_margin_height")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_margin_width
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_margin_width")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_sandbox
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_sandbox")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_scrolling
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_scrolling")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_src
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_src")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_get_width")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_frame_border
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_set_frame_border")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_height
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_set_height")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_long_desc
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_set_long_desc")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_margin_height
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_set_margin_height")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_margin_width
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_set_margin_width")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_sandbox
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_set_sandbox")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_scrolling
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_set_scrolling")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_src
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_set_src")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLIFrameElement")
+  (c-name "webkit_dom_html_iframe_element_set_width")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

@@ -1,0 +1,10 @@
+(define-enum CookieJarAcceptPolicy
+  (in-module "Soup")
+  (c-name "SoupCookieJarAcceptPolicy")
+  (values
+    '("always" "SOUP_COOKIE_JAR_ACCEPT_ALWAYS")
+    '("never" "SOUP_COOKIE_JAR_ACCEPT_NEVER")
+    '("no_third_party" "SOUP_COOKIE_JAR_ACCEPT_NO_THIRD_PARTY")
+  )
+)
+

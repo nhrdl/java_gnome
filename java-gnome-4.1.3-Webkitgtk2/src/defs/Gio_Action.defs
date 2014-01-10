@@ -1,0 +1,71 @@
+(define-object Action
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GAction")
+)
+
+(define-method activate
+  (of-object "GAction")
+  (c-name "activate")
+  (return-type "none")
+  (parameters
+    '("GVariant*" "pparameter")
+  )
+)
+
+(define-method change_state
+  (of-object "GAction")
+  (c-name "change_state")
+  (return-type "none")
+  (parameters
+    '("GVariant*" "pvalue")
+  )
+)
+
+
+
+
+
+(define-method get_parameter_type
+  (of-object "GAction")
+  (c-name "get_parameter_type")
+  (return-type "GVariantType*")
+  (parameters
+  )
+)
+
+(define-method get_state
+  (of-object "GAction")
+  (c-name "get_state")
+  (return-type "GVariant*")
+  (parameters
+  )
+)
+
+(define-method get_state_hint
+  (of-object "GAction")
+  (c-name "get_state_hint")
+  (return-type "GVariant*")
+  (parameters
+  )
+)
+
+(define-method get_state_type
+  (of-object "GAction")
+  (c-name "get_state_type")
+  (return-type "GVariantType*")
+  (parameters
+  )
+)
+

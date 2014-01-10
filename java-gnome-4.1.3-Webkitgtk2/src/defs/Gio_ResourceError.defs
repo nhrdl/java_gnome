@@ -1,0 +1,9 @@
+(define-enum ResourceError
+  (in-module "Gio")
+  (c-name "GResourceError")
+  (values
+    '("not_found" "G_RESOURCE_ERROR_NOT_FOUND")
+    '("internal" "G_RESOURCE_ERROR_INTERNAL")
+  )
+)
+

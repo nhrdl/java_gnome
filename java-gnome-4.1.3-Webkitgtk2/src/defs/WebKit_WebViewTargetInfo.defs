@@ -1,0 +1,12 @@
+(define-enum WebViewTargetInfo
+  (in-module "WebKit")
+  (c-name "WebKitWebViewTargetInfo")
+  (values
+    '("html" "WEBKIT_WEB_VIEW_TARGET_INFO_HTML")
+    '("text" "WEBKIT_WEB_VIEW_TARGET_INFO_TEXT")
+    '("image" "WEBKIT_WEB_VIEW_TARGET_INFO_IMAGE")
+    '("uri_list" "WEBKIT_WEB_VIEW_TARGET_INFO_URI_LIST")
+    '("netscape_url" "WEBKIT_WEB_VIEW_TARGET_INFO_NETSCAPE_URL")
+  )
+)
+

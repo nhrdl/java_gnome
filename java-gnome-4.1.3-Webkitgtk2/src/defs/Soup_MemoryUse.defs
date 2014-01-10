@@ -1,0 +1,11 @@
+(define-enum MemoryUse
+  (in-module "Soup")
+  (c-name "SoupMemoryUse")
+  (values
+    '("static" "SOUP_MEMORY_STATIC")
+    '("take" "SOUP_MEMORY_TAKE")
+    '("copy" "SOUP_MEMORY_COPY")
+    '("temporary" "SOUP_MEMORY_TEMPORARY")
+  )
+)
+

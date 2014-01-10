@@ -1,0 +1,154 @@
+(define-object Socket
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "SoupSocket")
+)
+
+(define-function Socket_new
+  (is-constructor-of "SoupSocket")
+  (c-name "soup_socket_new")
+  (return-type "SoupSocket*")
+  (parameters
+    '("const char*" "optname1")
+    '("null" "null")
+  )
+)
+
+(define-method connect_async
+  (of-object "SoupSocket")
+  (c-name "soup_socket_connect_async")
+  (return-type "none")
+  (parameters
+    '("GCancellable*" "cancellable")
+    '("SoupSocketCallback" "callback")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-method connect_sync
+  (of-object "SoupSocket")
+  (c-name "soup_socket_connect_sync")
+  (return-type "guint")
+  (parameters
+    '("GCancellable*" "cancellable")
+  )
+)
+
+(define-method disconnect
+  (of-object "SoupSocket")
+  (c-name "soup_socket_disconnect")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_fd
+  (of-object "SoupSocket")
+  (c-name "soup_socket_get_fd")
+  (return-type "int")
+  (parameters
+  )
+)
+
+(define-method get_local_address
+  (of-object "SoupSocket")
+  (c-name "soup_socket_get_local_address")
+  (return-type "SoupAddress*")
+  (parameters
+  )
+)
+
+(define-method get_remote_address
+  (of-object "SoupSocket")
+  (c-name "soup_socket_get_remote_address")
+  (return-type "SoupAddress*")
+  (parameters
+  )
+)
+
+(define-method is_connected
+  (of-object "SoupSocket")
+  (c-name "soup_socket_is_connected")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method is_ssl
+  (of-object "SoupSocket")
+  (c-name "soup_socket_is_ssl")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method listen
+  (of-object "SoupSocket")
+  (c-name "soup_socket_listen")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method read
+  (of-object "SoupSocket")
+  (c-name "soup_socket_read")
+  (return-type "SoupSocketIOStatus")
+  (parameters
+    '("gpointer" "buffer")
+    '("gsize" "len")
+    '("gsize*" "nread")
+    '("GCancellable*" "cancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method read_until
+  (of-object "SoupSocket")
+  (c-name "soup_socket_read_until")
+  (return-type "SoupSocketIOStatus")
+  (parameters
+    '("gpointer" "buffer")
+    '("gsize" "len")
+    '("gconstpointer" "boundary")
+    '("gsize" "boundary_len")
+    '("gsize*" "nread")
+    '("gboolean*" "got_boundary")
+    '("GCancellable*" "cancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method start_proxy_ssl
+  (of-object "SoupSocket")
+  (c-name "soup_socket_start_proxy_ssl")
+  (return-type "gboolean")
+  (parameters
+    '("const char*" "ssl_host")
+    '("GCancellable*" "cancellable")
+  )
+)
+
+(define-method start_ssl
+  (of-object "SoupSocket")
+  (c-name "soup_socket_start_ssl")
+  (return-type "gboolean")
+  (parameters
+    '("GCancellable*" "cancellable")
+  )
+)
+
+(define-method write
+  (of-object "SoupSocket")
+  (c-name "soup_socket_write")
+  (return-type "SoupSocketIOStatus")
+  (parameters
+    '("gconstpointer" "buffer")
+    '("gsize" "len")
+    '("gsize*" "nwrote")
+    '("GCancellable*" "cancellable")
+    '("GError**" "error")
+  )
+)
+

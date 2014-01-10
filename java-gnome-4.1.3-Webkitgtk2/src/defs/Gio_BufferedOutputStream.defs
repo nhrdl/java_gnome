@@ -1,0 +1,70 @@
+(define-object BufferedOutputStream
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "FilterOutputStream")
+  (c-name "GBufferedOutputStream")
+)
+
+(define-function BufferedOutputStream_new
+  (is-constructor-of "GBufferedOutputStream")
+  (c-name "g_buffered_output_stream_new")
+  (return-type "GOutputStream*")
+  (parameters
+    '("GOutputStream*" "pbase_stream")
+  )
+)
+
+(define-function BufferedOutputStream_new_sized
+  (is-constructor-of "GBufferedOutputStream")
+  (c-name "g_buffered_output_stream_new_sized")
+  (return-type "GOutputStream*")
+  (parameters
+    '("GOutputStream*" "pbase_stream")
+    '("gsize" "psize")
+  )
+)
+
+(define-method get_auto_grow
+  (of-object "GBufferedOutputStream")
+  (c-name "g_buffered_output_stream_get_auto_grow")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_buffer_size
+  (of-object "GBufferedOutputStream")
+  (c-name "g_buffered_output_stream_get_buffer_size")
+  (return-type "gsize")
+  (parameters
+  )
+)
+
+(define-method set_auto_grow
+  (of-object "GBufferedOutputStream")
+  (c-name "g_buffered_output_stream_set_auto_grow")
+  (return-type "none")
+  (parameters
+    '("gboolean" "pauto_grow")
+  )
+)
+
+(define-method set_buffer_size
+  (of-object "GBufferedOutputStream")
+  (c-name "g_buffered_output_stream_set_buffer_size")
+  (return-type "none")
+  (parameters
+    '("gsize" "psize")
+  )
+)
+

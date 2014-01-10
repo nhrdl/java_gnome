@@ -1,0 +1,25 @@
+(define-object DOMStyleSheetList
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMStyleSheetList")
+)
+
+(define-method get_length
+  (of-object "WebKitDOMStyleSheetList")
+  (c-name "webkit_dom_style_sheet_list_get_length")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method item
+  (of-object "WebKitDOMStyleSheetList")
+  (c-name "webkit_dom_style_sheet_list_item")
+  (return-type "WebKitDOMStyleSheet*")
+  (parameters
+    '("gulong" "index")
+  )
+)
+

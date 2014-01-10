@@ -1,0 +1,66 @@
+(define-object Cache
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "SoupCache")
+)
+
+(define-function Cache_new
+  (is-constructor-of "SoupCache")
+  (c-name "soup_cache_new")
+  (return-type "SoupCache*")
+  (parameters
+    '("const char*" "cache_dir")
+    '("SoupCacheType" "cache_type")
+  )
+)
+
+(define-method clear
+  (of-object "SoupCache")
+  (c-name "soup_cache_clear")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method dump
+  (of-object "SoupCache")
+  (c-name "soup_cache_dump")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method flush
+  (of-object "SoupCache")
+  (c-name "soup_cache_flush")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_max_size
+  (of-object "SoupCache")
+  (c-name "soup_cache_get_max_size")
+  (return-type "guint")
+  (parameters
+  )
+)
+
+(define-method load
+  (of-object "SoupCache")
+  (c-name "soup_cache_load")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method set_max_size
+  (of-object "SoupCache")
+  (c-name "soup_cache_set_max_size")
+  (return-type "none")
+  (parameters
+    '("guint" "max_size")
+  )
+)
+

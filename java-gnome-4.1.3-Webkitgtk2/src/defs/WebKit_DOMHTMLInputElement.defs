@@ -1,0 +1,717 @@
+(define-object DOMHTMLInputElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLInputElement")
+)
+
+(define-method check_validity
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_check_validity")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_accept
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_accept")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_alt
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_alt")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_autocomplete
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_autocomplete")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_autofocus
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_autofocus")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_checked
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_checked")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_default_checked
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_default_checked")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_default_value
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_default_value")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_dir_name
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_dir_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_disabled
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_disabled")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_files
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_files")
+  (return-type "WebKitDOMFileList*")
+  (parameters
+  )
+)
+
+(define-method get_form
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_form")
+  (return-type "WebKitDOMHTMLFormElement*")
+  (parameters
+  )
+)
+
+(define-method get_form_action
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_form_action")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_form_enctype
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_form_enctype")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_form_method
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_form_method")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_form_no_validate
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_form_no_validate")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_form_target
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_form_target")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_incremental
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_incremental")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_indeterminate
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_indeterminate")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_labels
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_labels")
+  (return-type "WebKitDOMNodeList*")
+  (parameters
+  )
+)
+
+(define-method get_list
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_list")
+  (return-type "WebKitDOMHTMLElement*")
+  (parameters
+  )
+)
+
+(define-method get_max
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_max")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_max_length
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_max_length")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_min
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_min")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_multiple
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_multiple")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_pattern
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_pattern")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_placeholder
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_placeholder")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_read_only
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_read_only")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_required
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_required")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+
+(define-method get_size
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_size")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_src
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_src")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_step
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_step")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_use_map
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_use_map")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_validation_message
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_validation_message")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_validity
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_validity")
+  (return-type "WebKitDOMValidityState*")
+  (parameters
+  )
+)
+
+(define-method get_value
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_value")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_value_as_number
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_value_as_number")
+  (return-type "gdouble")
+  (parameters
+  )
+)
+
+(define-method get_webkit_grammar
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_webkit_grammar")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_webkit_speech
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_webkit_speech")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_webkitdirectory
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_webkitdirectory")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_will_validate
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_get_will_validate")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method is_edited
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_is_edited")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method select
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_select")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method set_accept
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_accept")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_alt
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_alt")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_autocomplete
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_autocomplete")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_autofocus
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_autofocus")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_checked
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_checked")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_custom_validity
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_custom_validity")
+  (return-type "none")
+  (parameters
+    '("gchar*" "error")
+  )
+)
+
+(define-method set_default_checked
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_default_checked")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_default_value
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_default_value")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_dir_name
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_dir_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_disabled
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_disabled")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_form_action
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_form_action")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_form_enctype
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_form_enctype")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_form_method
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_form_method")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_form_no_validate
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_form_no_validate")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_form_target
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_form_target")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_incremental
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_incremental")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_indeterminate
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_indeterminate")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_max
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_max")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_max_length
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_max_length")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_min
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_min")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_multiple
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_multiple")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_pattern
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_pattern")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_placeholder
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_placeholder")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_read_only
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_read_only")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_required
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_required")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+
+(define-method set_src
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_src")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_step
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_step")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_use_map
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_use_map")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_value
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_value")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_value_as_number
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_value_as_number")
+  (return-type "none")
+  (parameters
+    '("gdouble" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_value_for_user
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_value_for_user")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_webkit_grammar
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_webkit_grammar")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_webkit_speech
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_webkit_speech")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_webkitdirectory
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_set_webkitdirectory")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method step_down
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_step_down")
+  (return-type "none")
+  (parameters
+    '("glong" "n")
+    '("GError**" "error")
+  )
+)
+
+(define-method step_up
+  (of-object "WebKitDOMHTMLInputElement")
+  (c-name "webkit_dom_html_input_element_step_up")
+  (return-type "none")
+  (parameters
+    '("glong" "n")
+    '("GError**" "error")
+  )
+)
+

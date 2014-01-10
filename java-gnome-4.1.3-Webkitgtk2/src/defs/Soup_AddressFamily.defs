@@ -1,0 +1,10 @@
+(define-enum AddressFamily
+  (in-module "Soup")
+  (c-name "SoupAddressFamily")
+  (values
+    '("invalid" "SOUP_ADDRESS_FAMILY_INVALID")
+    '("ipv4" "SOUP_ADDRESS_FAMILY_IPV4")
+    '("ipv6" "SOUP_ADDRESS_FAMILY_IPV6")
+  )
+)
+

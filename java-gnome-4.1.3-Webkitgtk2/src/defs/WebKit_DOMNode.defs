@@ -1,0 +1,332 @@
+(define-object DOMNode
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMNode")
+)
+
+(define-method append_child
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_append_child")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("WebKitDOMNode*" "new_child")
+    '("GError**" "error")
+  )
+)
+
+(define-method clone_node
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_clone_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("gboolean" "deep")
+  )
+)
+
+(define-method compare_document_position
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_compare_document_position")
+  (return-type "gushort")
+  (parameters
+    '("WebKitDOMNode*" "other")
+  )
+)
+
+(define-method contains
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_contains")
+  (return-type "gboolean")
+  (parameters
+    '("WebKitDOMNode*" "other")
+  )
+)
+
+(define-method dispatch_event
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_dispatch_event")
+  (return-type "gboolean")
+  (parameters
+    '("WebKitDOMEvent*" "event")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_attributes
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_attributes")
+  (return-type "WebKitDOMNamedNodeMap*")
+  (parameters
+  )
+)
+
+(define-method get_base_uri
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_base_uri")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_child_nodes
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_child_nodes")
+  (return-type "WebKitDOMNodeList*")
+  (parameters
+  )
+)
+
+(define-method get_first_child
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_first_child")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_last_child
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_last_child")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_local_name
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_local_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_namespace_uri
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_namespace_uri")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_next_sibling
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_next_sibling")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_node_name
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_node_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_node_type
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_node_type")
+  (return-type "gushort")
+  (parameters
+  )
+)
+
+(define-method get_node_value
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_node_value")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_owner_document
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_owner_document")
+  (return-type "WebKitDOMDocument*")
+  (parameters
+  )
+)
+
+(define-method get_parent_element
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_parent_element")
+  (return-type "WebKitDOMElement*")
+  (parameters
+  )
+)
+
+(define-method get_parent_node
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_parent_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_prefix
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_prefix")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_previous_sibling
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_previous_sibling")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_text_content
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_get_text_content")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method has_attributes
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_has_attributes")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method has_child_nodes
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_has_child_nodes")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method insert_before
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_insert_before")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("WebKitDOMNode*" "new_child")
+    '("WebKitDOMNode*" "ref_child")
+    '("GError**" "error")
+  )
+)
+
+(define-method is_default_namespace
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_is_default_namespace")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "namespace_uri")
+  )
+)
+
+(define-method is_equal_node
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_is_equal_node")
+  (return-type "gboolean")
+  (parameters
+    '("WebKitDOMNode*" "other")
+  )
+)
+
+(define-method is_same_node
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_is_same_node")
+  (return-type "gboolean")
+  (parameters
+    '("WebKitDOMNode*" "other")
+  )
+)
+
+(define-method is_supported
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_is_supported")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "feature")
+    '("gchar*" "version")
+  )
+)
+
+(define-method lookup_namespace_uri
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_lookup_namespace_uri")
+  (return-type "gchar*")
+  (parameters
+    '("gchar*" "prefix")
+  )
+)
+
+(define-method lookup_prefix
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_lookup_prefix")
+  (return-type "gchar*")
+  (parameters
+    '("gchar*" "namespace_uri")
+  )
+)
+
+(define-method normalize
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_normalize")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method remove_child
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_remove_child")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("WebKitDOMNode*" "old_child")
+    '("GError**" "error")
+  )
+)
+
+(define-method replace_child
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_replace_child")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("WebKitDOMNode*" "new_child")
+    '("WebKitDOMNode*" "old_child")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_node_value
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_set_node_value")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_prefix
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_set_prefix")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_text_content
+  (of-object "WebKitDOMNode")
+  (c-name "webkit_dom_node_set_text_content")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+

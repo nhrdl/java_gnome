@@ -1,0 +1,82 @@
+(define-object DOMNodeIterator
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMNodeIterator")
+)
+
+(define-method detach
+  (of-object "WebKitDOMNodeIterator")
+  (c-name "webkit_dom_node_iterator_detach")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_expand_entity_references
+  (of-object "WebKitDOMNodeIterator")
+  (c-name "webkit_dom_node_iterator_get_expand_entity_references")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_filter
+  (of-object "WebKitDOMNodeIterator")
+  (c-name "webkit_dom_node_iterator_get_filter")
+  (return-type "WebKitDOMNodeFilter*")
+  (parameters
+  )
+)
+
+(define-method get_pointer_before_reference_node
+  (of-object "WebKitDOMNodeIterator")
+  (c-name "webkit_dom_node_iterator_get_pointer_before_reference_node")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_reference_node
+  (of-object "WebKitDOMNodeIterator")
+  (c-name "webkit_dom_node_iterator_get_reference_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_root
+  (of-object "WebKitDOMNodeIterator")
+  (c-name "webkit_dom_node_iterator_get_root")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_what_to_show
+  (of-object "WebKitDOMNodeIterator")
+  (c-name "webkit_dom_node_iterator_get_what_to_show")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method next_node
+  (of-object "WebKitDOMNodeIterator")
+  (c-name "webkit_dom_node_iterator_next_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method previous_node
+  (of-object "WebKitDOMNodeIterator")
+  (c-name "webkit_dom_node_iterator_previous_node")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("GError**" "error")
+  )
+)
+

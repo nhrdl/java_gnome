@@ -1,0 +1,255 @@
+(define-object DOMHTMLTableCellElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLTableCellElement")
+)
+
+(define-method get_abbr
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_abbr")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_axis
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_axis")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_bg_color
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_bg_color")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_cell_index
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_cell_index")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_ch
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_ch")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_ch_off
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_ch_off")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_col_span
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_col_span")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_headers
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_headers")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_height
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_height")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_no_wrap
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_no_wrap")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_row_span
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_row_span")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_scope
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_scope")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_v_align
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_v_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_get_width")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_abbr
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_abbr")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_axis
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_axis")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_bg_color
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_bg_color")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_ch
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_ch")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_ch_off
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_ch_off")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_col_span
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_col_span")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_headers
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_headers")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_height
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_height")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_no_wrap
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_no_wrap")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_row_span
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_row_span")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_scope
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_scope")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_v_align
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_v_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLTableCellElement")
+  (c-name "webkit_dom_html_table_cell_element_set_width")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

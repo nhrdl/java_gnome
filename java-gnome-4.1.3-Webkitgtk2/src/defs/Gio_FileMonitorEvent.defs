@@ -1,0 +1,15 @@
+(define-enum FileMonitorEvent
+  (in-module "Gio")
+  (c-name "GFileMonitorEvent")
+  (values
+    '("changed" "G_FILE_MONITOR_EVENT_CHANGED")
+    '("changes_done_hint" "G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT")
+    '("deleted" "G_FILE_MONITOR_EVENT_DELETED")
+    '("created" "G_FILE_MONITOR_EVENT_CREATED")
+    '("attribute_changed" "G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED")
+    '("pre_unmount" "G_FILE_MONITOR_EVENT_PRE_UNMOUNT")
+    '("unmounted" "G_FILE_MONITOR_EVENT_UNMOUNTED")
+    '("moved" "G_FILE_MONITOR_EVENT_MOVED")
+  )
+)
+

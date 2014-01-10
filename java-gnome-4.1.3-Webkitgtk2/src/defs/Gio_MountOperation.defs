@@ -1,0 +1,127 @@
+(define-object MountOperation
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GMountOperation")
+)
+
+(define-function MountOperation_new
+  (is-constructor-of "GMountOperation")
+  (c-name "g_mount_operation_new")
+  (return-type "GMountOperation*")
+  (parameters
+  )
+)
+
+(define-method get_anonymous
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_get_anonymous")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_choice
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_get_choice")
+  (return-type "int")
+  (parameters
+  )
+)
+
+(define-method get_domain
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_get_domain")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method get_password
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_get_password")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method get_password_save
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_get_password_save")
+  (return-type "GPasswordSave")
+  (parameters
+  )
+)
+
+(define-method get_username
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_get_username")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method set_anonymous
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_set_anonymous")
+  (return-type "none")
+  (parameters
+    '("gboolean" "panonymous")
+  )
+)
+
+(define-method set_choice
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_set_choice")
+  (return-type "none")
+  (parameters
+    '("int" "pchoice")
+  )
+)
+
+(define-method set_domain
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_set_domain")
+  (return-type "none")
+  (parameters
+    '("char*" "pdomain")
+  )
+)
+
+(define-method set_password
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_set_password")
+  (return-type "none")
+  (parameters
+    '("char*" "ppassword")
+  )
+)
+
+(define-method set_password_save
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_set_password_save")
+  (return-type "none")
+  (parameters
+    '("GPasswordSave" "psave")
+  )
+)
+
+(define-method set_username
+  (of-object "GMountOperation")
+  (c-name "g_mount_operation_set_username")
+  (return-type "none")
+  (parameters
+    '("char*" "pusername")
+  )
+)
+

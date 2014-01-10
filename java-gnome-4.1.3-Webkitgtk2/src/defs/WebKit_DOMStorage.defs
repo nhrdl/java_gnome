@@ -1,0 +1,6 @@
+(define-object DOMStorage
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMStorage")
+)

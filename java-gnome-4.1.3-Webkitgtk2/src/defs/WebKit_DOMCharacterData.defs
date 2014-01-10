@@ -1,0 +1,89 @@
+(define-object DOMCharacterData
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMNode")
+  (c-name "WebKitDOMCharacterData")
+)
+
+(define-method append_data
+  (of-object "WebKitDOMCharacterData")
+  (c-name "webkit_dom_character_data_append_data")
+  (return-type "none")
+  (parameters
+    '("gchar*" "data")
+    '("GError**" "error")
+  )
+)
+
+(define-method delete_data
+  (of-object "WebKitDOMCharacterData")
+  (c-name "webkit_dom_character_data_delete_data")
+  (return-type "none")
+  (parameters
+    '("gulong" "offset")
+    '("gulong" "length")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_data
+  (of-object "WebKitDOMCharacterData")
+  (c-name "webkit_dom_character_data_get_data")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_length
+  (of-object "WebKitDOMCharacterData")
+  (c-name "webkit_dom_character_data_get_length")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method insert_data
+  (of-object "WebKitDOMCharacterData")
+  (c-name "webkit_dom_character_data_insert_data")
+  (return-type "none")
+  (parameters
+    '("gulong" "offset")
+    '("gchar*" "data")
+    '("GError**" "error")
+  )
+)
+
+(define-method replace_data
+  (of-object "WebKitDOMCharacterData")
+  (c-name "webkit_dom_character_data_replace_data")
+  (return-type "none")
+  (parameters
+    '("gulong" "offset")
+    '("gulong" "length")
+    '("gchar*" "data")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_data
+  (of-object "WebKitDOMCharacterData")
+  (c-name "webkit_dom_character_data_set_data")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method substring_data
+  (of-object "WebKitDOMCharacterData")
+  (c-name "webkit_dom_character_data_substring_data")
+  (return-type "gchar*")
+  (parameters
+    '("gulong" "offset")
+    '("gulong" "length")
+    '("GError**" "error")
+  )
+)
+

@@ -1,0 +1,85 @@
+(define-object DOMNamedNodeMap
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMNamedNodeMap")
+)
+
+(define-method get_length
+  (of-object "WebKitDOMNamedNodeMap")
+  (c-name "webkit_dom_named_node_map_get_length")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_named_item
+  (of-object "WebKitDOMNamedNodeMap")
+  (c-name "webkit_dom_named_node_map_get_named_item")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("gchar*" "name")
+  )
+)
+
+(define-method get_named_item_ns
+  (of-object "WebKitDOMNamedNodeMap")
+  (c-name "webkit_dom_named_node_map_get_named_item_ns")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("gchar*" "namespace_uri")
+    '("gchar*" "local_name")
+  )
+)
+
+(define-method item
+  (of-object "WebKitDOMNamedNodeMap")
+  (c-name "webkit_dom_named_node_map_item")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("gulong" "index")
+  )
+)
+
+(define-method remove_named_item
+  (of-object "WebKitDOMNamedNodeMap")
+  (c-name "webkit_dom_named_node_map_remove_named_item")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("gchar*" "name")
+    '("GError**" "error")
+  )
+)
+
+(define-method remove_named_item_ns
+  (of-object "WebKitDOMNamedNodeMap")
+  (c-name "webkit_dom_named_node_map_remove_named_item_ns")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("gchar*" "namespace_uri")
+    '("gchar*" "local_name")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_named_item
+  (of-object "WebKitDOMNamedNodeMap")
+  (c-name "webkit_dom_named_node_map_set_named_item")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("WebKitDOMNode*" "node")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_named_item_ns
+  (of-object "WebKitDOMNamedNodeMap")
+  (c-name "webkit_dom_named_node_map_set_named_item_ns")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("WebKitDOMNode*" "node")
+    '("GError**" "error")
+  )
+)
+

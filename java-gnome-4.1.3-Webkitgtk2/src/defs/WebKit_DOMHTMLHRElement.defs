@@ -1,0 +1,77 @@
+(define-object DOMHTMLHRElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLHRElement")
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLHRElement")
+  (c-name "webkit_dom_htmlhr_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_no_shade
+  (of-object "WebKitDOMHTMLHRElement")
+  (c-name "webkit_dom_htmlhr_element_get_no_shade")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_size
+  (of-object "WebKitDOMHTMLHRElement")
+  (c-name "webkit_dom_htmlhr_element_get_size")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLHRElement")
+  (c-name "webkit_dom_htmlhr_element_get_width")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLHRElement")
+  (c-name "webkit_dom_htmlhr_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_no_shade
+  (of-object "WebKitDOMHTMLHRElement")
+  (c-name "webkit_dom_htmlhr_element_set_no_shade")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_size
+  (of-object "WebKitDOMHTMLHRElement")
+  (c-name "webkit_dom_htmlhr_element_set_size")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLHRElement")
+  (c-name "webkit_dom_htmlhr_element_set_width")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

@@ -1,0 +1,138 @@
+(define-object DOMHTMLTableRowElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLTableRowElement")
+)
+
+(define-method delete_cell
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_delete_cell")
+  (return-type "none")
+  (parameters
+    '("glong" "index")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_bg_color
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_get_bg_color")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_cells
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_get_cells")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_ch
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_get_ch")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_ch_off
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_get_ch_off")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_row_index
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_get_row_index")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_section_row_index
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_get_section_row_index")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_v_align
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_get_v_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method insert_cell
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_insert_cell")
+  (return-type "WebKitDOMHTMLElement*")
+  (parameters
+    '("glong" "index")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_bg_color
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_set_bg_color")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_ch
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_set_ch")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_ch_off
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_set_ch_off")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_v_align
+  (of-object "WebKitDOMHTMLTableRowElement")
+  (c-name "webkit_dom_html_table_row_element_set_v_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

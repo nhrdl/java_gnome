@@ -1,0 +1,10 @@
+(define-enum MessageHeadersType
+  (in-module "Soup")
+  (c-name "SoupMessageHeadersType")
+  (values
+    '("request" "SOUP_MESSAGE_HEADERS_REQUEST")
+    '("response" "SOUP_MESSAGE_HEADERS_RESPONSE")
+    '("multipart" "SOUP_MESSAGE_HEADERS_MULTIPART")
+  )
+)
+

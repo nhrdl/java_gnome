@@ -1,0 +1,12 @@
+(define-enum DriveStartStopType
+  (in-module "Gio")
+  (c-name "GDriveStartStopType")
+  (values
+    '("unknown" "G_DRIVE_START_STOP_TYPE_UNKNOWN")
+    '("shutdown" "G_DRIVE_START_STOP_TYPE_SHUTDOWN")
+    '("network" "G_DRIVE_START_STOP_TYPE_NETWORK")
+    '("multidisk" "G_DRIVE_START_STOP_TYPE_MULTIDISK")
+    '("password" "G_DRIVE_START_STOP_TYPE_PASSWORD")
+  )
+)
+

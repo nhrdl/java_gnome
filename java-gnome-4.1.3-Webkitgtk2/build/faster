@@ -1,0 +1,743 @@
+#!/usr/bin/env python2
+# vim: set fileencoding=UTF-8
+#
+# java-gnome, a UI library for writing GTK and GNOME programs from Java!
+#
+# Copyright © 2007-2013 Operational Dynamics Consulting, Pty Ltd
+# 
+# The code in this file, and the program it is a part of, is made available
+# to you by its authors as open source software: you can redistribute it
+# and/or modify it under the terms of the GNU General Public License version
+# 2 ("GPL") as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE. See the GPL for more details.
+#
+# You should have received a copy of the GPL along with this program. If not,
+# see http://www.gnu.org/licenses/. The authors of this program may be
+# contacted through http://java-gnome.sourceforge.net/.
+#
+
+#
+# faster.py, an abbreviated build script for java-gnome
+# Must be invoked from the project top level directory as [./]build/faster
+#
+
+#
+# This is a total hack, but a good one :) Make has two critical weakness, which
+# this script, being programmatic, tries to address:
+#
+# 1) variables are only populated once, so the variables containing the lists
+# of files to be built resulting from output of the code generator are
+# inaccurate (or in a clean build, empty)
+#
+# 2) it doesn't look at actual file contents, only looking to see if the target
+# is older than the source file(s). This is a real problem for people hacking
+# on the bindings; every time you save a source file in the generator, it runs,
+# and even though most (even all) of output files are unchanged [ie, were
+# refilled with exactly the same content], they are newer, and so make charges
+# ahead with a full rebuild, costing over 5 minutes of CPU time.
+#
+# So this program takes an md5sum of each source file at each step, only
+# invoking the external program for that target if the files have actually
+# changed since the last run.
+#
+# No, this is not some grand replacement for all the worlds problems. It's a
+# quick hack. I said so already. And it's entirely custom for building
+# java-gnome. But it encapsulates some of the capabilities that buildtool will
+# bring to the process when it lands, so it is a step in the right direction.
+#
+
+import os, hashlib, subprocess, cPickle, sys
+from os.path import *
+from shutil import move
+
+config = {}
+hashes = {}
+verbose = False
+silent = False
+
+configFile = ".config"
+versionFile = "src/bindings/org/freedesktop/bindings/Version.java"
+hashFile = "tmp/.hashes"
+lockFile = "tmp/.build"
+
+GNOME_MODULES = "gthread-2.0 glib-2.0 gtk+-3.0 gtk+-unix-print-3.0 gtksourceview-3.0 libnotify enchant librsvg-2.0 webkit2gtk-3.0 gio-unix-2.0"
+
+#
+# Armour against multiple simultaneous invocations.
+#
+# Rumour has it that locking is hard, unsafe, and generally evil. That's all
+# true. Usage here should be safe enough; this lock is just to prevent
+# double-taps by Eclipse being overzealous. Question: is this NFS safe?
+#
+
+from fcntl import flock, LOCK_EX, LOCK_NB
+
+def lockBuild():
+	global lock
+
+	ensureDirectory("tmp/")
+
+	lock = open(lockFile, "wb")
+	try:
+		flock(lock, LOCK_EX | LOCK_NB)
+	except IOError:
+		if not silent:
+			print "Inhibited: another build process already running"
+			sys.stdout.flush()
+		sys.exit(0)
+
+
+def unlockBuild():
+	global lock
+	lock.close()
+
+#
+# Read the configuration data from .config
+#
+# The ./configure script produces a make fragment full of variables suitable to
+# be included in our top level Makefile. So long as that Makefile exists we'll
+# leave it alone, meaning we need to enclose the variable declarations with "
+# characters before sourcing it into this Python program.
+#
+# We could be smart and verify that the requisite data is there, but I imagine
+# a KeyError will be raised later on if it isn't.
+#
+
+def loadConfig():
+	global config
+	if ((not isfile(configFile)) or (getmtime(configFile) < getmtime(versionFile))):
+		print
+		print "You need to run ./configure to check prerequisites"
+		print "and setup preferences before you can build java-gnome."
+
+		if not os.access("configure", os.X_OK):
+			print "I'll make it executable for you."
+			print
+			executeCommand("CHMOD", "configure", "chmod +x configure")
+		else:
+			print
+
+		sys.exit(1)
+	try:
+		cfg = open(configFile, "r")
+		for line in cfg: 
+			if line.find("=") != -1:
+				escaped = line.replace("=", "=\"", 1)
+				escaped = escaped.strip()
+				escaped += "\""
+				exec(escaped, config)
+		cfg.close()
+
+	except (EOFError):
+		print "Error while trying to read .config"
+		sys.exit(9)
+
+	config['GNOME_CCFLAGS'] = os.popen("pkg-config --cflags " + GNOME_MODULES).read().rstrip()
+	config['GNOME_LDFLAGS'] = os.popen("pkg-config --libs " + GNOME_MODULES).read().rstrip()
+
+
+def loadHashes():
+	global hashes
+	if isfile(hashFile):
+		try:
+			db = open(hashFile, "rb")
+			hashes = cPickle.load(db)
+			db.close()
+		except (EOFError, KeyError, IndexError):
+			print "build checksum cache corrupt; full rebuild forced"
+			hashes = {}
+
+
+#
+# TODO writing the whole pickle each time must be tremendously inefficient, but
+# so long as the build is nice and fast, we can leave it be. If someone wants
+# to try replacing this with bdb or dbm, please give it a try.
+#
+
+def checkpointHashes():
+	db = open(hashFile + ".tmp", "wb")
+	cPickle.dump(hashes, db)
+	db.close()
+
+	move(hashFile + ".tmp", hashFile)
+
+
+def ensureDirectory(dir):
+	if isdir(dir):
+		return
+	executeCommand("MKDIR", dir, "mkdir -p " + dir)
+	
+
+def touchFile(file):
+	f = open(file, "w")
+	f.close()
+
+
+def prepareBindingsDirectories():
+	ensureDirectory("tmp/stamp/")
+	ensureDirectory("generated/bindings/")
+	ensureDirectory("tmp/bindings/")
+	ensureDirectory("tmp/generator/")
+	ensureDirectory("tmp/objects/")
+	ensureDirectory("tmp/include/")
+	ensureDirectory("tmp/tests/")
+
+def prepareTestDirectories():
+	ensureDirectory("tmp/tests/")
+
+def findFiles(baseDir, ext):
+	result = []
+	for (root, dirs, files) in os.walk(baseDir):
+		for file in files:
+			if file.endswith(ext):
+				result.append(join(root, file))
+	return result
+
+
+#
+# Scan a list of files and decide if they need [re]-building.
+#
+# Two things to check:
+# 1) target older?
+# 2) if so, has source changed?
+#
+# Otherwise, (no target), just
+
+# *) has source changed?
+#
+# We compare source files' md5sums against the values we have stored in our
+# hash dictionary. The dictionary is immediately updated but this only has any
+# persistent effect if a checkpoint happens after a command is run
+# successfully. FIXME verify!
+#
+# Takes a list of touples mapping candidate source files to target filenames
+#
+
+def sourceChanged(file, hash):
+	if hashes.has_key(file):
+		if hashes[file] == hash:
+			return False
+	return True
+
+
+def updateHash(file, hash):
+	hashes[file] = hash
+
+
+def debug(args):
+	if False:
+		print args, 
+
+
+def filesNeedBuilding(list, update=True):
+	changed = []
+	for (source, target) in list:
+		if fileNeedsBuilding(source, target, update):
+			changed.append(source)
+	return changed
+
+
+def fileNeedsBuilding(source, target, update=True):
+	if not isfile(source):
+		sys.exit(source + " missing, abort")
+
+	f = open(source)
+	m = hashlib.md5(f.read())
+	f.close()
+	hash = m.hexdigest()
+
+	debug("CHECK\t"+str(target)+" from "+source+"\n")
+
+	debug("TARGET",)
+	if not isfile(target):
+		debug("MISSING",)
+	elif getmtime(target) < getmtime(source):
+		debug("OLDER,")
+		if not sourceChanged(source, hash):
+			debug("SOURCE UNCHANGED\n")
+			return False
+	else:
+		debug("NEWER, SKIP\n")
+		return False
+
+	debug("BUILD\n")
+	if update:
+		updateHash(source, hash)
+
+	return True
+
+#
+# common use case that source files transform predictably 1:1 into target
+# files. Return a list of (source, target) touples
+#
+
+def dependsMapSourceFilesToTargetFiles(sourceDir, sourceExt, targetDir, targetExt):
+	list = findFiles(sourceDir, sourceExt)
+	result = []
+
+	for source in list:
+		target = source.replace(sourceDir, targetDir)
+		target = target.replace(sourceExt, targetExt)
+
+		pair = (source, target)
+		result.append(pair)
+	
+	return result
+
+#
+# single target depends on many files. Use this with a stamp if all you really
+# want to do is check to see if a series of sources have changed
+#
+
+def dependsListToSingleTarget(list, target):
+	result = []
+
+	for source in list:
+		pair = (source, target)
+		result.append(pair)
+
+	return result
+
+
+#
+# the rather kludgy mapping between .po files and .mo files
+#
+
+def dependsMapTranslationFileToCatalogueFile(domain, poDir, targetDir):
+	list = findFiles(poDir, ".po")
+	result = []
+
+	for source in list:
+		target = source.replace(".po", "")
+		target = target.replace(poDir, targetDir)
+		target = target + "/LC_MESSAGES/" + domain + ".mo"
+
+		pair = (source, target)
+		result.append(pair)
+
+	return result
+
+
+#
+# FIXME One fairly glaring weakness of this script is that it doesn't do Nth
+# order build concurrency in the sense of make -jN. I imagine that given the
+# sort of semantics that wait() provides we could probably fork off multiple
+# children. Feel welcome to fix this.
+#
+
+def executeCommand(short, what, cmd, inDir=None):
+	sys.stderr.flush()
+	if not silent:
+		print short + "\t" + what
+		if verbose:
+			print cmd
+	sys.stdout.flush()
+	
+	status = subprocess.call(cmd, shell=True, cwd=inDir, bufsize=1)
+	if status != 0:
+		sys.exit(1)
+
+	checkpointHashes()
+	sys.stderr.flush()
+	sys.stdout.flush()
+
+
+def compileJavaCode(outputDir, classpath, sourcepath, sources):
+	cmd = config['JAVAC'] + " "
+	cmd += "-d " + outputDir
+	if classpath:
+		cmd += " -classpath " + classpath
+	if sourcepath:
+		cmd += " -sourcepath " + sourcepath
+	cmd += " -encoding UTF-8"
+	cmd += " " + " ".join(sources)
+
+	blurb = "\n\t".join(sources)
+
+	executeCommand(config['JAVAC_CMD'], blurb, cmd)
+
+
+def runJavaClass(classname, classpath, args=""):
+	cmd = config['JAVA'] + " "
+	cmd += "-classpath " + classpath + " "
+	cmd += classname
+
+	if args:
+		cmd += " " + args
+
+	executeCommand(config['JAVA_CMD'], classname, cmd)
+
+
+def compileGeneratorClasses():
+	pairs = dependsMapSourceFilesToTargetFiles("src/generator/", ".java", "tmp/generator/", ".class")
+	changed = filesNeedBuilding(pairs)
+	if not changed:
+		return
+	compileJavaCode("tmp/generator/", "", "src/generator/", changed)
+
+
+def generateTranslationAndJniLayers():
+	list = findFiles("tmp/generator", ".class")
+	list += findFiles("src/defs", ".defs")
+	stamp = "tmp/stamp/generator"
+	redirect = ""
+
+	pairs = dependsListToSingleTarget(list, stamp)
+
+	changed = filesNeedBuilding(pairs)
+	if not changed:
+		return
+
+	if not verbose:
+		redirect = "> /dev/null"
+
+	runJavaClass("BindingsGenerator", "tmp/generator/", redirect)
+	touchFile(stamp)
+
+
+def compileBindingsClasses():
+	pairs = dependsMapSourceFilesToTargetFiles("generated/bindings/", ".java", "tmp/bindings/", ".class")
+	pairs += dependsMapSourceFilesToTargetFiles("src/bindings/", ".java", "tmp/bindings/", ".class")
+
+	changed = filesNeedBuilding(pairs)
+	if not changed:
+		return
+
+	compileJavaCode("tmp/bindings/", "tmp/bindings/", "src/bindings/:generated/bindings/", changed)
+
+
+#
+# This seems like a lot of effort to copy a file
+#
+
+def copyMappingFile():
+	source = "generated/bindings/typeMapping.properties"
+	target = "tmp/bindings/typeMapping.properties"
+
+	if not fileNeedsBuilding(source, target):
+		return
+
+	cmd = "cp " + source + " " + target
+	executeCommand("CP", target, cmd)
+
+
+def makeJarFile():
+	jar = "tmp/gtk-4.1.jar"
+
+	list = findFiles("tmp/bindings/", ".class")
+	list += findFiles("tmp/bindings/", ".properties")
+	pairs = dependsListToSingleTarget(list, jar)
+
+	changed = filesNeedBuilding(pairs, False)
+	if not changed:
+		return
+
+	files = [] 
+	for file in list:
+		file = file.replace("tmp/bindings/", "")
+		file = file.replace("$", "\$")
+		files.append(file)
+
+	cmd = config['JAR'] + " cf "
+	cmd += "../../" + jar + " "
+	cmd += " ".join(files)
+
+	executeCommand(config['JAR_CMD'], jar, cmd, "tmp/bindings/")
+
+
+def generateHeaderFiles():
+	list = findFiles("tmp/bindings/", ".class")
+	map_c = {}
+	map_h = {}
+	pairs = []
+	classes = []
+	headers = []
+
+	for file in list:
+		if file.find("$") != -1:
+			continue
+		t = file.replace("tmp/bindings/", "")
+		t = t.replace(".class", "")
+		c = t.replace("/", ".")
+
+		t = t.replace("/", "_")
+		t = t.replace("$", "_")
+		t = t + ".h"
+		t = "tmp/include/" + t
+
+		pairs.append((file, t))
+		map_c[file] = c
+		map_h[file] = t
+
+	changed = filesNeedBuilding(pairs)
+	if not changed:
+		return
+
+	for file in changed:
+		classes.append(map_c[file])
+		headers.append(map_h[file])
+	
+	cmd = config['JAVAH'] + " "
+	if verbose:
+		cmd += "-verbose "
+	cmd += "-d tmp/include/ "
+	cmd += "-classpath tmp/bindings/ "
+	cmd += " ".join(classes)
+	if not verbose:
+		cmd += " >/dev/null"
+
+	blurb = "\n\t".join(headers)
+
+	executeCommand(config['JAVAH_CMD'], blurb, cmd)
+
+
+def compileCSourceToObject(source, target):
+	ensureDirectory(dirname(target))
+	
+	if config.has_key('CCACHE'):
+		cmd = config['CCACHE'] + " "
+	else:
+		cmd = ""
+	cmd += config['CC'] + " "
+	cmd += "-Isrc/jni -Itmp/include "
+	cmd += config['GNOME_CCFLAGS'] + " "
+	if os.getenv("CFLAGS"):
+		cmd += os.getenv("CFLAGS") + " "
+	cmd += "-o " + target + " -c " + source
+
+	executeCommand(config['CC_CMD'], source, cmd)
+
+
+def compileBindingsObjects():
+	pairs = dependsMapSourceFilesToTargetFiles("src/bindings/", ".c", "tmp/objects/", ".o")
+	pairs += dependsMapSourceFilesToTargetFiles("generated/bindings/", ".c", "tmp/objects/", ".o")
+	pairs += dependsMapSourceFilesToTargetFiles("src/jni/", ".c", "tmp/objects/", ".o")
+	
+	for (source, target) in pairs:
+		if fileNeedsBuilding(source, target):
+			compileCSourceToObject(source, target)
+
+	
+def linkSharedLibrary():
+	so = "tmp/libgtkjni-" + config['VERSION'] +  ".so"
+
+	list = findFiles("tmp/objects/", ".o")
+	pairs = dependsListToSingleTarget(list, so)
+
+	changed = filesNeedBuilding(pairs)
+	if not changed:
+		return
+
+	cmd = config['LINK'] + " "
+	if os.getenv("LDFLAGS"):
+		cmd += os.getenv("LDFLAGS") + " "
+	cmd += "-o " + so + " "
+	cmd += " ".join(list) + " "
+	cmd += config['GNOME_LDFLAGS'] + " "
+
+	executeCommand(config['LINK_CMD'], so, cmd)
+
+
+def compileTestClasses():
+	pairs = dependsMapSourceFilesToTargetFiles("tests/generator/", ".java", "tmp/tests/", ".class")
+	pairs += dependsMapSourceFilesToTargetFiles("tests/bindings/", ".java", "tmp/tests/", ".class")
+	pairs += dependsMapSourceFilesToTargetFiles("tests/prototype/", ".java", "tmp/tests/", ".class")
+	pairs += dependsMapSourceFilesToTargetFiles("tests/screenshots/", ".java", "tmp/tests/", ".class")
+	pairs += dependsMapSourceFilesToTargetFiles("doc/examples/", ".java", "tmp/tests/", ".class")
+
+	changed = filesNeedBuilding(pairs)
+	if not changed:
+		return
+
+	compileJavaCode("tmp/tests/", "tmp/generator:tmp/bindings/:"+config['JUNIT_JARS'], "tests/generator/:tests/bindings/:tests/prototype/:tests/screenshots/:doc/examples/", changed)
+
+
+def compileMessageCatalogue(source, target):
+	ensureDirectory(dirname(target))
+
+	cmd = "msgfmt " + "-o " + target + " " + source
+	executeCommand("MSGFMT", target, cmd)
+
+
+#
+# FIXME this could be better generalized, but in any event this verges on
+# being unnecessary
+#
+
+def extractInternationalizationTemplates():
+	list = findFiles("doc/examples/i18n", ".java")
+	template = "tmp/i18n/example.pot"
+
+	pairs = dependsListToSingleTarget(list, template)
+
+	changed = filesNeedBuilding(pairs)
+	if not changed:
+		return
+
+	ensureDirectory(dirname(template))
+
+	cmd = "xgettext "
+	cmd += "--from-code=UTF-8 "
+	cmd += "-o " + template + " "
+	cmd += "--omit-header --keyword=_ --keyword=N_ "
+	cmd += " ".join(list)
+
+	executeCommand("EXTRACT", template, cmd)
+
+
+def compileTranslationCatalogues():
+	pairs =  dependsMapTranslationFileToCatalogueFile("example", "doc/po/", "tmp/locale/")
+	pairs += dependsMapTranslationFileToCatalogueFile("unittest", "tests/po/", "tmp/locale/")
+
+	for (source, target) in pairs:
+		if fileNeedsBuilding(source, target):
+			compileMessageCatalogue(source, target)
+
+
+#
+# main build sequence, with elaborately named methods Carl Rosenberger style
+#
+
+def generateBindings():
+	prepareBindingsDirectories()
+
+	compileGeneratorClasses()
+	generateTranslationAndJniLayers()
+
+	compileBindingsClasses()
+	copyMappingFile()
+
+	makeJarFile()
+
+	generateHeaderFiles()
+	compileBindingsObjects()
+	linkSharedLibrary()
+
+
+def generateTests():
+	prepareTestDirectories()
+	compileTestClasses()
+
+	extractInternationalizationTemplates()
+	compileTranslationCatalogues()
+
+
+#
+# Output the API documentation. Owing to the need to configure the standard
+# doclet on the command line, building up this expression is rather ulgy, and
+# not the place we'd like to see presentation stuff, all things considered.
+#
+# We also run the harness which takes screenshots of the Snapshot classes
+# which are used to illustrate our docs.
+#
+# The logic to have this rendered off screen is buggy at the moment, so you
+# need to let it run by itself and not take focus away. The code to execute it
+# is also somewhat fragile and still has a number of hard coded paths. As the
+# only person who actually has to run this is the maintainer uploading to the
+# website, this isn't a problem right now, but at some point we'll want to
+# consider having configure probe for the things that (disabled) code path
+# depends on.
+#
+
+def compileDocumentation():
+	cmd = config['JAVADOC'] + " "
+	if not verbose:
+		cmd += "-quiet "
+
+	cmd += "-d doc/api "
+	cmd += "-public "
+	cmd += "-nodeprecated "
+	cmd += "-source 1.5 "
+	cmd += "-notree "
+	cmd += "-noindex "
+	cmd += "-notimestamp "
+	cmd += "-nohelp "
+	cmd += "-version "
+	cmd += "-author "
+	cmd += "-windowtitle 'java-gnome %s API Documentation' " % config['VERSION']
+	cmd += "-doctitle '<h1>java-gnome %s API Documentation</h1>' " % config['VERSION']
+	cmd += "-header 'java-gnome version %s' " % config['VERSION']
+	cmd += "-footer '<img src=\"/images/java-gnome_JavaDocLogo.png\" style=\"padding-right:25px;\"><br> <span style=\"font-family: Arial; font-style: normal; font-size: large;\">java-gnome</span>' "
+	cmd += "-breakiterator "
+	cmd += "-stylesheetfile src/bindings/stylesheet.css "
+	cmd += "-overview src/bindings/overview.html "
+	cmd += "-sourcepath src/bindings:generated/bindings "
+	cmd += "-encoding UTF-8 "
+	cmd += "-subpackages org "
+	cmd += "-exclude org.freedesktop.bindings "
+	cmd += "-noqualifier 'java.*:com.sun.*' "
+	cmd += "src/bindings/org/freedesktop/bindings/Time.java "
+	cmd += "src/bindings/org/freedesktop/bindings/Version.java "
+	cmd += "src/bindings/org/freedesktop/bindings/Internationalization.java "
+	if not verbose:
+		cmd += " >/dev/null"
+
+	executeCommand(config["JAVADOC_CMD"], "doc/api/*.html", cmd % config)
+
+
+def takeSnapshots():
+	runJavaClass("Harness", "tmp/gtk-4.1.jar:tmp/tests/")
+
+
+def generateDocumentation():
+	compileDocumentation()
+	takeSnapshots()
+
+#
+# Final miscallaneous execution targets, taking advantage of the fact that
+# we've got all this infrastructure to run Java code.
+#
+
+def runTests():
+	runJavaClass("UnitTests", "tmp/gtk-4.1.jar:tmp/generator/:tmp/tests/:"+config['JUNIT_JARS'])
+
+def runDemo():
+	runJavaClass("button.ExamplePressMe", "tmp/gtk-4.1.jar:tmp/tests/")
+
+
+#
+# Preliminary setup & main entry point.
+#
+
+from sys import argv
+
+def main():
+	lockBuild()
+	loadConfig()
+	loadHashes()
+
+	generateBindings()
+
+	if len(argv) > 1:
+		generateTests()
+
+	unlockBuild()
+
+	if len(argv) == 1:
+		return
+
+	if sys.argv[1] == "doc":
+		generateDocumentation()
+
+	elif sys.argv[1] == "test":
+		runTests()
+
+	elif sys.argv[1] == "demo":
+		runDemo()
+
+
+if __name__ == '__main__':
+	if os.getenv("V"):
+		verbose = True
+	
+	if len(argv) > 1 and sys.argv[1] == "ide":
+		silent = True
+	
+	try:
+		main()
+	except KeyboardInterrupt:
+		print
+

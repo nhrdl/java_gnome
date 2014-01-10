@@ -1,0 +1,17 @@
+(define-object DOMStyleMedia
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMStyleMedia")
+)
+
+(define-method match_medium
+  (of-object "WebKitDOMStyleMedia")
+  (c-name "webkit_dom_style_media_match_medium")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "mediaquery")
+  )
+)
+

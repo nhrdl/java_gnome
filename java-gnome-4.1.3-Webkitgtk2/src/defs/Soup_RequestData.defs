@@ -1,0 +1,7 @@
+(define-object RequestData
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "Request")
+  (c-name "SoupRequestData")
+)
+

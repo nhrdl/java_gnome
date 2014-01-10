@@ -1,0 +1,374 @@
+(define-object DOMHTMLTextAreaElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLTextAreaElement")
+)
+
+(define-method check_validity
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_check_validity")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_autofocus
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_autofocus")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_cols
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_cols")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_default_value
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_default_value")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_dir_name
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_dir_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_disabled
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_disabled")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_form
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_form")
+  (return-type "WebKitDOMHTMLFormElement*")
+  (parameters
+  )
+)
+
+(define-method get_labels
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_labels")
+  (return-type "WebKitDOMNodeList*")
+  (parameters
+  )
+)
+
+(define-method get_max_length
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_max_length")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_placeholder
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_placeholder")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_read_only
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_read_only")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_required
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_required")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_rows
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_rows")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_selection_direction
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_selection_direction")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_selection_end
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_selection_end")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_selection_start
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_selection_start")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_text_length
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_text_length")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_validation_message
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_validation_message")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_validity
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_validity")
+  (return-type "WebKitDOMValidityState*")
+  (parameters
+  )
+)
+
+(define-method get_value
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_value")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_will_validate
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_will_validate")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_wrap
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_get_wrap")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method is_edited
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_is_edited")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method select
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_select")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method set_autofocus
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_autofocus")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_cols
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_cols")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_custom_validity
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_custom_validity")
+  (return-type "none")
+  (parameters
+    '("gchar*" "error")
+  )
+)
+
+(define-method set_default_value
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_default_value")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_dir_name
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_dir_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_disabled
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_disabled")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_max_length
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_max_length")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_placeholder
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_placeholder")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_read_only
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_read_only")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_required
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_required")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_rows
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_rows")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_selection_direction
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_selection_direction")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_selection_end
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_selection_end")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_selection_range
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_selection_range")
+  (return-type "none")
+  (parameters
+    '("glong" "start")
+    '("glong" "end")
+    '("gchar*" "direction")
+  )
+)
+
+(define-method set_selection_start
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_selection_start")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_value
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_value")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_wrap
+  (of-object "WebKitDOMHTMLTextAreaElement")
+  (c-name "webkit_dom_html_text_area_element_set_wrap")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

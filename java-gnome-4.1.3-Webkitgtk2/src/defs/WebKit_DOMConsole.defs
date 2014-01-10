@@ -1,0 +1,27 @@
+(define-object DOMConsole
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMConsole")
+)
+
+
+
+(define-method group_end
+  (of-object "WebKitDOMConsole")
+  (c-name "webkit_dom_console_group_end")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method time
+  (of-object "WebKitDOMConsole")
+  (c-name "webkit_dom_console_time")
+  (return-type "none")
+  (parameters
+    '("gchar*" "title")
+  )
+)
+

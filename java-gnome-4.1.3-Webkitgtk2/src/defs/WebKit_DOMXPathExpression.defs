@@ -1,0 +1,20 @@
+(define-object DOMXPathExpression
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMXPathExpression")
+)
+
+(define-method evaluate
+  (of-object "WebKitDOMXPathExpression")
+  (c-name "webkit_dom_xpath_expression_evaluate")
+  (return-type "WebKitDOMXPathResult*")
+  (parameters
+    '("WebKitDOMNode*" "context_node")
+    '("gushort" "type")
+    '("WebKitDOMXPathResult*" "in_result")
+    '("GError**" "error")
+  )
+)
+

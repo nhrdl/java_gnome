@@ -1,0 +1,9 @@
+(define-enum TlsDatabaseLookupFlags
+  (in-module "Gio")
+  (c-name "GTlsDatabaseLookupFlags")
+  (values
+    '("none" "G_TLS_DATABASE_LOOKUP_NONE")
+    '("keypair" "G_TLS_DATABASE_LOOKUP_KEYPAIR")
+  )
+)
+

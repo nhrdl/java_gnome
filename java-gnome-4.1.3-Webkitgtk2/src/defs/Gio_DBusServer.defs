@@ -1,0 +1,79 @@
+(define-object DBusServer
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GDBusServer")
+)
+
+(define-function DBusServer_new_sync
+  (is-constructor-of "GDBusServer")
+  (c-name "g_dbus_server_new_sync")
+  (return-type "GDBusServer*")
+  (parameters
+    '("gchar*" "paddress")
+    '("GDBusServerFlags" "pflags")
+    '("gchar*" "pguid")
+    '("GDBusAuthObserver*" "pobserver")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_client_address
+  (of-object "GDBusServer")
+  (c-name "g_dbus_server_get_client_address")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_flags
+  (of-object "GDBusServer")
+  (c-name "g_dbus_server_get_flags")
+  (return-type "GDBusServerFlags")
+  (parameters
+  )
+)
+
+(define-method get_guid
+  (of-object "GDBusServer")
+  (c-name "g_dbus_server_get_guid")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method is_active
+  (of-object "GDBusServer")
+  (c-name "g_dbus_server_is_active")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method start
+  (of-object "GDBusServer")
+  (c-name "g_dbus_server_start")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method stop
+  (of-object "GDBusServer")
+  (c-name "g_dbus_server_stop")
+  (return-type "none")
+  (parameters
+  )
+)
+

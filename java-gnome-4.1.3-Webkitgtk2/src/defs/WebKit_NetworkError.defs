@@ -1,0 +1,12 @@
+(define-enum NetworkError
+  (in-module "WebKit")
+  (c-name "WebKitNetworkError")
+  (values
+    '("failed" "WEBKIT_NETWORK_ERROR_FAILED")
+    '("transport" "WEBKIT_NETWORK_ERROR_TRANSPORT")
+    '("unknown_protocol" "WEBKIT_NETWORK_ERROR_UNKNOWN_PROTOCOL")
+    '("cancelled" "WEBKIT_NETWORK_ERROR_CANCELLED")
+    '("file_does_not_exist" "WEBKIT_NETWORK_ERROR_FILE_DOES_NOT_EXIST")
+  )
+)
+

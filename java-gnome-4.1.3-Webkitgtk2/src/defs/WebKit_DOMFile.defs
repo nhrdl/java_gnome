@@ -1,0 +1,19 @@
+(define-object DOMFile
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMBlob")
+  (c-name "WebKitDOMFile")
+)
+
+(define-method get_file_name
+  (of-object "WebKitDOMFile")
+  (c-name "webkit_dom_file_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+
+)
+

@@ -1,0 +1,12 @@
+(define-enum LoadStatus
+  (in-module "WebKit")
+  (c-name "WebKitLoadStatus")
+  (values
+    '("provisional" "WEBKIT_LOAD_PROVISIONAL")
+    '("committed" "WEBKIT_LOAD_COMMITTED")
+    '("finished" "WEBKIT_LOAD_FINISHED")
+    '("first_visually_non_empty_layout" "WEBKIT_LOAD_FIRST_VISUALLY_NON_EMPTY_LAYOUT")
+    '("failed" "WEBKIT_LOAD_FAILED")
+  )
+)
+

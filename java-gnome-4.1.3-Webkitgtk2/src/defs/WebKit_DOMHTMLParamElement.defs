@@ -1,0 +1,60 @@
+(define-object DOMHTMLParamElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLParamElement")
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLParamElement")
+  (c-name "webkit_dom_html_param_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_value
+  (of-object "WebKitDOMHTMLParamElement")
+  (c-name "webkit_dom_html_param_element_get_value")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_value_type
+  (of-object "WebKitDOMHTMLParamElement")
+  (c-name "webkit_dom_html_param_element_get_value_type")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLParamElement")
+  (c-name "webkit_dom_html_param_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_value
+  (of-object "WebKitDOMHTMLParamElement")
+  (c-name "webkit_dom_html_param_element_set_value")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_value_type
+  (of-object "WebKitDOMHTMLParamElement")
+  (c-name "webkit_dom_html_param_element_set_value_type")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

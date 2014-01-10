@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.gnome</groupId>
+  <artifactId>gtk</artifactId>
+  <version>4.1.3.1</version>
+  <name>GTK java bindings</name>
+  <url>http://java-gnome.sourceforge.net/</url>
+  <profiles>
+    <profile>
+      <id>linux-32</id>
+      <activation>
+        <os>
+          <arch>i386</arch>
+          <family>unix</family>
+        </os>
+      </activation>
+      <properties>
+        <build.type>linux-32</build.type>
+      </properties>
+    </profile>
+        <profile>
+      <id>linux-64</id>
+      <activation>
+        <os>
+          <arch>amd64</arch>
+          <family>unix</family>
+        </os>
+      </activation>
+      <properties>
+        <build.type>linux-64</build.type>
+      </properties>
+    </profile>
+  </profiles>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <finalName>${project.build.finalName}-${build.type}</finalName>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <id>attach-source-jar</id>
+            <phase>package</phase>
+            <goals>
+              <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+              <artifacts>
+                <artifact>
+                  <file>${project.build.directory}/${project.build.finalName}-${build.type}-sources.jar</file>
+                  <type>jar</type>
+                  <classifier>${build.type}-sources</classifier>
+                </artifact>
+              </artifacts>
+              </configuration>
+          </execution>
+          <execution>
+            <id>add-resource</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>add-resource</goal>
+            </goals>
+            <configuration>
+              <resources>
+                <resource>
+                  <directory>resources</directory>
+                  <targetPath>native</targetPath>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>generated/bindings</source>
+                <source>src/bindings</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>native-maven-plugin</artifactId>
+      </plugin>
+  
+
+     <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-deploy-plugin</artifactId>
+       <configuration>
+         <classifier>${build.type}</classifier>
+       </configuration>
+     </plugin>
+
+     <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-jar-plugin</artifactId>
+       <configuration>
+         <classifier>${build.type}</classifier>
+       </configuration>
+     </plugin>
+
+    </plugins>
+</build>
+  <distributionManagement>
+    <!-- <repository> -->
+    <!-- 	<id>internal.repo</id> -->
+    <!-- 	<name>Fiport maven repo</name> -->
+    <!-- 	<url>http://fiport1:8081/nexus/content/repositories/FiPortSnapshots</url> -->
+    <!-- </repository> -->
+
+    <repository>
+      <id>thirdparty.repo</id>
+      <name>Fiport maven repo</name>
+      <url>http://fiport2.fiport.com/nexus/content/repositories/Fiport_ThirdParty/</url>
+    </repository>
+
+  </distributionManagement>
+
+</project>

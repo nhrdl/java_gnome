@@ -1,0 +1,11 @@
+(define-enum SocketType
+  (in-module "Gio")
+  (c-name "GSocketType")
+  (values
+    '("invalid" "G_SOCKET_TYPE_INVALID")
+    '("stream" "G_SOCKET_TYPE_STREAM")
+    '("datagram" "G_SOCKET_TYPE_DATAGRAM")
+    '("seqpacket" "G_SOCKET_TYPE_SEQPACKET")
+  )
+)
+

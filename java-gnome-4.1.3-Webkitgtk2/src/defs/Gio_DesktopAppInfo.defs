@@ -1,0 +1,117 @@
+(define-object DesktopAppInfo
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GDesktopAppInfo")
+)
+
+(define-function DesktopAppInfo_new
+  (is-constructor-of "GDesktopAppInfo")
+  (c-name "g_desktop_app_info_new")
+  (return-type "GDesktopAppInfo*")
+  (parameters
+    '("char*" "pdesktop_id")
+  )
+)
+
+(define-function DesktopAppInfo_new_from_filename
+  (is-constructor-of "GDesktopAppInfo")
+  (c-name "g_desktop_app_info_new_from_filename")
+  (return-type "GDesktopAppInfo*")
+  (parameters
+    '("char*" "pfilename")
+  )
+)
+
+(define-function DesktopAppInfo_new_from_keyfile
+  (is-constructor-of "GDesktopAppInfo")
+  (c-name "g_desktop_app_info_new_from_keyfile")
+  (return-type "GDesktopAppInfo*")
+  (parameters
+    '("GKeyFile*" "pkey_file")
+  )
+)
+
+(define-method get_categories
+  (of-object "GDesktopAppInfo")
+  (c-name "g_desktop_app_info_get_categories")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method get_filename
+  (of-object "GDesktopAppInfo")
+  (c-name "g_desktop_app_info_get_filename")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method get_generic_name
+  (of-object "GDesktopAppInfo")
+  (c-name "g_desktop_app_info_get_generic_name")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method get_is_hidden
+  (of-object "GDesktopAppInfo")
+  (c-name "g_desktop_app_info_get_is_hidden")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_keywords
+  (of-object "GDesktopAppInfo")
+  (c-name "g_desktop_app_info_get_keywords")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_nodisplay
+  (of-object "GDesktopAppInfo")
+  (c-name "g_desktop_app_info_get_nodisplay")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_show_in
+  (of-object "GDesktopAppInfo")
+  (c-name "g_desktop_app_info_get_show_in")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "pdesktop_env")
+  )
+)
+
+(define-method launch_uris_as_manager
+  (of-object "GDesktopAppInfo")
+  (c-name "g_desktop_app_info_launch_uris_as_manager")
+  (return-type "gboolean")
+  (parameters
+    '("GList*" "puris")
+    '("GAppLaunchContext*" "plaunch_context")
+    '("GSpawnFlags" "pspawn_flags")
+    '("GSpawnChildSetupFunc" "puser_setup")
+    '("gpointer" "puser_setup_data")
+    '("GDesktopAppLaunchCallback" "ppid_callback")
+    '("gpointer" "ppid_callback_data")
+    '("GError**" "error")
+  )
+)
+

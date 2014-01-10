@@ -1,0 +1,11 @@
+(define-enum SocketFamily
+  (in-module "Gio")
+  (c-name "GSocketFamily")
+  (values
+    '("invalid" "G_SOCKET_FAMILY_INVALID")
+    '("unix" "G_SOCKET_FAMILY_UNIX")
+    '("ipv4" "G_SOCKET_FAMILY_IPV4")
+    '("ipv6" "G_SOCKET_FAMILY_IPV6")
+  )
+)
+

@@ -1,0 +1,287 @@
+(define-object DOMHTMLImageElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLImageElement")
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_alt
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_alt")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_border
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_border")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_complete
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_complete")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_cross_origin
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_cross_origin")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_height
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_height")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_hspace
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_hspace")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_is_map
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_is_map")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_long_desc
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_long_desc")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_lowsrc
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_lowsrc")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_natural_height
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_natural_height")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_natural_width
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_natural_width")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_src
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_src")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_use_map
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_use_map")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_vspace
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_vspace")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_width")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_x
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_x")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_y
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_get_y")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_alt
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_alt")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_border
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_border")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_cross_origin
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_cross_origin")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_height
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_height")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_hspace
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_hspace")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_is_map
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_is_map")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_long_desc
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_long_desc")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_lowsrc
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_lowsrc")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_src
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_src")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_use_map
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_use_map")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_vspace
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_vspace")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLImageElement")
+  (c-name "webkit_dom_html_image_element_set_width")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+

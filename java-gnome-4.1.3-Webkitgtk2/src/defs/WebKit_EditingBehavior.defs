@@ -1,0 +1,10 @@
+(define-enum EditingBehavior
+  (in-module "WebKit")
+  (c-name "WebKitEditingBehavior")
+  (values
+    '("mac" "WEBKIT_EDITING_BEHAVIOR_MAC")
+    '("windows" "WEBKIT_EDITING_BEHAVIOR_WINDOWS")
+    '("unix" "WEBKIT_EDITING_BEHAVIOR_UNIX")
+  )
+)
+

@@ -1,0 +1,58 @@
+(define-object DOMDOMPlugin
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMDOMPlugin")
+)
+
+(define-method get_description
+  (of-object "WebKitDOMDOMPlugin")
+  (c-name "webkit_dom_dom_plugin_get_description")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_filename
+  (of-object "WebKitDOMDOMPlugin")
+  (c-name "webkit_dom_dom_plugin_get_filename")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_length
+  (of-object "WebKitDOMDOMPlugin")
+  (c-name "webkit_dom_dom_plugin_get_length")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMDOMPlugin")
+  (c-name "webkit_dom_dom_plugin_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method item
+  (of-object "WebKitDOMDOMPlugin")
+  (c-name "webkit_dom_dom_plugin_item")
+  (return-type "WebKitDOMDOMMimeType*")
+  (parameters
+    '("gulong" "index")
+  )
+)
+
+(define-method named_item
+  (of-object "WebKitDOMDOMPlugin")
+  (c-name "webkit_dom_dom_plugin_named_item")
+  (return-type "WebKitDOMDOMMimeType*")
+  (parameters
+    '("gchar*" "name")
+  )
+)
+

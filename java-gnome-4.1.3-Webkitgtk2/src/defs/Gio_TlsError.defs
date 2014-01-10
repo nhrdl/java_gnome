@@ -1,0 +1,14 @@
+(define-enum TlsError
+  (in-module "Gio")
+  (c-name "GTlsError")
+  (values
+    '("unavailable" "G_TLS_ERROR_UNAVAILABLE")
+    '("misc" "G_TLS_ERROR_MISC")
+    '("bad_certificate" "G_TLS_ERROR_BAD_CERTIFICATE")
+    '("not_tls" "G_TLS_ERROR_NOT_TLS")
+    '("handshake" "G_TLS_ERROR_HANDSHAKE")
+    '("certificate_required" "G_TLS_ERROR_CERTIFICATE_REQUIRED")
+    '("eof" "G_TLS_ERROR_EOF")
+  )
+)
+

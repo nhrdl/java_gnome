@@ -1,0 +1,308 @@
+(define-object SocketClient
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GSocketClient")
+)
+
+(define-function SocketClient_new
+  (is-constructor-of "GSocketClient")
+  (c-name "g_socket_client_new")
+  (return-type "GSocketClient*")
+  (parameters
+  )
+)
+
+(define-method add_application_proxy
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_add_application_proxy")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pprotocol")
+  )
+)
+
+(define-method connect
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect")
+  (return-type "GSocketConnection*")
+  (parameters
+    '("GSocketConnectable*" "pconnectable")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method connect_async
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect_async")
+  (return-type "none")
+  (parameters
+    '("GSocketConnectable*" "pconnectable")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method connect_finish
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect_finish")
+  (return-type "GSocketConnection*")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("GError**" "error")
+  )
+)
+
+(define-method connect_to_host
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect_to_host")
+  (return-type "GSocketConnection*")
+  (parameters
+    '("gchar*" "phost_and_port")
+    '("guint16" "pdefault_port")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method connect_to_host_async
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect_to_host_async")
+  (return-type "none")
+  (parameters
+    '("gchar*" "phost_and_port")
+    '("guint16" "pdefault_port")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method connect_to_host_finish
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect_to_host_finish")
+  (return-type "GSocketConnection*")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("GError**" "error")
+  )
+)
+
+(define-method connect_to_service
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect_to_service")
+  (return-type "GSocketConnection*")
+  (parameters
+    '("gchar*" "pdomain")
+    '("gchar*" "pservice")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method connect_to_service_async
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect_to_service_async")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pdomain")
+    '("gchar*" "pservice")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method connect_to_service_finish
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect_to_service_finish")
+  (return-type "GSocketConnection*")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("GError**" "error")
+  )
+)
+
+(define-method connect_to_uri
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect_to_uri")
+  (return-type "GSocketConnection*")
+  (parameters
+    '("gchar*" "puri")
+    '("guint16" "pdefault_port")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method connect_to_uri_async
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect_to_uri_async")
+  (return-type "none")
+  (parameters
+    '("gchar*" "puri")
+    '("guint16" "pdefault_port")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method connect_to_uri_finish
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_connect_to_uri_finish")
+  (return-type "GSocketConnection*")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_enable_proxy
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_get_enable_proxy")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_family
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_get_family")
+  (return-type "GSocketFamily")
+  (parameters
+  )
+)
+
+(define-method get_local_address
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_get_local_address")
+  (return-type "GSocketAddress*")
+  (parameters
+  )
+)
+
+(define-method get_protocol
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_get_protocol")
+  (return-type "GSocketProtocol")
+  (parameters
+  )
+)
+
+(define-method get_socket_type
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_get_socket_type")
+  (return-type "GSocketType")
+  (parameters
+  )
+)
+
+(define-method get_timeout
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_get_timeout")
+  (return-type "guint")
+  (parameters
+  )
+)
+
+(define-method get_tls
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_get_tls")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_tls_validation_flags
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_get_tls_validation_flags")
+  (return-type "GTlsCertificateFlags")
+  (parameters
+  )
+)
+
+(define-method set_enable_proxy
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_set_enable_proxy")
+  (return-type "none")
+  (parameters
+    '("gboolean" "penable")
+  )
+)
+
+(define-method set_family
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_set_family")
+  (return-type "none")
+  (parameters
+    '("GSocketFamily" "pfamily")
+  )
+)
+
+(define-method set_local_address
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_set_local_address")
+  (return-type "none")
+  (parameters
+    '("GSocketAddress*" "paddress")
+  )
+)
+
+(define-method set_protocol
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_set_protocol")
+  (return-type "none")
+  (parameters
+    '("GSocketProtocol" "pprotocol")
+  )
+)
+
+(define-method set_socket_type
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_set_socket_type")
+  (return-type "none")
+  (parameters
+    '("GSocketType" "ptype")
+  )
+)
+
+(define-method set_timeout
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_set_timeout")
+  (return-type "none")
+  (parameters
+    '("guint" "ptimeout")
+  )
+)
+
+(define-method set_tls
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_set_tls")
+  (return-type "none")
+  (parameters
+    '("gboolean" "ptls")
+  )
+)
+
+(define-method set_tls_validation_flags
+  (of-object "GSocketClient")
+  (c-name "g_socket_client_set_tls_validation_flags")
+  (return-type "none")
+  (parameters
+    '("GTlsCertificateFlags" "pflags")
+  )
+)
+

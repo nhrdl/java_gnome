@@ -1,0 +1,69 @@
+(define-object NetworkService
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GNetworkService")
+)
+
+(define-function NetworkService_new
+  (is-constructor-of "GNetworkService")
+  (c-name "g_network_service_new")
+  (return-type "GSocketConnectable*")
+  (parameters
+    '("gchar*" "pservice")
+    '("gchar*" "pprotocol")
+    '("gchar*" "pdomain")
+  )
+)
+
+(define-method get_domain
+  (of-object "GNetworkService")
+  (c-name "g_network_service_get_domain")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_protocol
+  (of-object "GNetworkService")
+  (c-name "g_network_service_get_protocol")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_scheme
+  (of-object "GNetworkService")
+  (c-name "g_network_service_get_scheme")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_service
+  (of-object "GNetworkService")
+  (c-name "g_network_service_get_service")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_scheme
+  (of-object "GNetworkService")
+  (c-name "g_network_service_set_scheme")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pscheme")
+  )
+)
+

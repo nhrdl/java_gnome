@@ -1,0 +1,13 @@
+(define-enum PluginError
+  (in-module "WebKit")
+  (c-name "WebKitPluginError")
+  (values
+    '("failed" "WEBKIT_PLUGIN_ERROR_FAILED")
+    '("cannot_find_plugin" "WEBKIT_PLUGIN_ERROR_CANNOT_FIND_PLUGIN")
+    '("cannot_load_plugin" "WEBKIT_PLUGIN_ERROR_CANNOT_LOAD_PLUGIN")
+    '("java_unavailable" "WEBKIT_PLUGIN_ERROR_JAVA_UNAVAILABLE")
+    '("connection_cancelled" "WEBKIT_PLUGIN_ERROR_CONNECTION_CANCELLED")
+    '("will_handle_load" "WEBKIT_PLUGIN_ERROR_WILL_HANDLE_LOAD")
+  )
+)
+

@@ -1,0 +1,11 @@
+(define-object MultipartInputStream
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "Gio.FilterInputStream")
+  (c-name "SoupMultipartInputStream")
+)
+
+
+
+)
+

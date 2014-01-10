@@ -1,0 +1,46 @@
+(define-object FileInputStream
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "InputStream")
+  (c-name "GFileInputStream")
+)
+
+(define-method query_info_async
+  (of-object "GFileInputStream")
+  (c-name "query_info_async")
+  (return-type "none")
+  (parameters
+    '("char*" "pattributes")
+    '("int" "pio_priority")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+
+
+(define-method seek
+  (of-object "GFileInputStream")
+  (c-name "seek")
+  (return-type "gboolean")
+  (parameters
+    '("goffset" "poffset")
+    '("GSeekType" "ptype")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+
+

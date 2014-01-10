@@ -1,0 +1,11 @@
+(define-enum TLDError
+  (in-module "Soup")
+  (c-name "SoupTLDError")
+  (values
+    '("invalid_hostname" "SOUP_TLD_ERROR_INVALID_HOSTNAME")
+    '("is_ip_address" "SOUP_TLD_ERROR_IS_IP_ADDRESS")
+    '("not_enough_domains" "SOUP_TLD_ERROR_NOT_ENOUGH_DOMAINS")
+    '("no_base_domain" "SOUP_TLD_ERROR_NO_BASE_DOMAIN")
+  )
+)
+

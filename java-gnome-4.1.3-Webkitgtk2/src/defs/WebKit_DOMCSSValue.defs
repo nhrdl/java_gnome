@@ -1,0 +1,34 @@
+(define-object DOMCSSValue
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMCSSValue")
+)
+
+(define-method get_css_text
+  (of-object "WebKitDOMCSSValue")
+  (c-name "webkit_dom_css_value_get_css_text")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_css_value_type
+  (of-object "WebKitDOMCSSValue")
+  (c-name "webkit_dom_css_value_get_css_value_type")
+  (return-type "gushort")
+  (parameters
+  )
+)
+
+(define-method set_css_text
+  (of-object "WebKitDOMCSSValue")
+  (c-name "webkit_dom_css_value_set_css_text")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+

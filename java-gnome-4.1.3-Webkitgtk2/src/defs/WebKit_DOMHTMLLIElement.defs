@@ -1,0 +1,26 @@
+(define-object DOMHTMLLIElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLLIElement")
+)
+
+(define-method get_value
+  (of-object "WebKitDOMHTMLLIElement")
+  (c-name "webkit_dom_htmlli_element_get_value")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method set_value
+  (of-object "WebKitDOMHTMLLIElement")
+  (c-name "webkit_dom_htmlli_element_set_value")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+

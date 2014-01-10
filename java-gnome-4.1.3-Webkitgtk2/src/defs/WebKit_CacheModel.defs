@@ -1,0 +1,11 @@
+(define-enum CacheModel
+  (in-module "WebKit")
+  (c-name "WebKitCacheModel")
+  (values
+    '("default" "WEBKIT_CACHE_MODEL_DEFAULT")
+    '("document_viewer" "WEBKIT_CACHE_MODEL_DOCUMENT_VIEWER")
+    '("web_browser" "WEBKIT_CACHE_MODEL_WEB_BROWSER")
+    '("document_browser" "WEBKIT_CACHE_MODEL_DOCUMENT_BROWSER")
+  )
+)
+

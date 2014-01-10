@@ -1,0 +1,26 @@
+(define-object DOMHTMLTableCaptionElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLTableCaptionElement")
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLTableCaptionElement")
+  (c-name "webkit_dom_html_table_caption_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLTableCaptionElement")
+  (c-name "webkit_dom_html_table_caption_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

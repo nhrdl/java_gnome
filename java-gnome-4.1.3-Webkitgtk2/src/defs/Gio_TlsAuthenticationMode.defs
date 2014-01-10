@@ -1,0 +1,10 @@
+(define-enum TlsAuthenticationMode
+  (in-module "Gio")
+  (c-name "GTlsAuthenticationMode")
+  (values
+    '("none" "G_TLS_AUTHENTICATION_NONE")
+    '("requested" "G_TLS_AUTHENTICATION_REQUESTED")
+    '("required" "G_TLS_AUTHENTICATION_REQUIRED")
+  )
+)
+

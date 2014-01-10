@@ -1,0 +1,175 @@
+(define-object DOMMouseEvent
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMUIEvent")
+  (c-name "WebKitDOMMouseEvent")
+)
+
+(define-method get_alt_key
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_alt_key")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_button
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_button")
+  (return-type "gushort")
+  (parameters
+  )
+)
+
+(define-method get_client_x
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_client_x")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_client_y
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_client_y")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_ctrl_key
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_ctrl_key")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_from_element
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_from_element")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_meta_key
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_meta_key")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_offset_x
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_offset_x")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_offset_y
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_offset_y")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_related_target
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_related_target")
+  (return-type "WebKitDOMEventTarget*")
+  (parameters
+  )
+)
+
+(define-method get_screen_x
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_screen_x")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_screen_y
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_screen_y")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_shift_key
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_shift_key")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_to_element
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_to_element")
+  (return-type "WebKitDOMNode*")
+  (parameters
+  )
+)
+
+(define-method get_webkit_movement_x
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_webkit_movement_x")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_webkit_movement_y
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_webkit_movement_y")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_x
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_x")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_y
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_get_y")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method init_mouse_event
+  (of-object "WebKitDOMMouseEvent")
+  (c-name "webkit_dom_mouse_event_init_mouse_event")
+  (return-type "none")
+  (parameters
+    '("gchar*" "type")
+    '("gboolean" "can_bubble")
+    '("gboolean" "cancelable")
+    '("WebKitDOMDOMWindow*" "view")
+    '("glong" "detail")
+    '("glong" "screen_x")
+    '("glong" "screen_y")
+    '("glong" "client_x")
+    '("glong" "client_y")
+    '("gboolean" "ctrl_key")
+    '("gboolean" "alt_key")
+    '("gboolean" "shift_key")
+    '("gboolean" "meta_key")
+    '("gushort" "button")
+    '("WebKitDOMEventTarget*" "related_target")
+  )
+)
+

@@ -1,0 +1,12 @@
+(define-enum SocketProtocol
+  (in-module "Gio")
+  (c-name "GSocketProtocol")
+  (values
+    '("unknown" "G_SOCKET_PROTOCOL_UNKNOWN")
+    '("default" "G_SOCKET_PROTOCOL_DEFAULT")
+    '("tcp" "G_SOCKET_PROTOCOL_TCP")
+    '("udp" "G_SOCKET_PROTOCOL_UDP")
+    '("sctp" "G_SOCKET_PROTOCOL_SCTP")
+  )
+)
+

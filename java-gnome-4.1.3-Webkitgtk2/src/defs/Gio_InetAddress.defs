@@ -1,0 +1,167 @@
+(define-object InetAddress
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GInetAddress")
+)
+
+(define-function InetAddress_new_any
+  (is-constructor-of "GInetAddress")
+  (c-name "g_inet_address_new_any")
+  (return-type "GInetAddress*")
+  (parameters
+    '("GSocketFamily" "pfamily")
+  )
+)
+
+(define-function InetAddress_new_from_bytes
+  (is-constructor-of "GInetAddress")
+  (c-name "g_inet_address_new_from_bytes")
+  (return-type "GInetAddress*")
+  (parameters
+    '("null" "pbytes")
+    '("GSocketFamily" "pfamily")
+  )
+)
+
+(define-function InetAddress_new_from_string
+  (is-constructor-of "GInetAddress")
+  (c-name "g_inet_address_new_from_string")
+  (return-type "GInetAddress*")
+  (parameters
+    '("gchar*" "pstring")
+  )
+)
+
+(define-function InetAddress_new_loopback
+  (is-constructor-of "GInetAddress")
+  (c-name "g_inet_address_new_loopback")
+  (return-type "GInetAddress*")
+  (parameters
+    '("GSocketFamily" "pfamily")
+  )
+)
+
+(define-method to_bytes
+  (of-object "GInetAddress")
+  (c-name "to_bytes")
+  (return-type "guint8*")
+  (parameters
+  )
+)
+
+(define-method equal
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_equal")
+  (return-type "gboolean")
+  (parameters
+    '("GInetAddress*" "pother_address")
+  )
+)
+
+(define-method get_family
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_family")
+  (return-type "GSocketFamily")
+  (parameters
+  )
+)
+
+(define-method get_is_any
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_is_any")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_is_link_local
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_is_link_local")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_is_loopback
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_is_loopback")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_is_mc_global
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_is_mc_global")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_is_mc_link_local
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_is_mc_link_local")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_is_mc_node_local
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_is_mc_node_local")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_is_mc_org_local
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_is_mc_org_local")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_is_mc_site_local
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_is_mc_site_local")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_is_multicast
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_is_multicast")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_is_site_local
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_is_site_local")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_native_size
+  (of-object "GInetAddress")
+  (c-name "g_inet_address_get_native_size")
+  (return-type "gsize")
+  (parameters
+  )
+)
+

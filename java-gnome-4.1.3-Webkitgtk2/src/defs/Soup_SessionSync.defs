@@ -1,0 +1,25 @@
+(define-object SessionSync
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "Session")
+  (c-name "SoupSessionSync")
+)
+
+(define-function SessionSync_new
+  (is-constructor-of "SoupSessionSync")
+  (c-name "soup_session_sync_new")
+  (return-type "SoupSession*")
+  (parameters
+  )
+)
+
+(define-function SessionSync_new_with_options
+  (is-constructor-of "SoupSessionSync")
+  (c-name "soup_session_sync_new_with_options")
+  (return-type "SoupSession*")
+  (parameters
+    '("const char*" "optname1")
+    '("null" "null")
+  )
+)
+

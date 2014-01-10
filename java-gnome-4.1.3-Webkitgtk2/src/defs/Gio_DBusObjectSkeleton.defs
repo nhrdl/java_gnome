@@ -1,0 +1,70 @@
+(define-object DBusObjectSkeleton
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GDBusObjectSkeleton")
+)
+
+(define-function DBusObjectSkeleton_new
+  (is-constructor-of "GDBusObjectSkeleton")
+  (c-name "g_dbus_object_skeleton_new")
+  (return-type "GDBusObjectSkeleton*")
+  (parameters
+    '("gchar*" "pobject_path")
+  )
+)
+
+(define-method add_interface
+  (of-object "GDBusObjectSkeleton")
+  (c-name "g_dbus_object_skeleton_add_interface")
+  (return-type "none")
+  (parameters
+    '("GDBusInterfaceSkeleton*" "pinterface_")
+  )
+)
+
+(define-method flush
+  (of-object "GDBusObjectSkeleton")
+  (c-name "g_dbus_object_skeleton_flush")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method remove_interface
+  (of-object "GDBusObjectSkeleton")
+  (c-name "g_dbus_object_skeleton_remove_interface")
+  (return-type "none")
+  (parameters
+    '("GDBusInterfaceSkeleton*" "pinterface_")
+  )
+)
+
+(define-method remove_interface_by_name
+  (of-object "GDBusObjectSkeleton")
+  (c-name "g_dbus_object_skeleton_remove_interface_by_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pinterface_name")
+  )
+)
+
+(define-method set_object_path
+  (of-object "GDBusObjectSkeleton")
+  (c-name "g_dbus_object_skeleton_set_object_path")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pobject_path")
+  )
+)
+

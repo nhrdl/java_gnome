@@ -1,0 +1,16 @@
+(define-object DOMMediaError
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMMediaError")
+)
+
+(define-method get_code
+  (of-object "WebKitDOMMediaError")
+  (c-name "webkit_dom_media_error_get_code")
+  (return-type "gushort")
+  (parameters
+  )
+)
+

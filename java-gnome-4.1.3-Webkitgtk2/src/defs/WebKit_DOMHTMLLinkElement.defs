@@ -1,0 +1,153 @@
+(define-object DOMHTMLLinkElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLLinkElement")
+)
+
+(define-method get_charset
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_get_charset")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_disabled
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_get_disabled")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_href
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_get_href")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_hreflang
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_get_hreflang")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_media
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_get_media")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_rel
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_get_rel")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_rev
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_get_rev")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_sheet
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_get_sheet")
+  (return-type "WebKitDOMStyleSheet*")
+  (parameters
+  )
+)
+
+(define-method get_target
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_get_target")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_charset
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_set_charset")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_disabled
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_set_disabled")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_href
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_set_href")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_hreflang
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_set_hreflang")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_media
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_set_media")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_rel
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_set_rel")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_rev
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_set_rev")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_target
+  (of-object "WebKitDOMHTMLLinkElement")
+  (c-name "webkit_dom_html_link_element_set_target")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

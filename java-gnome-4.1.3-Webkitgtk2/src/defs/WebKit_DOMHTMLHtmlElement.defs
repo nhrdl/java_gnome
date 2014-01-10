@@ -1,0 +1,43 @@
+(define-object DOMHTMLHtmlElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLHtmlElement")
+)
+
+(define-method get_manifest
+  (of-object "WebKitDOMHTMLHtmlElement")
+  (c-name "webkit_dom_html_html_element_get_manifest")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_version
+  (of-object "WebKitDOMHTMLHtmlElement")
+  (c-name "webkit_dom_html_html_element_get_version")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_manifest
+  (of-object "WebKitDOMHTMLHtmlElement")
+  (c-name "webkit_dom_html_html_element_set_manifest")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_version
+  (of-object "WebKitDOMHTMLHtmlElement")
+  (c-name "webkit_dom_html_html_element_set_version")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

@@ -1,0 +1,70 @@
+(define-object DBusObjectManagerServer
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GDBusObjectManagerServer")
+)
+
+(define-function DBusObjectManagerServer_new
+  (is-constructor-of "GDBusObjectManagerServer")
+  (c-name "g_dbus_object_manager_server_new")
+  (return-type "GDBusObjectManagerServer*")
+  (parameters
+    '("gchar*" "pobject_path")
+  )
+)
+
+(define-method export
+  (of-object "GDBusObjectManagerServer")
+  (c-name "g_dbus_object_manager_server_export")
+  (return-type "none")
+  (parameters
+    '("GDBusObjectSkeleton*" "pobject")
+  )
+)
+
+(define-method export_uniquely
+  (of-object "GDBusObjectManagerServer")
+  (c-name "g_dbus_object_manager_server_export_uniquely")
+  (return-type "none")
+  (parameters
+    '("GDBusObjectSkeleton*" "pobject")
+  )
+)
+
+(define-method get_connection
+  (of-object "GDBusObjectManagerServer")
+  (c-name "g_dbus_object_manager_server_get_connection")
+  (return-type "GDBusConnection*")
+  (parameters
+  )
+)
+
+(define-method set_connection
+  (of-object "GDBusObjectManagerServer")
+  (c-name "g_dbus_object_manager_server_set_connection")
+  (return-type "none")
+  (parameters
+    '("GDBusConnection*" "pconnection")
+  )
+)
+
+(define-method unexport
+  (of-object "GDBusObjectManagerServer")
+  (c-name "g_dbus_object_manager_server_unexport")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "pobject_path")
+  )
+)
+

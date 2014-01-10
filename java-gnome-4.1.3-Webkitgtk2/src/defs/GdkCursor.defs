@@ -1,0 +1,84 @@
+(define-boxed Cursor
+  (in-module "Gdk")
+  (c-name "GdkCursor")
+  (gtype-id "GDK_TYPE_CURSOR")
+  (copy-func "gdk_cursor_ref")
+  (release-func "gdk_cursor_unref")
+)
+
+(define-method ref
+  (of-object "GdkCursor")
+  (c-name "gdk_cursor_ref")
+  (return-type "GdkCursor*")
+)
+
+(define-method unref
+  (of-object "GdkCursor")
+  (c-name "gdk_cursor_unref")
+  (return-type "none")
+)
+
+(define-method get_image
+  (of-object "GdkCursor")
+  (c-name "gdk_cursor_get_image")
+  (return-type "GdkPixbuf*")
+)
+
+(define-function cursor_new
+  (is-constructor-of "GdkCursor")
+  (c-name "gdk_cursor_new")
+  (caller-owns-return #t)
+  (return-type "GdkCursor*")
+  (parameters
+    '("GdkCursorType" "cursor_type")
+  )
+)
+
+(define-function cursor_new_from_name
+  (is-constructor-of "GdkCursor")
+  (c-name "gdk_cursor_new_from_name")
+  (return-type "GdkCursor*")
+  (caller-owns-return #t)
+  (parameters
+    '("GdkDisplay*" "display")
+    '("const-gchar*" "name")
+  )
+)
+
+
+(define-function cursor_new_for_display
+  (is-constructor-of "GdkCursor")
+  (c-name "gdk_cursor_new_for_display")
+  (caller-owns-return #t)
+  (return-type "GdkCursor*")
+  (parameters
+    '("GdkDisplay*" "display")
+    '("GdkCursorType" "cursor_type")
+  )
+)
+
+(define-function cursor_new_from_pixbuf
+  (is-constructor-of "GdkCursor")
+  (c-name "gdk_cursor_new_from_pixbuf")
+  (caller-owns-return #t)
+  (return-type "GdkCursor*")
+  (parameters
+    '("GdkDisplay*" "display")
+    '("GdkPixbuf*" "source")
+    '("gint" "x")
+    '("gint" "y")
+  )
+)
+
+(define-method get_display
+  (of-object "GdkCursor")
+  (c-name "gdk_cursor_get_display")
+  (return-type "GdkDisplay*")
+)
+
+(define-method get_cursor_type
+  (of-object "GdkCursor")
+  (c-name "gdk_cursor_get_cursor_type")
+  (return-type "GdkCursorType")
+)
+

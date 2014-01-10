@@ -1,0 +1,23 @@
+(define-object Download
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (parent "GObject.Object")
+  (c-name "WebKitDownload")
+)
+
+(define-method cancel
+  (of-object "WebKitDownload")
+  (c-name "webkit_download_cancel")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_elapsed_time
+  (of-object "WebKitDownload")
+  (c-name "webkit_download_get_elapsed_time")
+  (return-type "gdouble")
+  (parameters
+  )
+)
+

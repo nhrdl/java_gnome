@@ -1,0 +1,16 @@
+(define-object Separator
+  (in-module "Gtk")
+  (parent "GtkWidget")
+  (c-name "GtkSeparator")
+)
+
+(define-function gtk_separator_new
+  (is-constructor-of "GtkSeparator")
+  (c-name "gtk_separator_new")
+  (caller-owns-return #t)
+  (return-type "GtkWidget*")
+  (parameters
+    '("GtkOrientation" "orientation")
+  )
+)
+

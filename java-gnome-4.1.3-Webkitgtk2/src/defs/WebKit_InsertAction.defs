@@ -1,0 +1,10 @@
+(define-enum InsertAction
+  (in-module "WebKit")
+  (c-name "WebKitInsertAction")
+  (values
+    '("typed" "WEBKIT_INSERT_ACTION_TYPED")
+    '("pasted" "WEBKIT_INSERT_ACTION_PASTED")
+    '("dropped" "WEBKIT_INSERT_ACTION_DROPPED")
+  )
+)
+

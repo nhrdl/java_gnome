@@ -1,0 +1,125 @@
+(define-object CookieJar
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "SoupCookieJar")
+)
+
+(define-function CookieJar_new
+  (is-constructor-of "SoupCookieJar")
+  (c-name "soup_cookie_jar_new")
+  (return-type "SoupCookieJar*")
+  (parameters
+  )
+)
+
+(define-method add_cookie
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_add_cookie")
+  (return-type "none")
+  (parameters
+    '("SoupCookie*" "cookie")
+  )
+)
+
+(define-method add_cookie_with_first_party
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_add_cookie_with_first_party")
+  (return-type "none")
+  (parameters
+    '("SoupURI*" "first_party")
+    '("SoupCookie*" "cookie")
+  )
+)
+
+(define-method all_cookies
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_all_cookies")
+  (return-type "GSList*")
+  (parameters
+  )
+)
+
+(define-method delete_cookie
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_delete_cookie")
+  (return-type "none")
+  (parameters
+    '("SoupCookie*" "cookie")
+  )
+)
+
+(define-method get_accept_policy
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_get_accept_policy")
+  (return-type "SoupCookieJarAcceptPolicy")
+  (parameters
+  )
+)
+
+(define-method get_cookie_list
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_get_cookie_list")
+  (return-type "GSList*")
+  (parameters
+    '("SoupURI*" "uri")
+    '("gboolean" "for_http")
+  )
+)
+
+(define-method get_cookies
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_get_cookies")
+  (return-type "char*")
+  (parameters
+    '("SoupURI*" "uri")
+    '("gboolean" "for_http")
+  )
+)
+
+(define-method is_persistent
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_is_persistent")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method save
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_save")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method set_accept_policy
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_set_accept_policy")
+  (return-type "none")
+  (parameters
+    '("SoupCookieJarAcceptPolicy" "policy")
+  )
+)
+
+(define-method set_cookie
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_set_cookie")
+  (return-type "none")
+  (parameters
+    '("SoupURI*" "uri")
+    '("const char*" "cookie")
+  )
+)
+
+(define-method set_cookie_with_first_party
+  (of-object "SoupCookieJar")
+  (c-name "soup_cookie_jar_set_cookie_with_first_party")
+  (return-type "none")
+  (parameters
+    '("SoupURI*" "uri")
+    '("SoupURI*" "first_party")
+    '("const char*" "cookie")
+  )
+)
+

@@ -1,0 +1,13 @@
+(define-enum Encoding
+  (in-module "Soup")
+  (c-name "SoupEncoding")
+  (values
+    '("unrecognized" "SOUP_ENCODING_UNRECOGNIZED")
+    '("none" "SOUP_ENCODING_NONE")
+    '("content_length" "SOUP_ENCODING_CONTENT_LENGTH")
+    '("eof" "SOUP_ENCODING_EOF")
+    '("chunked" "SOUP_ENCODING_CHUNKED")
+    '("byteranges" "SOUP_ENCODING_BYTERANGES")
+  )
+)
+

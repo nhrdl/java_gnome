@@ -1,0 +1,7 @@
+(define-object DOMMemoryInfo
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMMemoryInfo")
+)

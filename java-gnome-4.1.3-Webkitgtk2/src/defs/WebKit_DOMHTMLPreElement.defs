@@ -1,0 +1,43 @@
+(define-object DOMHTMLPreElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLPreElement")
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLPreElement")
+  (c-name "webkit_dom_html_pre_element_get_width")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_wrap
+  (of-object "WebKitDOMHTMLPreElement")
+  (c-name "webkit_dom_html_pre_element_get_wrap")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLPreElement")
+  (c-name "webkit_dom_html_pre_element_set_width")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_wrap
+  (of-object "WebKitDOMHTMLPreElement")
+  (c-name "webkit_dom_html_pre_element_set_wrap")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+

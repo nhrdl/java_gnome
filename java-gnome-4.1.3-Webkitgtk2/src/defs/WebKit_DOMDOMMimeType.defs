@@ -1,0 +1,32 @@
+(define-object DOMDOMMimeType
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMDOMMimeType")
+)
+
+(define-method get_description
+  (of-object "WebKitDOMDOMMimeType")
+  (c-name "webkit_dom_dom_mime_type_get_description")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_enabled_plugin
+  (of-object "WebKitDOMDOMMimeType")
+  (c-name "webkit_dom_dom_mime_type_get_enabled_plugin")
+  (return-type "WebKitDOMDOMPlugin*")
+  (parameters
+  )
+)
+
+(define-method get_suffixes
+  (of-object "WebKitDOMDOMMimeType")
+  (c-name "webkit_dom_dom_mime_type_get_suffixes")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+

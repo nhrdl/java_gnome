@@ -1,0 +1,10 @@
+(define-enum FileAttributeStatus
+  (in-module "Gio")
+  (c-name "GFileAttributeStatus")
+  (values
+    '("unset" "G_FILE_ATTRIBUTE_STATUS_UNSET")
+    '("set" "G_FILE_ATTRIBUTE_STATUS_SET")
+    '("error_setting" "G_FILE_ATTRIBUTE_STATUS_ERROR_SETTING")
+  )
+)
+

@@ -1,0 +1,10 @@
+(define-enum DownloadError
+  (in-module "WebKit")
+  (c-name "WebKitDownloadError")
+  (values
+    '("cancelled_by_user" "WEBKIT_DOWNLOAD_ERROR_CANCELLED_BY_USER")
+    '("destination" "WEBKIT_DOWNLOAD_ERROR_DESTINATION")
+    '("network" "WEBKIT_DOWNLOAD_ERROR_NETWORK")
+  )
+)
+

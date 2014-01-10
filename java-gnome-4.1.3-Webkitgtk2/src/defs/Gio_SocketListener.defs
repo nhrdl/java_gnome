@@ -1,0 +1,146 @@
+(define-object SocketListener
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GSocketListener")
+)
+
+(define-function SocketListener_new
+  (is-constructor-of "GSocketListener")
+  (c-name "g_socket_listener_new")
+  (return-type "GSocketListener*")
+  (parameters
+  )
+)
+
+(define-method accept
+  (of-object "GSocketListener")
+  (c-name "g_socket_listener_accept")
+  (return-type "GSocketConnection*")
+  (parameters
+    '("GObject**" "psource_object")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method accept_async
+  (of-object "GSocketListener")
+  (c-name "g_socket_listener_accept_async")
+  (return-type "none")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method accept_finish
+  (of-object "GSocketListener")
+  (c-name "g_socket_listener_accept_finish")
+  (return-type "GSocketConnection*")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("GObject**" "psource_object")
+    '("GError**" "error")
+  )
+)
+
+(define-method accept_socket
+  (of-object "GSocketListener")
+  (c-name "g_socket_listener_accept_socket")
+  (return-type "GSocket*")
+  (parameters
+    '("GObject**" "psource_object")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method accept_socket_async
+  (of-object "GSocketListener")
+  (c-name "g_socket_listener_accept_socket_async")
+  (return-type "none")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method accept_socket_finish
+  (of-object "GSocketListener")
+  (c-name "g_socket_listener_accept_socket_finish")
+  (return-type "GSocket*")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("GObject**" "psource_object")
+    '("GError**" "error")
+  )
+)
+
+(define-method add_address
+  (of-object "GSocketListener")
+  (c-name "g_socket_listener_add_address")
+  (return-type "gboolean")
+  (parameters
+    '("GSocketAddress*" "paddress")
+    '("GSocketType" "ptype")
+    '("GSocketProtocol" "pprotocol")
+    '("GObject*" "psource_object")
+    '("GSocketAddress**" "peffective_address")
+    '("GError**" "error")
+  )
+)
+
+
+
+(define-method add_inet_port
+  (of-object "GSocketListener")
+  (c-name "g_socket_listener_add_inet_port")
+  (return-type "gboolean")
+  (parameters
+    '("guint16" "pport")
+    '("GObject*" "psource_object")
+    '("GError**" "error")
+  )
+)
+
+(define-method add_socket
+  (of-object "GSocketListener")
+  (c-name "g_socket_listener_add_socket")
+  (return-type "gboolean")
+  (parameters
+    '("GSocket*" "psocket")
+    '("GObject*" "psource_object")
+    '("GError**" "error")
+  )
+)
+
+(define-method close
+  (of-object "GSocketListener")
+  (c-name "g_socket_listener_close")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method set_backlog
+  (of-object "GSocketListener")
+  (c-name "g_socket_listener_set_backlog")
+  (return-type "none")
+  (parameters
+    '("int" "plisten_backlog")
+  )
+)
+

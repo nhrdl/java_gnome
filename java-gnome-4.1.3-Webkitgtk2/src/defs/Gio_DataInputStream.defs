@@ -1,0 +1,181 @@
+(define-object DataInputStream
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "BufferedInputStream")
+  (c-name "GDataInputStream")
+)
+
+(define-function DataInputStream_new
+  (is-constructor-of "GDataInputStream")
+  (c-name "g_data_input_stream_new")
+  (return-type "GDataInputStream*")
+  (parameters
+    '("GInputStream*" "pbase_stream")
+  )
+)
+
+(define-method get_byte_order
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_get_byte_order")
+  (return-type "GDataStreamByteOrder")
+  (parameters
+  )
+)
+
+(define-method get_newline_type
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_get_newline_type")
+  (return-type "GDataStreamNewlineType")
+  (parameters
+  )
+)
+
+
+(define-method read_line_async
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_read_line_async")
+  (return-type "none")
+  (parameters
+    '("gint" "pio_priority")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method read_line_finish
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_read_line_finish")
+  (return-type "none")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("gsize*" "plength")
+    '("GError**" "error")
+  )
+)
+
+(define-method read_line_finish_utf8
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_read_line_finish_utf8")
+  (return-type "char*")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("gsize*" "plength")
+    '("GError**" "error")
+  )
+)
+
+(define-method read_line_utf8
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_read_line_utf8")
+  (return-type "char*")
+  (parameters
+    '("gsize*" "plength")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+
+(define-method read_until
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_read_until")
+  (return-type "char*")
+  (parameters
+    '("gchar*" "pstop_chars")
+    '("gsize*" "plength")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method read_until_async
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_read_until_async")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pstop_chars")
+    '("gint" "pio_priority")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method read_until_finish
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_read_until_finish")
+  (return-type "char*")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("gsize*" "plength")
+    '("GError**" "error")
+  )
+)
+
+(define-method read_upto
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_read_upto")
+  (return-type "char*")
+  (parameters
+    '("gchar*" "pstop_chars")
+    '("gssize" "pstop_chars_len")
+    '("gsize*" "plength")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method read_upto_async
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_read_upto_async")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pstop_chars")
+    '("gssize" "pstop_chars_len")
+    '("gint" "pio_priority")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method read_upto_finish
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_read_upto_finish")
+  (return-type "char*")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("gsize*" "plength")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_byte_order
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_set_byte_order")
+  (return-type "none")
+  (parameters
+    '("GDataStreamByteOrder" "porder")
+  )
+)
+
+(define-method set_newline_type
+  (of-object "GDataInputStream")
+  (c-name "g_data_input_stream_set_newline_type")
+  (return-type "none")
+  (parameters
+    '("GDataStreamNewlineType" "ptype")
+  )
+)
+

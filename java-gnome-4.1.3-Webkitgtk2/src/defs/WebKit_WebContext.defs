@@ -1,0 +1,15 @@
+(define-object WebContext
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (parent "GObject.Object")
+  (c-name "WebKitWebContext")
+)
+
+(define-method set_web_extensions_directory
+  (of-object "WebKitWebContext")
+  (c-name "webkit_web_context_set_web_extensions_directory")
+  (return-type "none")
+  (parameters
+    '("gchar*" "directory")
+  )
+)

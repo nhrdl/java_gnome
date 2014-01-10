@@ -1,0 +1,14 @@
+(define-enum DateFormat
+  (in-module "Soup")
+  (c-name "SoupDateFormat")
+  (values
+    '("http" "SOUP_DATE_HTTP")
+    '("cookie" "SOUP_DATE_COOKIE")
+    '("rfc2822" "SOUP_DATE_RFC2822")
+    '("iso8601_compact" "SOUP_DATE_ISO8601_COMPACT")
+    '("iso8601_full" "SOUP_DATE_ISO8601_FULL")
+    '("iso8601" "SOUP_DATE_ISO8601")
+    '("iso8601_xmlrpc" "SOUP_DATE_ISO8601_XMLRPC")
+  )
+)
+

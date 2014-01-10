@@ -1,0 +1,141 @@
+(define-object DOMEvent
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMEvent")
+)
+
+(define-method get_bubbles
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_get_bubbles")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_cancel_bubble
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_get_cancel_bubble")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_cancelable
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_get_cancelable")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_current_target
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_get_current_target")
+  (return-type "WebKitDOMEventTarget*")
+  (parameters
+  )
+)
+
+(define-method get_default_prevented
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_get_default_prevented")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_event_phase
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_get_event_phase")
+  (return-type "gushort")
+  (parameters
+  )
+)
+
+(define-method get_return_value
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_get_return_value")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_src_element
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_get_src_element")
+  (return-type "WebKitDOMEventTarget*")
+  (parameters
+  )
+)
+
+(define-method get_target
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_get_target")
+  (return-type "WebKitDOMEventTarget*")
+  (parameters
+  )
+)
+
+(define-method get_time_stamp
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_get_time_stamp")
+  (return-type "guint32")
+  (parameters
+  )
+)
+
+(define-method init_event
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_init_event")
+  (return-type "none")
+  (parameters
+    '("gchar*" "event_type_arg")
+    '("gboolean" "can_bubble_arg")
+    '("gboolean" "cancelable_arg")
+  )
+)
+
+(define-method prevent_default
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_prevent_default")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method set_cancel_bubble
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_set_cancel_bubble")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_return_value
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_set_return_value")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method stop_immediate_propagation
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_stop_immediate_propagation")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method stop_propagation
+  (of-object "WebKitDOMEvent")
+  (c-name "webkit_dom_event_stop_propagation")
+  (return-type "none")
+  (parameters
+  )
+)
+

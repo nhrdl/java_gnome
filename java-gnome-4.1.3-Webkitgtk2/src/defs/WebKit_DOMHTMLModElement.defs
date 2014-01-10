@@ -1,0 +1,43 @@
+(define-object DOMHTMLModElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLModElement")
+)
+
+(define-method get_cite
+  (of-object "WebKitDOMHTMLModElement")
+  (c-name "webkit_dom_html_mod_element_get_cite")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_date_time
+  (of-object "WebKitDOMHTMLModElement")
+  (c-name "webkit_dom_html_mod_element_get_date_time")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_cite
+  (of-object "WebKitDOMHTMLModElement")
+  (c-name "webkit_dom_html_mod_element_set_cite")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_date_time
+  (of-object "WebKitDOMHTMLModElement")
+  (c-name "webkit_dom_html_mod_element_set_date_time")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

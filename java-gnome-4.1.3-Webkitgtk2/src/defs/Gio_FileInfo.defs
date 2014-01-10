@@ -1,0 +1,555 @@
+(define-object FileInfo
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GFileInfo")
+)
+
+(define-function FileInfo_new
+  (is-constructor-of "GFileInfo")
+  (c-name "g_file_info_new")
+  (return-type "GFileInfo*")
+  (parameters
+  )
+)
+
+(define-method clear_status
+  (of-object "GFileInfo")
+  (c-name "g_file_info_clear_status")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method copy_into
+  (of-object "GFileInfo")
+  (c-name "g_file_info_copy_into")
+  (return-type "none")
+  (parameters
+    '("GFileInfo*" "pdest_info")
+  )
+)
+
+(define-method dup
+  (of-object "GFileInfo")
+  (c-name "g_file_info_dup")
+  (return-type "GFileInfo*")
+  (parameters
+  )
+)
+
+(define-method get_attribute_as_string
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_as_string")
+  (return-type "char*")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_attribute_boolean
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_boolean")
+  (return-type "gboolean")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_attribute_byte_string
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_byte_string")
+  (return-type "char*")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_attribute_data
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_data")
+  (return-type "gboolean")
+  (parameters
+    '("char*" "pattribute")
+    '("GFileAttributeType*" "ptype")
+    '("gpointer*" "pvalue_pp")
+    '("GFileAttributeStatus*" "pstatus")
+  )
+)
+
+(define-method get_attribute_int32
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_int32")
+  (return-type "gint32")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_attribute_int64
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_int64")
+  (return-type "gint64")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_attribute_object
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_object")
+  (return-type "GObject*")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_attribute_status
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_status")
+  (return-type "GFileAttributeStatus")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_attribute_string
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_string")
+  (return-type "char*")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_attribute_stringv
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_stringv")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_attribute_type
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_type")
+  (return-type "GFileAttributeType")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_attribute_uint32
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_uint32")
+  (return-type "guint32")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_attribute_uint64
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_attribute_uint64")
+  (return-type "guint64")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method get_content_type
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_content_type")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method get_display_name
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_display_name")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method get_edit_name
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_edit_name")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method get_etag
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_etag")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method get_file_type
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_file_type")
+  (return-type "GFileType")
+  (parameters
+  )
+)
+
+(define-method get_icon
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_icon")
+  (return-type "GIcon*")
+  (parameters
+  )
+)
+
+(define-method get_is_backup
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_is_backup")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_is_hidden
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_is_hidden")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_is_symlink
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_is_symlink")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_modification_time
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_modification_time")
+  (return-type "none")
+  (parameters
+    '("GTimeVal*" "presult")
+  )
+)
+
+(define-method get_name
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_name")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method get_size
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_size")
+  (return-type "goffset")
+  (parameters
+  )
+)
+
+(define-method get_sort_order
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_sort_order")
+  (return-type "gint32")
+  (parameters
+  )
+)
+
+(define-method get_symlink_target
+  (of-object "GFileInfo")
+  (c-name "g_file_info_get_symlink_target")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method has_attribute
+  (of-object "GFileInfo")
+  (c-name "g_file_info_has_attribute")
+  (return-type "gboolean")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method has_namespace
+  (of-object "GFileInfo")
+  (c-name "g_file_info_has_namespace")
+  (return-type "gboolean")
+  (parameters
+    '("char*" "pname_space")
+  )
+)
+
+(define-method list_attributes
+  (of-object "GFileInfo")
+  (c-name "g_file_info_list_attributes")
+  (return-type "none")
+  (parameters
+    '("char*" "pname_space")
+  )
+)
+
+(define-method remove_attribute
+  (of-object "GFileInfo")
+  (c-name "g_file_info_remove_attribute")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+  )
+)
+
+(define-method set_attribute
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+    '("GFileAttributeType" "ptype")
+    '("gpointer" "pvalue_p")
+  )
+)
+
+(define-method set_attribute_boolean
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute_boolean")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+    '("gboolean" "pattr_value")
+  )
+)
+
+(define-method set_attribute_byte_string
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute_byte_string")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+    '("char*" "pattr_value")
+  )
+)
+
+(define-method set_attribute_int32
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute_int32")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+    '("gint32" "pattr_value")
+  )
+)
+
+(define-method set_attribute_int64
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute_int64")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+    '("gint64" "pattr_value")
+  )
+)
+
+(define-method set_attribute_mask
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute_mask")
+  (return-type "none")
+  (parameters
+    '("GFileAttributeMatcher*" "pmask")
+  )
+)
+
+(define-method set_attribute_object
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute_object")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+    '("GObject*" "pattr_value")
+  )
+)
+
+(define-method set_attribute_status
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute_status")
+  (return-type "gboolean")
+  (parameters
+    '("char*" "pattribute")
+    '("GFileAttributeStatus" "pstatus")
+  )
+)
+
+(define-method set_attribute_string
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute_string")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+    '("char*" "pattr_value")
+  )
+)
+
+(define-method set_attribute_stringv
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute_stringv")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+    '("null" "pattr_value")
+  )
+)
+
+(define-method set_attribute_uint32
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute_uint32")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+    '("guint32" "pattr_value")
+  )
+)
+
+(define-method set_attribute_uint64
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_attribute_uint64")
+  (return-type "none")
+  (parameters
+    '("char*" "pattribute")
+    '("guint64" "pattr_value")
+  )
+)
+
+(define-method set_content_type
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_content_type")
+  (return-type "none")
+  (parameters
+    '("char*" "pcontent_type")
+  )
+)
+
+(define-method set_display_name
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_display_name")
+  (return-type "none")
+  (parameters
+    '("char*" "pdisplay_name")
+  )
+)
+
+(define-method set_edit_name
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_edit_name")
+  (return-type "none")
+  (parameters
+    '("char*" "pedit_name")
+  )
+)
+
+(define-method set_file_type
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_file_type")
+  (return-type "none")
+  (parameters
+    '("GFileType" "ptype")
+  )
+)
+
+(define-method set_icon
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_icon")
+  (return-type "none")
+  (parameters
+    '("GIcon*" "picon")
+  )
+)
+
+(define-method set_is_hidden
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_is_hidden")
+  (return-type "none")
+  (parameters
+    '("gboolean" "pis_hidden")
+  )
+)
+
+(define-method set_is_symlink
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_is_symlink")
+  (return-type "none")
+  (parameters
+    '("gboolean" "pis_symlink")
+  )
+)
+
+(define-method set_modification_time
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_modification_time")
+  (return-type "none")
+  (parameters
+    '("GTimeVal*" "pmtime")
+  )
+)
+
+(define-method set_name
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_name")
+  (return-type "none")
+  (parameters
+    '("char*" "pname")
+  )
+)
+
+(define-method set_size
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_size")
+  (return-type "none")
+  (parameters
+    '("goffset" "psize")
+  )
+)
+
+(define-method set_sort_order
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_sort_order")
+  (return-type "none")
+  (parameters
+    '("gint32" "psort_order")
+  )
+)
+
+(define-method set_symlink_target
+  (of-object "GFileInfo")
+  (c-name "g_file_info_set_symlink_target")
+  (return-type "none")
+  (parameters
+    '("char*" "psymlink_target")
+  )
+)
+
+(define-method unset_attribute_mask
+  (of-object "GFileInfo")
+  (c-name "g_file_info_unset_attribute_mask")
+  (return-type "none")
+  (parameters
+  )
+)
+

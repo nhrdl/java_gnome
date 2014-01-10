@@ -1,0 +1,43 @@
+(define-object DOMHTMLOptGroupElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLOptGroupElement")
+)
+
+(define-method get_disabled
+  (of-object "WebKitDOMHTMLOptGroupElement")
+  (c-name "webkit_dom_html_opt_group_element_get_disabled")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_label
+  (of-object "WebKitDOMHTMLOptGroupElement")
+  (c-name "webkit_dom_html_opt_group_element_get_label")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_disabled
+  (of-object "WebKitDOMHTMLOptGroupElement")
+  (c-name "webkit_dom_html_opt_group_element_set_disabled")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_label
+  (of-object "WebKitDOMHTMLOptGroupElement")
+  (c-name "webkit_dom_html_opt_group_element_set_label")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

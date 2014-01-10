@@ -1,0 +1,321 @@
+(define-object DOMHTMLObjectElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLObjectElement")
+)
+
+(define-method check_validity
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_check_validity")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_archive
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_archive")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_border
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_border")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_code
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_code")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_code_base
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_code_base")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_code_type
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_code_type")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_content_document
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_content_document")
+  (return-type "WebKitDOMDocument*")
+  (parameters
+  )
+)
+
+(define-method get_data
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_data")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_declare
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_declare")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_form
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_form")
+  (return-type "WebKitDOMHTMLFormElement*")
+  (parameters
+  )
+)
+
+(define-method get_height
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_height")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_hspace
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_hspace")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_standby
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_standby")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_use_map
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_use_map")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_validation_message
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_validation_message")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_validity
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_validity")
+  (return-type "WebKitDOMValidityState*")
+  (parameters
+  )
+)
+
+(define-method get_vspace
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_vspace")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_width")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_will_validate
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_get_will_validate")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_archive
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_archive")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_border
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_border")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_code
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_code")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_code_base
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_code_base")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_code_type
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_code_type")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_custom_validity
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_custom_validity")
+  (return-type "none")
+  (parameters
+    '("gchar*" "error")
+  )
+)
+
+(define-method set_data
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_data")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_declare
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_declare")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_height
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_height")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_hspace
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_hspace")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_standby
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_standby")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_use_map
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_use_map")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_vspace
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_vspace")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLObjectElement")
+  (c-name "webkit_dom_html_object_element_set_width")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

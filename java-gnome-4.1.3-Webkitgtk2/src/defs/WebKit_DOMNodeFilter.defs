@@ -1,0 +1,17 @@
+(define-object DOMNodeFilter
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMNodeFilter")
+)
+
+(define-method accept_node
+  (of-object "WebKitDOMNodeFilter")
+  (c-name "webkit_dom_node_filter_accept_node")
+  (return-type "gshort")
+  (parameters
+    '("WebKitDOMNode*" "n")
+  )
+)
+

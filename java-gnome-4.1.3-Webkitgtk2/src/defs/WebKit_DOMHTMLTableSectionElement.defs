@@ -1,0 +1,105 @@
+(define-object DOMHTMLTableSectionElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLTableSectionElement")
+)
+
+(define-method delete_row
+  (of-object "WebKitDOMHTMLTableSectionElement")
+  (c-name "webkit_dom_html_table_section_element_delete_row")
+  (return-type "none")
+  (parameters
+    '("glong" "index")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLTableSectionElement")
+  (c-name "webkit_dom_html_table_section_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_ch
+  (of-object "WebKitDOMHTMLTableSectionElement")
+  (c-name "webkit_dom_html_table_section_element_get_ch")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_ch_off
+  (of-object "WebKitDOMHTMLTableSectionElement")
+  (c-name "webkit_dom_html_table_section_element_get_ch_off")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_rows
+  (of-object "WebKitDOMHTMLTableSectionElement")
+  (c-name "webkit_dom_html_table_section_element_get_rows")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_v_align
+  (of-object "WebKitDOMHTMLTableSectionElement")
+  (c-name "webkit_dom_html_table_section_element_get_v_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method insert_row
+  (of-object "WebKitDOMHTMLTableSectionElement")
+  (c-name "webkit_dom_html_table_section_element_insert_row")
+  (return-type "WebKitDOMHTMLElement*")
+  (parameters
+    '("glong" "index")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLTableSectionElement")
+  (c-name "webkit_dom_html_table_section_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_ch
+  (of-object "WebKitDOMHTMLTableSectionElement")
+  (c-name "webkit_dom_html_table_section_element_set_ch")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_ch_off
+  (of-object "WebKitDOMHTMLTableSectionElement")
+  (c-name "webkit_dom_html_table_section_element_set_ch_off")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_v_align
+  (of-object "WebKitDOMHTMLTableSectionElement")
+  (c-name "webkit_dom_html_table_section_element_set_v_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

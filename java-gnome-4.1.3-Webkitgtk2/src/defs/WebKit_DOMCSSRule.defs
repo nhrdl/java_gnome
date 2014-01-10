@@ -1,0 +1,42 @@
+(define-object DOMCSSRule
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMCSSRule")
+)
+
+(define-method get_css_text
+  (of-object "WebKitDOMCSSRule")
+  (c-name "webkit_dom_css_rule_get_css_text")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_parent_rule
+  (of-object "WebKitDOMCSSRule")
+  (c-name "webkit_dom_css_rule_get_parent_rule")
+  (return-type "WebKitDOMCSSRule*")
+  (parameters
+  )
+)
+
+(define-method get_parent_style_sheet
+  (of-object "WebKitDOMCSSRule")
+  (c-name "webkit_dom_css_rule_get_parent_style_sheet")
+  (return-type "WebKitDOMCSSStyleSheet*")
+  (parameters
+  )
+)
+
+(define-method set_css_text
+  (of-object "WebKitDOMCSSRule")
+  (c-name "webkit_dom_css_rule_set_css_text")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+

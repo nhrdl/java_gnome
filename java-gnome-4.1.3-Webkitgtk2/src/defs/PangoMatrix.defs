@@ -1,0 +1,94 @@
+(define-boxed Matrix
+  (in-module "Pango")
+  (c-name "PangoMatrix")
+  (gtype-id "PANGO_TYPE_MATRIX")
+)
+
+(define-method copy
+  (of-object "PangoMatrix")
+  (c-name "pango_matrix_copy")
+  (return-type "PangoMatrix*")
+)
+
+(define-method free
+  (of-object "PangoMatrix")
+  (c-name "pango_matrix_free")
+  (return-type "none")
+)
+
+(define-method translate
+  (of-object "PangoMatrix")
+  (c-name "pango_matrix_translate")
+  (return-type "none")
+  (parameters
+    '("double" "tx")
+    '("double" "ty")
+  )
+)
+
+(define-method scale
+  (of-object "PangoMatrix")
+  (c-name "pango_matrix_scale")
+  (return-type "none")
+  (parameters
+    '("double" "scale_x")
+    '("double" "scale_y")
+  )
+)
+
+(define-method rotate
+  (of-object "PangoMatrix")
+  (c-name "pango_matrix_rotate")
+  (return-type "none")
+  (parameters
+    '("double" "degrees")
+  )
+)
+
+(define-method concat
+  (of-object "PangoMatrix")
+  (c-name "pango_matrix_concat")
+  (return-type "none")
+  (parameters
+    '("const-PangoMatrix*" "new_matrix")
+  )
+)
+
+(define-method transform_point
+  (of-object "PangoMatrix")
+  (c-name "pango_matrix_transform_point")
+  (return-type "none")
+  (parameters
+    '("double*" "x")
+    '("double*" "y")
+  )
+)
+
+(define-method transform_distance
+  (of-object "PangoMatrix")
+  (c-name "pango_matrix_transform_distance")
+  (return-type "none")
+  (parameters
+    '("double*" "dx")
+    '("double*" "dy")
+  )
+)
+
+(define-method transform_rectangle
+  (of-object "PangoMatrix")
+  (c-name "pango_matrix_transform_rectangle")
+  (return-type "none")
+  (parameters
+    '("PangoRectangle*" "rect")
+  )
+)
+
+(define-method transform_pixel_rectangle
+  (of-object "PangoMatrix")
+  (c-name "pango_matrix_transform_pixel_rectangle")
+  (return-type "none")
+  (parameters
+    '("PangoRectangle*" "rect")
+  )
+)
+

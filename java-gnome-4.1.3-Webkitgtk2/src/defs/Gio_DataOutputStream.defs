@@ -1,0 +1,131 @@
+(define-object DataOutputStream
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "FilterOutputStream")
+  (c-name "GDataOutputStream")
+)
+
+(define-function DataOutputStream_new
+  (is-constructor-of "GDataOutputStream")
+  (c-name "g_data_output_stream_new")
+  (return-type "GDataOutputStream*")
+  (parameters
+    '("GOutputStream*" "pbase_stream")
+  )
+)
+
+(define-method get_byte_order
+  (of-object "GDataOutputStream")
+  (c-name "g_data_output_stream_get_byte_order")
+  (return-type "GDataStreamByteOrder")
+  (parameters
+  )
+)
+
+(define-method put_byte
+  (of-object "GDataOutputStream")
+  (c-name "g_data_output_stream_put_byte")
+  (return-type "gboolean")
+  (parameters
+    '("guchar" "pdata")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method put_int16
+  (of-object "GDataOutputStream")
+  (c-name "g_data_output_stream_put_int16")
+  (return-type "gboolean")
+  (parameters
+    '("gint16" "pdata")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method put_int32
+  (of-object "GDataOutputStream")
+  (c-name "g_data_output_stream_put_int32")
+  (return-type "gboolean")
+  (parameters
+    '("gint32" "pdata")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method put_int64
+  (of-object "GDataOutputStream")
+  (c-name "g_data_output_stream_put_int64")
+  (return-type "gboolean")
+  (parameters
+    '("gint64" "pdata")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method put_string
+  (of-object "GDataOutputStream")
+  (c-name "g_data_output_stream_put_string")
+  (return-type "gboolean")
+  (parameters
+    '("char*" "pstr")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method put_uint16
+  (of-object "GDataOutputStream")
+  (c-name "g_data_output_stream_put_uint16")
+  (return-type "gboolean")
+  (parameters
+    '("guint16" "pdata")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method put_uint32
+  (of-object "GDataOutputStream")
+  (c-name "g_data_output_stream_put_uint32")
+  (return-type "gboolean")
+  (parameters
+    '("guint32" "pdata")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method put_uint64
+  (of-object "GDataOutputStream")
+  (c-name "g_data_output_stream_put_uint64")
+  (return-type "gboolean")
+  (parameters
+    '("guint64" "pdata")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_byte_order
+  (of-object "GDataOutputStream")
+  (c-name "g_data_output_stream_set_byte_order")
+  (return-type "none")
+  (parameters
+    '("GDataStreamByteOrder" "porder")
+  )
+)
+

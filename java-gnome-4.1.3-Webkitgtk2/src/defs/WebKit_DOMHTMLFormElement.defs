@@ -1,0 +1,218 @@
+(define-object DOMHTMLFormElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLFormElement")
+)
+
+(define-method check_validity
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_check_validity")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method dispatch_form_change
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_dispatch_form_change")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method dispatch_form_input
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_dispatch_form_input")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_accept_charset
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_get_accept_charset")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_action
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_get_action")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_autocomplete
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_get_autocomplete")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_elements
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_get_elements")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_encoding
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_get_encoding")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_enctype
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_get_enctype")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_length
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_get_length")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_method
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_get_method")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_no_validate
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_get_no_validate")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_target
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_get_target")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method reset
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_reset")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method set_accept_charset
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_set_accept_charset")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_action
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_set_action")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_autocomplete
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_set_autocomplete")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_encoding
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_set_encoding")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_enctype
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_set_enctype")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_method
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_set_method")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_no_validate
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_set_no_validate")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_target
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_set_target")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method submit
+  (of-object "WebKitDOMHTMLFormElement")
+  (c-name "webkit_dom_html_form_element_submit")
+  (return-type "none")
+  (parameters
+  )
+)
+

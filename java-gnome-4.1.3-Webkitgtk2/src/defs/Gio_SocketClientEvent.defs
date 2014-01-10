@@ -1,0 +1,16 @@
+(define-enum SocketClientEvent
+  (in-module "Gio")
+  (c-name "GSocketClientEvent")
+  (values
+    '("resolving" "G_SOCKET_CLIENT_RESOLVING")
+    '("resolved" "G_SOCKET_CLIENT_RESOLVED")
+    '("connecting" "G_SOCKET_CLIENT_CONNECTING")
+    '("connected" "G_SOCKET_CLIENT_CONNECTED")
+    '("proxy_negotiating" "G_SOCKET_CLIENT_PROXY_NEGOTIATING")
+    '("proxy_negotiated" "G_SOCKET_CLIENT_PROXY_NEGOTIATED")
+    '("tls_handshaking" "G_SOCKET_CLIENT_TLS_HANDSHAKING")
+    '("tls_handshaked" "G_SOCKET_CLIENT_TLS_HANDSHAKED")
+    '("complete" "G_SOCKET_CLIENT_COMPLETE")
+  )
+)
+

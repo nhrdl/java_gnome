@@ -1,0 +1,331 @@
+(define-object DOMHTMLAnchorElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLAnchorElement")
+)
+
+(define-method get_charset
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_charset")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_coords
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_coords")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_download
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_download")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_hash
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_hash")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_host
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_host")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_hostname
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_hostname")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_href
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_href")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_hreflang
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_hreflang")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_origin
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_origin")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_pathname
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_pathname")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_ping
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_ping")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_port
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_port")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_protocol
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_protocol")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_rel
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_rel")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_rev
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_rev")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_search
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_search")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_shape
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_shape")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_target
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_target")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_text
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_get_text")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_charset
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_charset")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_coords
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_coords")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_download
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_download")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_hash
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_hash")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_host
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_host")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_hostname
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_hostname")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_href
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_href")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_hreflang
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_hreflang")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_pathname
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_pathname")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_ping
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_ping")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_port
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_port")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_protocol
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_protocol")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_rel
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_rel")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_rev
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_rev")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_search
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_search")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_shape
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_shape")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_target
+  (of-object "WebKitDOMHTMLAnchorElement")
+  (c-name "webkit_dom_html_anchor_element_set_target")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

@@ -1,0 +1,67 @@
+(define-object TlsCertificate
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GTlsCertificate")
+)
+
+(define-function TlsCertificate_new_from_file
+  (is-constructor-of "GTlsCertificate")
+  (c-name "g_tls_certificate_new_from_file")
+  (return-type "GTlsCertificate*")
+  (parameters
+    '("gchar*" "pfile")
+    '("GError**" "error")
+  )
+)
+
+(define-function TlsCertificate_new_from_files
+  (is-constructor-of "GTlsCertificate")
+  (c-name "g_tls_certificate_new_from_files")
+  (return-type "GTlsCertificate*")
+  (parameters
+    '("gchar*" "pcert_file")
+    '("gchar*" "pkey_file")
+    '("GError**" "error")
+  )
+)
+
+(define-function TlsCertificate_new_from_pem
+  (is-constructor-of "GTlsCertificate")
+  (c-name "g_tls_certificate_new_from_pem")
+  (return-type "GTlsCertificate*")
+  (parameters
+    '("gchar*" "pdata")
+    '("gssize" "plength")
+    '("GError**" "error")
+  )
+)
+
+(define-method verify
+  (of-object "GTlsCertificate")
+  (c-name "verify")
+  (return-type "GTlsCertificateFlags")
+  (parameters
+    '("GSocketConnectable*" "pidentity")
+    '("GTlsCertificate*" "ptrusted_ca")
+  )
+)
+
+(define-method get_issuer
+  (of-object "GTlsCertificate")
+  (c-name "g_tls_certificate_get_issuer")
+  (return-type "GTlsCertificate*")
+  (parameters
+  )
+)
+

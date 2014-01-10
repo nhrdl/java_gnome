@@ -1,0 +1,12 @@
+(define-boxed Rectangle
+  (in-module "Atk")
+  (c-name "AtkRectangle")
+  (gtype-id "ATK_TYPE_RECTANGLE")
+  (fields
+    '("gint" "x")
+    '("gint" "y")
+    '("gint" "width")
+    '("gint" "height")
+  )
+)
+

@@ -1,0 +1,196 @@
+(define-object DOMHTMLAppletElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLAppletElement")
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_alt
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_get_alt")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_archive
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_get_archive")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_code
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_get_code")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_code_base
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_get_code_base")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_height
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_get_height")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_hspace
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_get_hspace")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_object
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_get_object")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_vspace
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_get_vspace")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_get_width")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_alt
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_set_alt")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_archive
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_set_archive")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_code
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_set_code")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_code_base
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_set_code_base")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_height
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_set_height")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_hspace
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_set_hspace")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_name
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_set_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_object
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_set_object")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_vspace
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_set_vspace")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLAppletElement")
+  (c-name "webkit_dom_html_applet_element_set_width")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

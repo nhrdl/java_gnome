@@ -1,0 +1,142 @@
+(define-object Toolbar
+  (in-module "Gtk")
+  (parent "GtkContainer")
+  (c-name "GtkToolbar")
+  (gtype-id "GTK_TYPE_TOOLBAR")
+)
+
+(define-function gtk_toolbar_new
+  (is-constructor-of "GtkToolbar")
+  (c-name "gtk_toolbar_new")
+  (caller-owns-return #t)
+  (return-type "GtkWidget*")
+)
+
+(define-method insert
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_insert")
+  (return-type "none")
+  (parameters
+    '("GtkToolItem*" "item")
+    '("gint" "pos")
+  )
+)
+
+(define-method get_item_index
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_get_item_index")
+  (return-type "gint")
+  (parameters
+    '("GtkToolItem*" "item")
+  )
+)
+
+(define-method get_n_items
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_get_n_items")
+  (return-type "gint")
+)
+
+(define-method get_nth_item
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_get_nth_item")
+  (return-type "GtkToolItem*")
+  (parameters
+    '("gint" "n")
+  )
+)
+
+(define-method get_drop_index
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_get_drop_index")
+  (return-type "gint")
+  (parameters
+    '("gint" "x")
+    '("gint" "y")
+  )
+)
+
+(define-method set_drop_highlight_item
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_set_drop_highlight_item")
+  (return-type "none")
+  (parameters
+    '("GtkToolItem*" "tool_item" (null-ok))
+    '("gint" "index")
+  )
+)
+
+(define-method set_show_arrow
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_set_show_arrow")
+  (return-type "none")
+  (parameters
+    '("gboolean" "show_arrow")
+  )
+)
+
+(define-method get_show_arrow
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_get_show_arrow")
+  (return-type "gboolean")
+)
+
+(define-method get_relief_style
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_get_relief_style")
+  (return-type "GtkReliefStyle")
+)
+
+(define-method set_style
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_set_style")
+  (return-type "none")
+  (parameters
+    '("GtkToolbarStyle" "style")
+  )
+)
+
+(define-method unset_style
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_unset_style")
+  (return-type "none")
+)
+
+(define-method get_style
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_get_style")
+  (return-type "GtkToolbarStyle")
+)
+
+(define-method get_icon_size
+  (of-object "GtkToolbar")
+  (c-name "gtk_toolbar_get_icon_size")
+  (return-type "GtkIconSize")
+)
+
+(define-virtual orientation_changed
+  (of-object "GtkToolbar")
+  (return-type "none")
+  (parameters
+    '("GtkOrientation" "orientation")
+  )
+)
+
+(define-virtual style_changed
+  (of-object "GtkToolbar")
+  (return-type "none")
+  (parameters
+    '("GtkToolbarStyle" "style")
+  )
+)
+
+(define-virtual popup_context_menu
+  (of-object "GtkToolbar")
+  (return-type "gboolean")
+  (parameters
+    '("gint" "x")
+    '("gint" "y")
+    '("gint" "button_number")
+  )
+)
+

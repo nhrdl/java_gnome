@@ -1,0 +1,8 @@
+(define-object DOMWebKitAnimation
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMWebKitAnimation")
+)
+
+

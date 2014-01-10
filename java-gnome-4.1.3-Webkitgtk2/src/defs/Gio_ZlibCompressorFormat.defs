@@ -1,0 +1,10 @@
+(define-enum ZlibCompressorFormat
+  (in-module "Gio")
+  (c-name "GZlibCompressorFormat")
+  (values
+    '("zlib" "G_ZLIB_COMPRESSOR_FORMAT_ZLIB")
+    '("gzip" "G_ZLIB_COMPRESSOR_FORMAT_GZIP")
+    '("raw" "G_ZLIB_COMPRESSOR_FORMAT_RAW")
+  )
+)
+

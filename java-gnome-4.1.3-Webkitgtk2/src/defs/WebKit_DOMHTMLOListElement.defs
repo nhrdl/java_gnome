@@ -1,0 +1,60 @@
+(define-object DOMHTMLOListElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLOListElement")
+)
+
+(define-method get_compact
+  (of-object "WebKitDOMHTMLOListElement")
+  (c-name "webkit_dom_htmlo_list_element_get_compact")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_reversed
+  (of-object "WebKitDOMHTMLOListElement")
+  (c-name "webkit_dom_htmlo_list_element_get_reversed")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_start
+  (of-object "WebKitDOMHTMLOListElement")
+  (c-name "webkit_dom_htmlo_list_element_get_start")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method set_compact
+  (of-object "WebKitDOMHTMLOListElement")
+  (c-name "webkit_dom_htmlo_list_element_set_compact")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_reversed
+  (of-object "WebKitDOMHTMLOListElement")
+  (c-name "webkit_dom_htmlo_list_element_set_reversed")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_start
+  (of-object "WebKitDOMHTMLOListElement")
+  (c-name "webkit_dom_htmlo_list_element_set_start")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+

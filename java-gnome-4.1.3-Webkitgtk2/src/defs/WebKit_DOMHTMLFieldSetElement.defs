@@ -1,0 +1,58 @@
+(define-object DOMHTMLFieldSetElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLFieldSetElement")
+)
+
+(define-method check_validity
+  (of-object "WebKitDOMHTMLFieldSetElement")
+  (c-name "webkit_dom_html_field_set_element_check_validity")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_form
+  (of-object "WebKitDOMHTMLFieldSetElement")
+  (c-name "webkit_dom_html_field_set_element_get_form")
+  (return-type "WebKitDOMHTMLFormElement*")
+  (parameters
+  )
+)
+
+(define-method get_validation_message
+  (of-object "WebKitDOMHTMLFieldSetElement")
+  (c-name "webkit_dom_html_field_set_element_get_validation_message")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_validity
+  (of-object "WebKitDOMHTMLFieldSetElement")
+  (c-name "webkit_dom_html_field_set_element_get_validity")
+  (return-type "WebKitDOMValidityState*")
+  (parameters
+  )
+)
+
+(define-method get_will_validate
+  (of-object "WebKitDOMHTMLFieldSetElement")
+  (c-name "webkit_dom_html_field_set_element_get_will_validate")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method set_custom_validity
+  (of-object "WebKitDOMHTMLFieldSetElement")
+  (c-name "webkit_dom_html_field_set_element_set_custom_validity")
+  (return-type "none")
+  (parameters
+    '("gchar*" "error")
+  )
+)
+

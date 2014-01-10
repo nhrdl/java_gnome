@@ -1,0 +1,17 @@
+(define-enum XMLRPCFault
+  (in-module "Soup")
+  (c-name "SoupXMLRPCFault")
+  (values
+    '("parse_error_not_well_formed" "SOUP_XMLRPC_FAULT_PARSE_ERROR_NOT_WELL_FORMED")
+    '("parse_error_unsupported_encoding" "SOUP_XMLRPC_FAULT_PARSE_ERROR_UNSUPPORTED_ENCODING")
+    '("parse_error_invalid_character_for_encoding" "SOUP_XMLRPC_FAULT_PARSE_ERROR_INVALID_CHARACTER_FOR_ENCODING")
+    '("server_error_invalid_xml_rpc" "SOUP_XMLRPC_FAULT_SERVER_ERROR_INVALID_XML_RPC")
+    '("server_error_requested_method_not_found" "SOUP_XMLRPC_FAULT_SERVER_ERROR_REQUESTED_METHOD_NOT_FOUND")
+    '("server_error_invalid_method_parameters" "SOUP_XMLRPC_FAULT_SERVER_ERROR_INVALID_METHOD_PARAMETERS")
+    '("server_error_internal_xml_rpc_error" "SOUP_XMLRPC_FAULT_SERVER_ERROR_INTERNAL_XML_RPC_ERROR")
+    '("application_error" "SOUP_XMLRPC_FAULT_APPLICATION_ERROR")
+    '("system_error" "SOUP_XMLRPC_FAULT_SYSTEM_ERROR")
+    '("transport_error" "SOUP_XMLRPC_FAULT_TRANSPORT_ERROR")
+  )
+)
+

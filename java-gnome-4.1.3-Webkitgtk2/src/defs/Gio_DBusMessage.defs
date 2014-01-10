@@ -1,0 +1,444 @@
+(define-object DBusMessage
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GDBusMessage")
+)
+
+(define-function DBusMessage_new
+  (is-constructor-of "GDBusMessage")
+  (c-name "g_dbus_message_new")
+  (return-type "GDBusMessage*")
+  (parameters
+  )
+)
+
+(define-function DBusMessage_new_from_blob
+  (is-constructor-of "GDBusMessage")
+  (c-name "g_dbus_message_new_from_blob")
+  (return-type "GDBusMessage*")
+  (parameters
+    '("null" "pblob")
+    '("gsize" "pblob_len")
+    '("GDBusCapabilityFlags" "pcapabilities")
+    '("GError**" "error")
+  )
+)
+
+(define-function DBusMessage_new_method_call
+  (is-constructor-of "GDBusMessage")
+  (c-name "g_dbus_message_new_method_call")
+  (return-type "GDBusMessage*")
+  (parameters
+    '("gchar*" "pname")
+    '("gchar*" "ppath")
+    '("gchar*" "pinterface_")
+    '("gchar*" "pmethod")
+  )
+)
+
+(define-function DBusMessage_new_signal
+  (is-constructor-of "GDBusMessage")
+  (c-name "g_dbus_message_new_signal")
+  (return-type "GDBusMessage*")
+  (parameters
+    '("gchar*" "ppath")
+    '("gchar*" "pinterface_")
+    '("gchar*" "psignal")
+  )
+)
+
+(define-method copy
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_copy")
+  (return-type "GDBusMessage*")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method get_arg0
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_arg0")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_body
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_body")
+  (return-type "GVariant*")
+  (parameters
+  )
+)
+
+(define-method get_byte_order
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_byte_order")
+  (return-type "GDBusMessageByteOrder")
+  (parameters
+  )
+)
+
+(define-method get_destination
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_destination")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_error_name
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_error_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_flags
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_flags")
+  (return-type "GDBusMessageFlags")
+  (parameters
+  )
+)
+
+(define-method get_header
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_header")
+  (return-type "GVariant*")
+  (parameters
+    '("GDBusMessageHeaderField" "pheader_field")
+  )
+)
+
+(define-method get_header_fields
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_header_fields")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_interface
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_interface")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_locked
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_locked")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_member
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_member")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_message_type
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_message_type")
+  (return-type "GDBusMessageType")
+  (parameters
+  )
+)
+
+(define-method get_num_unix_fds
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_num_unix_fds")
+  (return-type "guint32")
+  (parameters
+  )
+)
+
+(define-method get_path
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_path")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_reply_serial
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_reply_serial")
+  (return-type "guint32")
+  (parameters
+  )
+)
+
+(define-method get_sender
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_sender")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_serial
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_serial")
+  (return-type "guint32")
+  (parameters
+  )
+)
+
+(define-method get_signature
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_signature")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_unix_fd_list
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_get_unix_fd_list")
+  (return-type "GUnixFDList*")
+  (parameters
+  )
+)
+
+(define-method lock
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_lock")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method new_method_error
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_new_method_error")
+  (return-type "GDBusMessage*")
+  (parameters
+    '("gchar*" "perror_name")
+    '("gchar*" "perror_message_format")
+    '("null" "pnull")
+  )
+)
+
+(define-method new_method_error_literal
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_new_method_error_literal")
+  (return-type "GDBusMessage*")
+  (parameters
+    '("gchar*" "perror_name")
+    '("gchar*" "perror_message")
+  )
+)
+
+(define-method new_method_error_valist
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_new_method_error_valist")
+  (return-type "GDBusMessage*")
+  (parameters
+    '("gchar*" "perror_name")
+    '("gchar*" "perror_message_format")
+    '("va_list" "pvar_args")
+  )
+)
+
+(define-method new_method_reply
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_new_method_reply")
+  (return-type "GDBusMessage*")
+  (parameters
+  )
+)
+
+(define-method print
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_print")
+  (return-type "gchar*")
+  (parameters
+    '("guint" "pindent")
+  )
+)
+
+(define-method set_body
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_body")
+  (return-type "none")
+  (parameters
+    '("GVariant*" "pbody")
+  )
+)
+
+(define-method set_byte_order
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_byte_order")
+  (return-type "none")
+  (parameters
+    '("GDBusMessageByteOrder" "pbyte_order")
+  )
+)
+
+(define-method set_destination
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_destination")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pvalue")
+  )
+)
+
+(define-method set_error_name
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_error_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pvalue")
+  )
+)
+
+(define-method set_flags
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_flags")
+  (return-type "none")
+  (parameters
+    '("GDBusMessageFlags" "pflags")
+  )
+)
+
+(define-method set_header
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_header")
+  (return-type "none")
+  (parameters
+    '("GDBusMessageHeaderField" "pheader_field")
+    '("GVariant*" "pvalue")
+  )
+)
+
+(define-method set_interface
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_interface")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pvalue")
+  )
+)
+
+(define-method set_member
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_member")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pvalue")
+  )
+)
+
+(define-method set_message_type
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_message_type")
+  (return-type "none")
+  (parameters
+    '("GDBusMessageType" "ptype")
+  )
+)
+
+(define-method set_num_unix_fds
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_num_unix_fds")
+  (return-type "none")
+  (parameters
+    '("guint32" "pvalue")
+  )
+)
+
+(define-method set_path
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_path")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pvalue")
+  )
+)
+
+(define-method set_reply_serial
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_reply_serial")
+  (return-type "none")
+  (parameters
+    '("guint32" "pvalue")
+  )
+)
+
+(define-method set_sender
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_sender")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pvalue")
+  )
+)
+
+(define-method set_serial
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_serial")
+  (return-type "none")
+  (parameters
+    '("guint32" "pserial")
+  )
+)
+
+(define-method set_signature
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_signature")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pvalue")
+  )
+)
+
+(define-method set_unix_fd_list
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_set_unix_fd_list")
+  (return-type "none")
+  (parameters
+    '("GUnixFDList*" "pfd_list")
+  )
+)
+
+(define-method to_blob
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_to_blob")
+  (return-type "none")
+  (parameters
+    '("gsize*" "pout_size")
+    '("GDBusCapabilityFlags" "pcapabilities")
+    '("GError**" "error")
+  )
+)
+
+(define-method to_gerror
+  (of-object "GDBusMessage")
+  (c-name "g_dbus_message_to_gerror")
+  (return-type "gboolean")
+  (parameters
+    '("GError**" "error")
+  )
+)
+

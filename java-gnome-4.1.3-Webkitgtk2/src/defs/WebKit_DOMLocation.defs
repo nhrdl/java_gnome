@@ -1,0 +1,16 @@
+(define-object DOMLocation
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMLocation")
+)
+
+(define-method get_origin
+  (of-object "WebKitDOMLocation")
+  (c-name "webkit_dom_location_get_origin")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+

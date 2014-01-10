@@ -1,0 +1,7 @@
+(define-object ContentDecoder
+  (in-module "Soup")
+  (import-header "libsoup/soup.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "SoupContentDecoder")
+)
+

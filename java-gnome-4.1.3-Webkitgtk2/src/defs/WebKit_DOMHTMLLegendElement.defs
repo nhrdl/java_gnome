@@ -1,0 +1,34 @@
+(define-object DOMHTMLLegendElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLLegendElement")
+)
+
+(define-method get_align
+  (of-object "WebKitDOMHTMLLegendElement")
+  (c-name "webkit_dom_html_legend_element_get_align")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_form
+  (of-object "WebKitDOMHTMLLegendElement")
+  (c-name "webkit_dom_html_legend_element_get_form")
+  (return-type "WebKitDOMHTMLFormElement*")
+  (parameters
+  )
+)
+
+(define-method set_align
+  (of-object "WebKitDOMHTMLLegendElement")
+  (c-name "webkit_dom_html_legend_element_set_align")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

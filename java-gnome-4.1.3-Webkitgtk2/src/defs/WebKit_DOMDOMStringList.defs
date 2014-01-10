@@ -1,0 +1,34 @@
+(define-object DOMDOMStringList
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMDOMStringList")
+)
+
+(define-method contains
+  (of-object "WebKitDOMDOMStringList")
+  (c-name "webkit_dom_dom_string_list_contains")
+  (return-type "gboolean")
+  (parameters
+    '("gchar*" "string")
+  )
+)
+
+(define-method get_length
+  (of-object "WebKitDOMDOMStringList")
+  (c-name "webkit_dom_dom_string_list_get_length")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method item
+  (of-object "WebKitDOMDOMStringList")
+  (c-name "webkit_dom_dom_string_list_item")
+  (return-type "gchar*")
+  (parameters
+    '("gulong" "index")
+  )
+)
+

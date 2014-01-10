@@ -1,0 +1,83 @@
+(define-object Permission
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GPermission")
+)
+
+
+
+(define-method acquire_async
+  (of-object "GPermission")
+  (c-name "acquire_async")
+  (return-type "none")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+
+
+
+
+(define-method release_async
+  (of-object "GPermission")
+  (c-name "release_async")
+  (return-type "none")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+
+
+
+(define-method get_allowed
+  (of-object "GPermission")
+  (c-name "g_permission_get_allowed")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_can_acquire
+  (of-object "GPermission")
+  (c-name "g_permission_get_can_acquire")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_can_release
+  (of-object "GPermission")
+  (c-name "g_permission_get_can_release")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method impl_update
+  (of-object "GPermission")
+  (c-name "g_permission_impl_update")
+  (return-type "none")
+  (parameters
+    '("gboolean" "pallowed")
+    '("gboolean" "pcan_acquire")
+    '("gboolean" "pcan_release")
+  )
+)
+

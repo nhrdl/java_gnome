@@ -1,0 +1,42 @@
+(define-object DOMWebKitPoint
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMWebKitPoint")
+)
+
+(define-method get_x
+  (of-object "WebKitDOMWebKitPoint")
+  (c-name "webkit_dom_webkit_point_get_x")
+  (return-type "gfloat")
+  (parameters
+  )
+)
+
+(define-method get_y
+  (of-object "WebKitDOMWebKitPoint")
+  (c-name "webkit_dom_webkit_point_get_y")
+  (return-type "gfloat")
+  (parameters
+  )
+)
+
+(define-method set_x
+  (of-object "WebKitDOMWebKitPoint")
+  (c-name "webkit_dom_webkit_point_set_x")
+  (return-type "none")
+  (parameters
+    '("gfloat" "value")
+  )
+)
+
+(define-method set_y
+  (of-object "WebKitDOMWebKitPoint")
+  (c-name "webkit_dom_webkit_point_set_y")
+  (return-type "none")
+  (parameters
+    '("gfloat" "value")
+  )
+)
+

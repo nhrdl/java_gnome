@@ -1,0 +1,135 @@
+(define-object MenuItem
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GMenuItem")
+)
+
+(define-function MenuItem_new
+  (is-constructor-of "GMenuItem")
+  (c-name "g_menu_item_new")
+  (return-type "GMenuItem*")
+  (parameters
+    '("gchar*" "plabel")
+    '("gchar*" "pdetailed_action")
+  )
+)
+
+(define-function MenuItem_new_section
+  (is-constructor-of "GMenuItem")
+  (c-name "g_menu_item_new_section")
+  (return-type "GMenuItem*")
+  (parameters
+    '("gchar*" "plabel")
+    '("GMenuModel*" "psection")
+  )
+)
+
+(define-function MenuItem_new_submenu
+  (is-constructor-of "GMenuItem")
+  (c-name "g_menu_item_new_submenu")
+  (return-type "GMenuItem*")
+  (parameters
+    '("gchar*" "plabel")
+    '("GMenuModel*" "psubmenu")
+  )
+)
+
+(define-method set_action_and_target
+  (of-object "GMenuItem")
+  (c-name "g_menu_item_set_action_and_target")
+  (return-type "none")
+  (parameters
+    '("gchar*" "paction")
+    '("gchar*" "pformat_string")
+    '("null" "pnull")
+  )
+)
+
+(define-method set_action_and_target_value
+  (of-object "GMenuItem")
+  (c-name "g_menu_item_set_action_and_target_value")
+  (return-type "none")
+  (parameters
+    '("gchar*" "paction")
+    '("GVariant*" "ptarget_value")
+  )
+)
+
+(define-method set_attribute
+  (of-object "GMenuItem")
+  (c-name "g_menu_item_set_attribute")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pattribute")
+    '("gchar*" "pformat_string")
+    '("null" "pnull")
+  )
+)
+
+(define-method set_attribute_value
+  (of-object "GMenuItem")
+  (c-name "g_menu_item_set_attribute_value")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pattribute")
+    '("GVariant*" "pvalue")
+  )
+)
+
+(define-method set_detailed_action
+  (of-object "GMenuItem")
+  (c-name "g_menu_item_set_detailed_action")
+  (return-type "none")
+  (parameters
+    '("gchar*" "pdetailed_action")
+  )
+)
+
+(define-method set_label
+  (of-object "GMenuItem")
+  (c-name "g_menu_item_set_label")
+  (return-type "none")
+  (parameters
+    '("gchar*" "plabel")
+  )
+)
+
+(define-method set_link
+  (of-object "GMenuItem")
+  (c-name "g_menu_item_set_link")
+  (return-type "none")
+  (parameters
+    '("gchar*" "plink")
+    '("GMenuModel*" "pmodel")
+  )
+)
+
+(define-method set_section
+  (of-object "GMenuItem")
+  (c-name "g_menu_item_set_section")
+  (return-type "none")
+  (parameters
+    '("GMenuModel*" "psection")
+  )
+)
+
+(define-method set_submenu
+  (of-object "GMenuItem")
+  (c-name "g_menu_item_set_submenu")
+  (return-type "none")
+  (parameters
+    '("GMenuModel*" "psubmenu")
+  )
+)
+

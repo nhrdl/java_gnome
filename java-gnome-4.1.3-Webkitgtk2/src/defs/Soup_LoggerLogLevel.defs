@@ -1,0 +1,11 @@
+(define-enum LoggerLogLevel
+  (in-module "Soup")
+  (c-name "SoupLoggerLogLevel")
+  (values
+    '("none" "SOUP_LOGGER_LOG_NONE")
+    '("minimal" "SOUP_LOGGER_LOG_MINIMAL")
+    '("headers" "SOUP_LOGGER_LOG_HEADERS")
+    '("body" "SOUP_LOGGER_LOG_BODY")
+  )
+)
+

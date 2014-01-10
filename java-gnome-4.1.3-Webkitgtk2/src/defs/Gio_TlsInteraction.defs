@@ -1,0 +1,44 @@
+(define-object TlsInteraction
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GTlsInteraction")
+)
+
+
+
+(define-method ask_password_async
+  (of-object "GTlsInteraction")
+  (c-name "ask_password_async")
+  (return-type "none")
+  (parameters
+    '("GTlsPassword*" "ppassword")
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+
+
+(define-method invoke_ask_password
+  (of-object "GTlsInteraction")
+  (c-name "g_tls_interaction_invoke_ask_password")
+  (return-type "GTlsInteractionResult")
+  (parameters
+    '("GTlsPassword*" "ppassword")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+

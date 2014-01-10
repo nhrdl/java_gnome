@@ -1,0 +1,79 @@
+(define-object UnixSocketAddress
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "SocketAddress")
+  (c-name "GUnixSocketAddress")
+)
+
+(define-function UnixSocketAddress_new
+  (is-constructor-of "GUnixSocketAddress")
+  (c-name "g_unix_socket_address_new")
+  (return-type "GSocketAddress*")
+  (parameters
+    '("gchar*" "ppath")
+  )
+)
+
+(define-function UnixSocketAddress_new_abstract
+  (is-constructor-of "GUnixSocketAddress")
+  (c-name "g_unix_socket_address_new_abstract")
+  (return-type "GSocketAddress*")
+  (parameters
+    '("null" "ppath")
+    '("gint" "ppath_len")
+  )
+)
+
+(define-function UnixSocketAddress_new_with_type
+  (is-constructor-of "GUnixSocketAddress")
+  (c-name "g_unix_socket_address_new_with_type")
+  (return-type "GSocketAddress*")
+  (parameters
+    '("null" "ppath")
+    '("gint" "ppath_len")
+    '("GUnixSocketAddressType" "ptype")
+  )
+)
+
+(define-method get_address_type
+  (of-object "GUnixSocketAddress")
+  (c-name "g_unix_socket_address_get_address_type")
+  (return-type "GUnixSocketAddressType")
+  (parameters
+  )
+)
+
+(define-method get_is_abstract
+  (of-object "GUnixSocketAddress")
+  (c-name "g_unix_socket_address_get_is_abstract")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_path
+  (of-object "GUnixSocketAddress")
+  (c-name "g_unix_socket_address_get_path")
+  (return-type "char*")
+  (parameters
+  )
+)
+
+(define-method get_path_len
+  (of-object "GUnixSocketAddress")
+  (c-name "g_unix_socket_address_get_path_len")
+  (return-type "gsize")
+  (parameters
+  )
+)
+

@@ -1,0 +1,122 @@
+;; another hand written .defs file. Misc isn't a GBoxed, in fact, it isn't
+;; anything. This is rather ugly, but ;; it saves us having to write the JNI
+;; code for general utility functions in Glib by hand.
+
+(define-boxed Misc
+  (in-module "Glib")
+  (c-name "GlibMisc")
+)
+
+(define-function set_prgname
+  (of-object "GlibMisc")
+  (c-name "g_set_prgname")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "prgname")
+  )
+)
+
+(define-function get_prgname
+  (of-object "GlibMisc")
+  (c-name "g_get_prgname")
+  (return-type "gchar*")
+)
+
+(define-function get_user_config_dir
+  (of-object "GlibMisc")
+  (c-name "g_get_user_config_dir")
+  (return-type "const-gchar*")
+)
+
+(define-function get_user_name
+  (of-object "GlibMisc")
+  (c-name "g_get_user_name")
+  (return-type "const-gchar*")
+)
+
+(define-function get_user_cache_dir
+  (of-object "GlibMisc")
+  (c-name "g_get_user_cache_dir")
+  (return-type "const-gchar*")
+)
+
+(define-function get_user_data_dir
+  (of-object "GlibMisc")
+  (c-name "g_get_user_data_dir")
+  (return-type "const-gchar*")
+)
+
+(define-function get_user_special_dir
+  (of-object "GlibMisc")
+  (c-name "g_get_user_special_dir")
+  (return-type "const-gchar*")
+  (parameters
+    '("GUserDirectory" "directory")
+  )
+)
+
+(define-function get_real_name
+  (of-object "GlibMisc")
+  (c-name "g_get_real_name")
+  (return-type "const-gchar*")
+)
+
+(define-function reload_user_special_dirs_cache
+  (of-object "GlibMisc")
+  (c-name "g_reload_user_special_dirs_cache")
+  (return-type "none")
+)
+
+(define-function get_system_data_dirs
+  (of-object "GlibMisc")
+  (c-name "g_get_system_data_dirs")
+  (return-type "const-gchar**")
+)
+
+(define-function get_system_config_dirs
+  (of-object "GlibMisc")
+  (c-name "g_get_system_config_dirs")
+  (return-type "const-gchar**")
+)
+
+(define-function format_size
+  (of-object "GlibMisc")
+  (c-name "g_format_size")
+  (caller-owns-return #t)
+  (return-type "gchar*")
+  (parameters
+    '("guint64" "size")
+  )
+)
+
+(define-function format_size
+  (of-object "GlibMisc")
+  (c-name "g_format_size_full")
+  (caller-owns-return #t)
+  (return-type "gchar*")
+  (parameters
+    '("guint64" "size")
+    '("GFormatSizeFlags" "flags")
+  )
+)
+
+(define-function format_size_for_display
+  (of-object "GlibMisc")
+  (c-name "g_format_size_for_display")
+  (caller-owns-return #t)
+  (return-type "char*")
+  (parameters
+    '("goffset" "size")
+  )
+)
+
+(define-function markup_escape_text
+  (of-object "GlibMisc")
+  (c-name "g_markup_escape_text")
+  (caller-owns-return #t)
+  (return-type "char*")
+  (parameters
+    '("const-gchar*" "text")
+    '("gssize" "len")
+  )
+)

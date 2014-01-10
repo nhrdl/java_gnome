@@ -1,0 +1,403 @@
+(define-object DOMHTMLMediaElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLMediaElement")
+)
+
+(define-method can_play_type
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_can_play_type")
+  (return-type "gchar*")
+  (parameters
+    '("gchar*" "type")
+  )
+)
+
+(define-method get_autoplay
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_autoplay")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_buffered
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_buffered")
+  (return-type "WebKitDOMTimeRanges*")
+  (parameters
+  )
+)
+
+(define-method get_controls
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_controls")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_current_src
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_current_src")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_current_time
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_current_time")
+  (return-type "gfloat")
+  (parameters
+  )
+)
+
+(define-method get_default_muted
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_default_muted")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_default_playback_rate
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_default_playback_rate")
+  (return-type "gfloat")
+  (parameters
+  )
+)
+
+(define-method get_duration
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_duration")
+  (return-type "gfloat")
+  (parameters
+  )
+)
+
+(define-method get_ended
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_ended")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_error
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_error")
+  (return-type "WebKitDOMMediaError*")
+  (parameters
+  )
+)
+
+(define-method get_initial_time
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_initial_time")
+  (return-type "gdouble")
+  (parameters
+  )
+)
+
+(define-method get_loop
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_loop")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_media_group
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_media_group")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_muted
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_muted")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_network_state
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_network_state")
+  (return-type "gushort")
+  (parameters
+  )
+)
+
+(define-method get_paused
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_paused")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_playback_rate
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_playback_rate")
+  (return-type "gfloat")
+  (parameters
+  )
+)
+
+(define-method get_played
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_played")
+  (return-type "WebKitDOMTimeRanges*")
+  (parameters
+  )
+)
+
+(define-method get_preload
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_preload")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_ready_state
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_ready_state")
+  (return-type "gushort")
+  (parameters
+  )
+)
+
+(define-method get_seekable
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_seekable")
+  (return-type "WebKitDOMTimeRanges*")
+  (parameters
+  )
+)
+
+(define-method get_seeking
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_seeking")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_src
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_src")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_start_time
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_start_time")
+  (return-type "gfloat")
+  (parameters
+  )
+)
+
+(define-method get_volume
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_volume")
+  (return-type "gfloat")
+  (parameters
+  )
+)
+
+(define-method get_webkit_audio_decoded_byte_count
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_webkit_audio_decoded_byte_count")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_webkit_closed_captions_visible
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_webkit_closed_captions_visible")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_webkit_has_closed_captions
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_webkit_has_closed_captions")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_webkit_preserves_pitch
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_webkit_preserves_pitch")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_webkit_video_decoded_byte_count
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_get_webkit_video_decoded_byte_count")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+
+(define-method pause
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_pause")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method play
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_play")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method set_autoplay
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_autoplay")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_controls
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_controls")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_current_time
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_current_time")
+  (return-type "none")
+  (parameters
+    '("gfloat" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_default_muted
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_default_muted")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_default_playback_rate
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_default_playback_rate")
+  (return-type "none")
+  (parameters
+    '("gfloat" "value")
+  )
+)
+
+(define-method set_loop
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_loop")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_media_group
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_media_group")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_muted
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_muted")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_playback_rate
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_playback_rate")
+  (return-type "none")
+  (parameters
+    '("gfloat" "value")
+  )
+)
+
+(define-method set_preload
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_preload")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_src
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_src")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_volume
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_volume")
+  (return-type "none")
+  (parameters
+    '("gfloat" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_webkit_closed_captions_visible
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_webkit_closed_captions_visible")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_webkit_preserves_pitch
+  (of-object "WebKitDOMHTMLMediaElement")
+  (c-name "webkit_dom_html_media_element_set_webkit_preserves_pitch")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+

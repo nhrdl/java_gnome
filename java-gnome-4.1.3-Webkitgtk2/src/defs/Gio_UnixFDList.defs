@@ -1,0 +1,81 @@
+(define-object UnixFDList
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GUnixFDList")
+)
+
+(define-function UnixFDList_new
+  (is-constructor-of "GUnixFDList")
+  (c-name "g_unix_fd_list_new")
+  (return-type "GUnixFDList*")
+  (parameters
+  )
+)
+
+(define-function UnixFDList_new_from_array
+  (is-constructor-of "GUnixFDList")
+  (c-name "g_unix_fd_list_new_from_array")
+  (return-type "GUnixFDList*")
+  (parameters
+    '("null" "pfds")
+    '("gint" "pn_fds")
+  )
+)
+
+(define-method append
+  (of-object "GUnixFDList")
+  (c-name "g_unix_fd_list_append")
+  (return-type "gint")
+  (parameters
+    '("gint" "pfd")
+    '("GError**" "error")
+  )
+)
+
+(define-method get
+  (of-object "GUnixFDList")
+  (c-name "g_unix_fd_list_get")
+  (return-type "gint")
+  (parameters
+    '("gint" "pindex_")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_length
+  (of-object "GUnixFDList")
+  (c-name "g_unix_fd_list_get_length")
+  (return-type "gint")
+  (parameters
+  )
+)
+
+(define-method peek_fds
+  (of-object "GUnixFDList")
+  (c-name "g_unix_fd_list_peek_fds")
+  (return-type "none")
+  (parameters
+    '("gint*" "plength")
+  )
+)
+
+(define-method steal_fds
+  (of-object "GUnixFDList")
+  (c-name "g_unix_fd_list_steal_fds")
+  (return-type "none")
+  (parameters
+    '("gint*" "plength")
+  )
+)
+

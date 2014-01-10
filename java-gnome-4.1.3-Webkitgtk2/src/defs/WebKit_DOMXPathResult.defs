@@ -1,0 +1,88 @@
+(define-object DOMXPathResult
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMXPathResult")
+)
+
+(define-method get_boolean_value
+  (of-object "WebKitDOMXPathResult")
+  (c-name "webkit_dom_xpath_result_get_boolean_value")
+  (return-type "gboolean")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method get_invalid_iterator_state
+  (of-object "WebKitDOMXPathResult")
+  (c-name "webkit_dom_xpath_result_get_invalid_iterator_state")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_number_value
+  (of-object "WebKitDOMXPathResult")
+  (c-name "webkit_dom_xpath_result_get_number_value")
+  (return-type "gdouble")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method get_result_type
+  (of-object "WebKitDOMXPathResult")
+  (c-name "webkit_dom_xpath_result_get_result_type")
+  (return-type "gushort")
+  (parameters
+  )
+)
+
+(define-method get_single_node_value
+  (of-object "WebKitDOMXPathResult")
+  (c-name "webkit_dom_xpath_result_get_single_node_value")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method get_snapshot_length
+  (of-object "WebKitDOMXPathResult")
+  (c-name "webkit_dom_xpath_result_get_snapshot_length")
+  (return-type "gulong")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method get_string_value
+  (of-object "WebKitDOMXPathResult")
+  (c-name "webkit_dom_xpath_result_get_string_value")
+  (return-type "gchar*")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method iterate_next
+  (of-object "WebKitDOMXPathResult")
+  (c-name "webkit_dom_xpath_result_iterate_next")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("GError**" "error")
+  )
+)
+
+(define-method snapshot_item
+  (of-object "WebKitDOMXPathResult")
+  (c-name "webkit_dom_xpath_result_snapshot_item")
+  (return-type "WebKitDOMNode*")
+  (parameters
+    '("gulong" "index")
+    '("GError**" "error")
+  )
+)
+

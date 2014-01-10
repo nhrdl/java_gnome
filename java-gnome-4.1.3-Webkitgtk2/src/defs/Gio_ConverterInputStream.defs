@@ -1,0 +1,35 @@
+(define-object ConverterInputStream
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "FilterInputStream")
+  (c-name "GConverterInputStream")
+)
+
+(define-function ConverterInputStream_new
+  (is-constructor-of "GConverterInputStream")
+  (c-name "g_converter_input_stream_new")
+  (return-type "GInputStream*")
+  (parameters
+    '("GInputStream*" "pbase_stream")
+    '("GConverter*" "pconverter")
+  )
+)
+
+(define-method get_converter
+  (of-object "GConverterInputStream")
+  (c-name "g_converter_input_stream_get_converter")
+  (return-type "GConverter*")
+  (parameters
+  )
+)
+

@@ -1,0 +1,100 @@
+(define-object UnixConnection
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "SocketConnection")
+  (c-name "GUnixConnection")
+)
+
+(define-method receive_credentials
+  (of-object "GUnixConnection")
+  (c-name "g_unix_connection_receive_credentials")
+  (return-type "GCredentials*")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method receive_credentials_async
+  (of-object "GUnixConnection")
+  (c-name "g_unix_connection_receive_credentials_async")
+  (return-type "none")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method receive_credentials_finish
+  (of-object "GUnixConnection")
+  (c-name "g_unix_connection_receive_credentials_finish")
+  (return-type "GCredentials*")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("GError**" "error")
+  )
+)
+
+(define-method receive_fd
+  (of-object "GUnixConnection")
+  (c-name "g_unix_connection_receive_fd")
+  (return-type "gint")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method send_credentials
+  (of-object "GUnixConnection")
+  (c-name "g_unix_connection_send_credentials")
+  (return-type "gboolean")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method send_credentials_async
+  (of-object "GUnixConnection")
+  (c-name "g_unix_connection_send_credentials_async")
+  (return-type "none")
+  (parameters
+    '("GCancellable*" "pcancellable")
+    '("GAsyncReadyCallback" "pcallback")
+    '("gpointer" "puser_data")
+  )
+)
+
+(define-method send_credentials_finish
+  (of-object "GUnixConnection")
+  (c-name "g_unix_connection_send_credentials_finish")
+  (return-type "gboolean")
+  (parameters
+    '("GAsyncResult*" "presult")
+    '("GError**" "error")
+  )
+)
+
+(define-method send_fd
+  (of-object "GUnixConnection")
+  (c-name "g_unix_connection_send_fd")
+  (return-type "gboolean")
+  (parameters
+    '("gint" "pfd")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+

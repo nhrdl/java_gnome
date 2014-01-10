@@ -1,0 +1,16 @@
+(define-object DOMWebKitNamedFlow
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMObject")
+  (c-name "WebKitDOMWebKitNamedFlow")
+)
+
+(define-method get_overflow
+  (of-object "WebKitDOMWebKitNamedFlow")
+  (c-name "webkit_dom_webkit_named_flow_get_overflow")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+

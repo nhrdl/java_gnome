@@ -1,0 +1,128 @@
+(define-object DBusObjectManagerClient
+  (in-module "Gio")
+  (import-header "/usr/include/gio-unix-2.0/gio/gdesktopappinfo.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gfiledescriptorbased.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixconnection.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixcredentialsmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdlist.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixfdmessage.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixinputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixmounts.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixoutputstream.h")
+  (import-header "/usr/include/gio-unix-2.0/gio/gunixsocketaddress.h")
+  (import-header "gio/gio.h")
+  (parent "org.gnome.glib.Object")
+  (c-name "GDBusObjectManagerClient")
+)
+
+(define-function DBusObjectManagerClient_new_finish
+  (is-constructor-of "GDBusObjectManagerClient")
+  (c-name "g_dbus_object_manager_client_new_finish")
+  (return-type "GDBusObjectManager*")
+  (parameters
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-function DBusObjectManagerClient_new_for_bus_finish
+  (is-constructor-of "GDBusObjectManagerClient")
+  (c-name "g_dbus_object_manager_client_new_for_bus_finish")
+  (return-type "GDBusObjectManager*")
+  (parameters
+    '("GAsyncResult*" "pres")
+    '("GError**" "error")
+  )
+)
+
+(define-function DBusObjectManagerClient_new_for_bus_sync
+  (is-constructor-of "GDBusObjectManagerClient")
+  (c-name "g_dbus_object_manager_client_new_for_bus_sync")
+  (return-type "GDBusObjectManager*")
+  (parameters
+    '("GBusType" "pbus_type")
+    '("GDBusObjectManagerClientFlags" "pflags")
+    '("gchar*" "pname")
+    '("gchar*" "pobject_path")
+    '("GDBusProxyTypeFunc" "pget_proxy_type_func")
+    '("gpointer" "pget_proxy_type_user_data")
+    '("GDestroyNotify" "pget_proxy_type_destroy_notify")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-function DBusObjectManagerClient_new_sync
+  (is-constructor-of "GDBusObjectManagerClient")
+  (c-name "g_dbus_object_manager_client_new_sync")
+  (return-type "GDBusObjectManager*")
+  (parameters
+    '("GDBusConnection*" "pconnection")
+    '("GDBusObjectManagerClientFlags" "pflags")
+    '("gchar*" "pname")
+    '("gchar*" "pobject_path")
+    '("GDBusProxyTypeFunc" "pget_proxy_type_func")
+    '("gpointer" "pget_proxy_type_user_data")
+    '("GDestroyNotify" "pget_proxy_type_destroy_notify")
+    '("GCancellable*" "pcancellable")
+    '("GError**" "error")
+  )
+)
+
+(define-method interface_proxy_properties_changed
+  (of-object "GDBusObjectManagerClient")
+  (c-name "interface_proxy_properties_changed")
+  (return-type "none")
+  (parameters
+    '("GDBusObjectProxy*" "pobject_proxy")
+    '("GDBusProxy*" "pinterface_proxy")
+    '("GVariant*" "pchanged_properties")
+    '("gchar**" "pinvalidated_properties")
+  )
+)
+
+(define-method interface_proxy_signal
+  (of-object "GDBusObjectManagerClient")
+  (c-name "interface_proxy_signal")
+  (return-type "none")
+  (parameters
+    '("GDBusObjectProxy*" "pobject_proxy")
+    '("GDBusProxy*" "pinterface_proxy")
+    '("gchar*" "psender_name")
+    '("gchar*" "psignal_name")
+    '("GVariant*" "pparameters")
+  )
+)
+
+(define-method get_connection
+  (of-object "GDBusObjectManagerClient")
+  (c-name "g_dbus_object_manager_client_get_connection")
+  (return-type "GDBusConnection*")
+  (parameters
+  )
+)
+
+(define-method get_flags
+  (of-object "GDBusObjectManagerClient")
+  (c-name "g_dbus_object_manager_client_get_flags")
+  (return-type "GDBusObjectManagerClientFlags")
+  (parameters
+  )
+)
+
+(define-method get_name
+  (of-object "GDBusObjectManagerClient")
+  (c-name "g_dbus_object_manager_client_get_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_name_owner
+  (of-object "GDBusObjectManagerClient")
+  (c-name "g_dbus_object_manager_client_get_name_owner")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+

@@ -1,0 +1,12 @@
+(define-enum UnixSocketAddressType
+  (in-module "Gio")
+  (c-name "GUnixSocketAddressType")
+  (values
+    '("invalid" "G_UNIX_SOCKET_ADDRESS_INVALID")
+    '("anonymous" "G_UNIX_SOCKET_ADDRESS_ANONYMOUS")
+    '("path" "G_UNIX_SOCKET_ADDRESS_PATH")
+    '("abstract" "G_UNIX_SOCKET_ADDRESS_ABSTRACT")
+    '("abstract_padded" "G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED")
+  )
+)
+

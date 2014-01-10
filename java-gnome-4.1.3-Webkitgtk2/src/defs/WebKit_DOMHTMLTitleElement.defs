@@ -1,0 +1,26 @@
+(define-object DOMHTMLTitleElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLTitleElement")
+)
+
+(define-method get_text
+  (of-object "WebKitDOMHTMLTitleElement")
+  (c-name "webkit_dom_html_title_element_get_text")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_text
+  (of-object "WebKitDOMHTMLTitleElement")
+  (c-name "webkit_dom_html_title_element_set_text")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

@@ -1,0 +1,36 @@
+(define-object DOMText
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMCharacterData")
+  (c-name "WebKitDOMText")
+)
+
+(define-method get_whole_text
+  (of-object "WebKitDOMText")
+  (c-name "webkit_dom_text_get_whole_text")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method replace_whole_text
+  (of-object "WebKitDOMText")
+  (c-name "webkit_dom_text_replace_whole_text")
+  (return-type "WebKitDOMText*")
+  (parameters
+    '("gchar*" "content")
+    '("GError**" "error")
+  )
+)
+
+(define-method split_text
+  (of-object "WebKitDOMText")
+  (c-name "webkit_dom_text_split_text")
+  (return-type "WebKitDOMText*")
+  (parameters
+    '("gulong" "offset")
+    '("GError**" "error")
+  )
+)
+

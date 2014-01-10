@@ -1,0 +1,43 @@
+(define-object DOMHTMLCanvasElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLCanvasElement")
+)
+
+(define-method get_height
+  (of-object "WebKitDOMHTMLCanvasElement")
+  (c-name "webkit_dom_html_canvas_element_get_height")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLCanvasElement")
+  (c-name "webkit_dom_html_canvas_element_get_width")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method set_height
+  (of-object "WebKitDOMHTMLCanvasElement")
+  (c-name "webkit_dom_html_canvas_element_set_height")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLCanvasElement")
+  (c-name "webkit_dom_html_canvas_element_set_width")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+

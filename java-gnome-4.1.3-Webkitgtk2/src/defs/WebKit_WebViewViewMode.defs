@@ -1,0 +1,12 @@
+(define-enum WebViewViewMode
+  (in-module "WebKit")
+  (c-name "WebKitWebViewViewMode")
+  (values
+    '("windowed" "WEBKIT_WEB_VIEW_VIEW_MODE_WINDOWED")
+    '("floating" "WEBKIT_WEB_VIEW_VIEW_MODE_FLOATING")
+    '("fullscreen" "WEBKIT_WEB_VIEW_VIEW_MODE_FULLSCREEN")
+    '("maximized" "WEBKIT_WEB_VIEW_VIEW_MODE_MAXIMIZED")
+    '("minimized" "WEBKIT_WEB_VIEW_VIEW_MODE_MINIMIZED")
+  )
+)
+

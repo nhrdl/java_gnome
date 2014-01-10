@@ -1,0 +1,128 @@
+(define-object DOMHTMLScriptElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLScriptElement")
+)
+
+(define-method get_async
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_get_async")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_charset
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_get_charset")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_defer
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_get_defer")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_event
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_get_event")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_html_for
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_get_html_for")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_src
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_get_src")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_text
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_get_text")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_async
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_set_async")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_charset
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_set_charset")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_defer
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_set_defer")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_event
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_set_event")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_html_for
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_set_html_for")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_src
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_set_src")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_text
+  (of-object "WebKitDOMHTMLScriptElement")
+  (c-name "webkit_dom_html_script_element_set_text")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

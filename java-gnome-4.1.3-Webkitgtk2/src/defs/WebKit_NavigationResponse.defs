@@ -1,0 +1,10 @@
+(define-enum NavigationResponse
+  (in-module "WebKit")
+  (c-name "WebKitNavigationResponse")
+  (values
+    '("accept" "WEBKIT_NAVIGATION_RESPONSE_ACCEPT")
+    '("ignore" "WEBKIT_NAVIGATION_RESPONSE_IGNORE")
+    '("download" "WEBKIT_NAVIGATION_RESPONSE_DOWNLOAD")
+  )
+)
+

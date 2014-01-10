@@ -1,0 +1,425 @@
+(define-object DOMHTMLElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMElement")
+  (c-name "WebKitDOMHTMLElement")
+)
+
+(define-method click
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_click")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method get_access_key
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_access_key")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_children
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_children")
+  (return-type "WebKitDOMHTMLCollection*")
+  (parameters
+  )
+)
+
+(define-method get_class_list
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_class_list")
+  (return-type "WebKitDOMDOMTokenList*")
+  (parameters
+  )
+)
+
+(define-method get_class_name
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_class_name")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_content_editable
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_content_editable")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_dir
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_dir")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_draggable
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_draggable")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_hidden
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_hidden")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_id
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_id")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_inner_html
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_inner_html")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_inner_text
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_inner_text")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_is_content_editable
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_is_content_editable")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_item_id
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_item_id")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_item_prop
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_item_prop")
+  (return-type "WebKitDOMDOMSettableTokenList*")
+  (parameters
+  )
+)
+
+(define-method get_item_ref
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_item_ref")
+  (return-type "WebKitDOMDOMSettableTokenList*")
+  (parameters
+  )
+)
+
+(define-method get_item_scope
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_item_scope")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_item_type
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_item_type")
+  (return-type "WebKitDOMDOMSettableTokenList*")
+  (parameters
+  )
+)
+
+(define-method get_lang
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_lang")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_outer_html
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_outer_html")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_outer_text
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_outer_text")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_spellcheck
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_spellcheck")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_tab_index
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_tab_index")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_title
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_title")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_translate
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_translate")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_webkitdropzone
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_get_webkitdropzone")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method insert_adjacent_element
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_insert_adjacent_element")
+  (return-type "WebKitDOMElement*")
+  (parameters
+    '("gchar*" "where")
+    '("WebKitDOMElement*" "element")
+    '("GError**" "error")
+  )
+)
+
+(define-method insert_adjacent_html
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_insert_adjacent_html")
+  (return-type "none")
+  (parameters
+    '("gchar*" "where")
+    '("gchar*" "html")
+    '("GError**" "error")
+  )
+)
+
+(define-method insert_adjacent_text
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_insert_adjacent_text")
+  (return-type "none")
+  (parameters
+    '("gchar*" "where")
+    '("gchar*" "text")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_access_key
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_access_key")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_class_name
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_class_name")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_content_editable
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_content_editable")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_dir
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_dir")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_draggable
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_draggable")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_hidden
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_hidden")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_id
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_id")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_inner_html
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_inner_html")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_inner_text
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_inner_text")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_item_id
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_item_id")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_item_scope
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_item_scope")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_lang
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_lang")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_outer_html
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_outer_html")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_outer_text
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_outer_text")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_spellcheck
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_spellcheck")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_tab_index
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_tab_index")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+  )
+)
+
+(define-method set_title
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_title")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_translate
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_translate")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_webkitdropzone
+  (of-object "WebKitDOMHTMLElement")
+  (c-name "webkit_dom_html_element_set_webkitdropzone")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+

@@ -1,0 +1,215 @@
+(define-object DOMHTMLMarqueeElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLMarqueeElement")
+)
+
+(define-method get_behavior
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_get_behavior")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_bg_color
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_get_bg_color")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_direction
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_get_direction")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_height
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_get_height")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method get_hspace
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_get_hspace")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_loop
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_get_loop")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_scroll_amount
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_get_scroll_amount")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_scroll_delay
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_get_scroll_delay")
+  (return-type "glong")
+  (parameters
+  )
+)
+
+(define-method get_true_speed
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_get_true_speed")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method get_vspace
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_get_vspace")
+  (return-type "gulong")
+  (parameters
+  )
+)
+
+(define-method get_width
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_get_width")
+  (return-type "gchar*")
+  (parameters
+  )
+)
+
+(define-method set_behavior
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_set_behavior")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_bg_color
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_set_bg_color")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_direction
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_set_direction")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_height
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_set_height")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method set_hspace
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_set_hspace")
+  (return-type "none")
+  (parameters
+    '("gulong" "value")
+  )
+)
+
+(define-method set_loop
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_set_loop")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_scroll_amount
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_set_scroll_amount")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_scroll_delay
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_set_scroll_delay")
+  (return-type "none")
+  (parameters
+    '("glong" "value")
+    '("GError**" "error")
+  )
+)
+
+(define-method set_true_speed
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_set_true_speed")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method set_vspace
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_set_vspace")
+  (return-type "none")
+  (parameters
+    '("gulong" "value")
+  )
+)
+
+(define-method set_width
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_set_width")
+  (return-type "none")
+  (parameters
+    '("gchar*" "value")
+  )
+)
+
+(define-method start
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_start")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-method stop
+  (of-object "WebKitDOMHTMLMarqueeElement")
+  (c-name "webkit_dom_html_marquee_element_stop")
+  (return-type "none")
+  (parameters
+  )
+)
+

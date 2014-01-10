@@ -1,0 +1,26 @@
+(define-object DOMHTMLDetailsElement
+  (in-module "WebKit")
+  (import-header "webkit2/webkit2.h")
+  (import-header "webkitdom/webkitdom.h")
+  (import-header "webkitdom/webkitdom.h")
+  (parent "DOMHTMLElement")
+  (c-name "WebKitDOMHTMLDetailsElement")
+)
+
+(define-method get_open
+  (of-object "WebKitDOMHTMLDetailsElement")
+  (c-name "webkit_dom_html_details_element_get_open")
+  (return-type "gboolean")
+  (parameters
+  )
+)
+
+(define-method set_open
+  (of-object "WebKitDOMHTMLDetailsElement")
+  (c-name "webkit_dom_html_details_element_set_open")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
