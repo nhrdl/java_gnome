@@ -21,7 +21,7 @@ public class Browser
 
         }
         Gtk.init(args);
-
+        final Window window = new Window();
         window.setTitle("Webkit browser");
 
         window.connect(new Window.DeleteEvent() {
